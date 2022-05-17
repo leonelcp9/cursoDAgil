@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cursoDAgil.bd.mappers.DetalleVentasMapper">
+	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.DetalleVentas">
+		<id column="ventaId" jdbcType="INTEGER" property="venvtaId"/>
+		<result column="productoId" jdbcType="INTEGER" property="productoId"/>
+		<result column="cantidad" jdbcType="DOUBLE" property="cantidad"/>
+	</resultMap>
+	
+	
+	<resultMap id="ResultDetalleVentasProducto" type="cursoDAgil.bd.domain.DetalleVentas">
+		<id column="ventaId" jdbcType="INTEGER" property="venvtaId"/>
+		<result column="productoId" jdbcType="INTEGER" property="productoId"/>
+		<result column="cantidad" jdbcType="INTEGER" property="cantidad"/>
+		<association property="producto" column="productoId" resultMap="ResultProductoMap" />
+	</resultMap>
+	
+	<resultMap id="ResultProductoMap" type="cursoDAgil.bd.domain.Producto">
+		<id column="idProducto" property="idProducto" />
+		<result column="nombre" jdbcType="VARCHAR" property="nombre" />
+		<result column="precio" jdbcType="VARCHAR" property="precio" />
+		<result column="precioVta" jdbcType="VARCHAR" property="precioVta" />
+		<result column="cantidad" jdbcType="VARCHAR" property="cantidad" />
+		<result column="marcaID" jdbcType="INTEGER" property="marcaId" />
+	</resultMap>
+
+	
+	<select id="listarTodosDetalleVentas" resultMap="ResultDetalleVentasProducto">
+		SELECT dv.ventaId, dv.productoId, dv.cantidad, p.idProducto,p.nombre,p.precio,p.precioVta,p.cantidad,p.marcaId FROM equipo2.detalleventas dv INNER JOIN productos AS p ON dv.productoId = p.idProducto WHERE ventaId = #{venvtaId}
+	</select>
+	
+	<select id="consultaDetalleVenta" resultMap = "ResultDetalleVentasProducto">
+		SELECT dv.*,p.* FROM equipo2.detalleventas dv INNER JOIN equipo2.productos p ON dv.productoId = p.idProducto
+	</select>
+	
+	<insert id="altaDetalleVenta" parameterType="cursoDAgil.bd.domain.DetalleVentas">
+		INSERT INTO detalleventas (ventaId,productoId,cantidad)
+		values (#{venvtaId},#{productoId},#{cantidad})
+	</insert>
+</mapper>

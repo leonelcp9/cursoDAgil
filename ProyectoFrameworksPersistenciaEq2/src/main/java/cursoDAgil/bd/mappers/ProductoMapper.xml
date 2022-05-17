@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cursoDAgil.bd.mappers.ProductoMapper">
+	<resultMap id="BaseResultMap" type="cursoDAgil.bd.domain.Producto">
+		<id column="idProducto" property="idProducto" jdbcType="INTEGER"/>
+		<result column="nombre" property="nombre" jdbcType="VARCHAR" />
+		<result column="precio" property="precio" jdbcType="INTEGER" />
+		<result column="precioVta" property="precioVta" jdbcType="INTEGER" />
+		<result column="cantidad" property="cantidad" jdbcType="INTEGER" />
+		<result column="marcaId" property="marcaId" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="listarProducto" resultMap="BaseResultMap">
+		SELECT * FROM productos
+	</select>
+	
+	<insert id="altaProducto" parameterType="cursoDAgil.bd.domain.Producto" useGeneratedKeys="true" keyProperty="idProducto">
+		INSERT INTO productos (nombre, precio, precioVta, cantidad, marcaId) VALUES (#{nombre},#{precio},#{precioVta},#{cantidad},#{marcaId})
+	</insert>
+	
+	<delete id="eliminarProducto" parameterType="cursoDAgil.bd.domain.Producto" >
+		DELETE FROM productos WHERE idProducto = #{idProducto}
+	</delete>
+	
+	<update id="actualizarProducto" parameterType="cursoDAgil.bd.domain.Producto">
+		UPDATE productos SET nombre=#{nombre}, precio=#{precio}, precioVta=#{precioVta}, cantidad=#{cantidad}, marcaId=#{marcaId} WHERE idProducto=#{idProducto} 
+	</update>
+	
+	<select id="buscarPorId" resultMap="BaseResultMap" parameterType="hashMap">
+		SELECT * FROM productos WHERE idProducto=#{idProducto}
+	</select>
+	
+
+</mapper>
