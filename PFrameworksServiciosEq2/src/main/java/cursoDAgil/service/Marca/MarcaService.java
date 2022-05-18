@@ -5,7 +5,7 @@ import java.util.Map;
 
 import cursoDAgil.bd.domain.Marca;
 
-public interface MarcaDao {
+public interface MarcaService {
 	List<Marca> listarMarcas();
 	public Integer nuevaMarca(Marca nombreMarca);
 	public Integer eliminarMarca(Integer idMarca);
