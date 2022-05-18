@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--  ////////////////////////////////////////
+/* Equipo 2									*/
+/* Autor: Guerrero Hernández Samuel Antonio	*/
+/* Fecha: 26/04/2022						*/
+////////////////////////////////////////////// -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cursoDAgil.bd.mappers.ProductoMapper">
@@ -11,6 +15,7 @@
 		<result column="cantidad" property="cantidad" jdbcType="INTEGER" />
 		<result column="marcaId" property="marcaId" jdbcType="INTEGER" />
 	</resultMap>
+	
 	
 	<select id="listarProducto" resultMap="BaseResultMap">
 		SELECT * FROM productos

@@ -1,6 +1,5 @@
 package cursoDAgil.dao;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.sql.Date;
@@ -97,7 +96,43 @@ public class GananciaDaoImplTest {
 			System.out.println("error" + ex);
 		}
 		System.out.println("Ganancia insertada con exito");
-		
-		
+
+	}
+	
+	@Test
+	public void pruebaAltaGanancia() {
+		System.out.println("------------------------------------------------------");
+		Ganancia ganancia = new Ganancia();
+		System.out.println("Test de alta de ganancia");
+		try {
+			System.out.println("Ganancia dada de alta");
+			ganancia.setFecha("2022-05-20");
+			ganancia.setIdGanancia(1);
+			float tg = 2500;
+			ganancia.setTotalGanancia(tg);
+			ganancia.setVentaId(2);
+			gananciaDao.altaGanancia(ganancia);
+		}catch(Exception e) {
+			System.out.println("Error: "+e);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

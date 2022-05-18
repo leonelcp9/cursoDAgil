@@ -13,4 +13,5 @@ public interface GananciaDao {
 	List<Ganancia> listarPorFecha(Map <String, String> mapGanancia);
 	Integer crearGananciaDeVenta(Ganancia ganancia);
 	Float calcularGanancia(List<Producto> productos);
+	Integer altaGanancia(Ganancia ganancia);
 }

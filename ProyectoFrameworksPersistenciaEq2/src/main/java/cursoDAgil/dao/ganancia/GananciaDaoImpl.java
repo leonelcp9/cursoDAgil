@@ -9,12 +9,10 @@ import javax.inject.Named;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cursoDAgil.bd.domain.DetalleVentas;
+
 import cursoDAgil.bd.domain.Ganancia;
 import cursoDAgil.bd.domain.Producto;
-import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.bd.mappers.GananciaMapper;
-import cursoDAgil.bd.mappers.VentaMapper;
 
 
 
@@ -86,5 +84,15 @@ public class GananciaDaoImpl implements GananciaDao, Serializable{
 			ganancia+=aux.getPrecioVta()-aux.getPrecio();
 		}
 		return ganancia;
+	}
+
+	public Integer altaGanancia(Ganancia ganancia) {
+		try {
+			GananciaMapper gananciaMapper = sqlSession.getMapper(GananciaMapper.class);
+			return gananciaMapper.altaGanancia(ganancia);
+		}catch(Exception e) {
+			System.out.println("Error: "+e);
+		}
+		return null;
 	}
 }
