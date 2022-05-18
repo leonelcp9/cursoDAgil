@@ -76,4 +76,17 @@
 	<update id="actualizarClientePorID" parameterType="cursoDAgil.bd.domain.Cliente">
 		UPDATE cliente SET nombre=#{nombre}, apellido=#{apellido}, email=#{email}, sexo=#{sexo},idDireccion=#{idDireccion} WHERE id =#{id}
 	</update>
+	<select id="listarTodosSoloClientes" resultMap="ResultClienteDireccion">
+		SELECT
+		cli.id,
+		cli.nombre,
+		cli.apellido,
+		cli.email,
+		cli.sexo,
+		cli.idDireccion
+		FROM cliente
+	</select>
+	<select id="obtenerSoloClientePorId" resultMap="ResultClienteDireccion" parameterType="int">
+		SELECT cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion FROM cliente cli  WHERE cli.id = #{id}
+	</select>
 </mapper>

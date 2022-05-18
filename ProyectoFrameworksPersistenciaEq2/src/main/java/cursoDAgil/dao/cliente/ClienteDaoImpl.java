@@ -94,4 +94,37 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return null;
 	}
+	@Override
+	public List<Cliente> listarTodosSoloClientes(){
+		List<Cliente> list =null;
+		try {
+			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+			list=clienteMapper.listarTodosClientes();
+			for(Cliente c:list) {
+				System.out.println("Id: "+ c.getId());
+				System.out.println("Nombre: " + c.getNombre());
+				System.out.println("Direccion"+ c.getDireccion().getCalle());
+			}
+			return list;
+		}catch (Exception e) {
+			System.out.println("Error: "+e);
+		}
+		return null;
+	}
+	@Override
+	public Cliente obtenerSoloClientePorId(int id) {
+		Cliente cliente = null;
+		try {
+			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+			cliente = clienteMapper.obtenerClientePorId(id);
+			System.out.println("El cliente obtenido es:");
+			System.out.println("Id: " + cliente.getId());
+			System.out.println("Nombre: " + cliente.getNombre());
+			Direccion cdir = cliente.getDireccion();
+			System.out.println("Direccion: " + cdir.getCalle() + ", " + cdir.getNumero() + ", "  + cdir.getColonia() + ", " + cdir.getCiudad() + ", " +  cdir.getCodigoPostal() + ", " + cdir.getEstado());
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+		return cliente;
+	}
 }

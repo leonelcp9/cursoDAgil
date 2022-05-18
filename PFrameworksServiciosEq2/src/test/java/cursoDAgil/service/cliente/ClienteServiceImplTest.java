@@ -1,11 +1,13 @@
 package cursoDAgil.service.cliente;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,6 +29,89 @@ public class ClienteServiceImplTest {
 			assertEquals(lista.size(),size);
 		}catch(Exception e) {
 			System.out.println("error "+e);
+		}
+	}
+	
+	@Test
+	public void pruebaConsultarTodoSoloCliente() {
+		int reg;
+		System.out.println("Test consultar todas los clientes");
+	
+		try{
+			List<Cliente> lista = clienteService.listarTodosClientes();
+			reg=lista.size();
+			assertEquals(lista.size(),reg);
+			System.out.println("\nRegistros en la tabla: " + reg);
+		}catch(Exception ex){
+			System.out.println("error" + ex);
+		}
+	}
+	
+	@Test
+	public void consultarClientePorId(){
+		System.out.println("Test para obtener un cliente por Id");
+		try {
+			Cliente cliente = clienteService.obtenerClientePorId(1);
+			assertNotNull(cliente);
+		} catch (Exception e) {
+			System.out.println("error: " + e);
+		}
+	}
+	@Test
+	public void consultarSoloClientePorId(){
+		System.out.println("Test para obtener un cliente por Id");
+		try {
+			Cliente cliente = clienteService.obtenerClientePorId(1);
+			assertNotNull(cliente);
+		} catch (Exception e) {
+			System.out.println("error: " + e);
+		}
+	}
+	
+	
+	
+	@Ignore
+	public void nuevoRegistro(){
+		
+		//Direccion direccion = consultarDireccionPorId(1);
+		Cliente cliente= new Cliente();
+		System.out.println("Test nuevo registro");
+		try{
+			cliente.setNombre("Test");
+			cliente.setApellido("asdasd");
+			cliente.setEmail("asdas@gmail.com");
+			cliente.setSexo("femenino");
+			cliente.setIddireccion(1);
+			clienteService.nuevoCliente(cliente);
+		}catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+	
+	@Ignore
+	public void eliminarcliente() {
+		System.out.println("Test eliminar Direccion");
+		try {
+			clienteService.eliminarClientePorId(4);
+		}catch(Exception e){
+			System.out.println("Error"+ e );
+		}
+	}
+	@Ignore
+	public void actualizarCliente() {
+				
+		Cliente cliente= new Cliente();
+		System.out.println("Test Actualizar Direccion");
+		try {
+			cliente.setNombre("Actualizado");
+			cliente.setApellido("asdasd");
+			cliente.setEmail("asdas@gmail.com");
+			cliente.setIddireccion(1);
+			cliente.setSexo("Masculino");
+			cliente.setId(3);
+			clienteService.actualizarClientePorID(cliente);
+		}catch(Exception e) {
+			System.out.println("Error"+e);
 		}
 	}
 }

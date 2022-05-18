@@ -22,4 +22,40 @@ public class ClienteServiceImpl implements ClienteService, Serializable{
 	public List<Cliente> listarTodosClientes(){
 		return clienteDao.listarTodosClientes();
 	}
+
+	@Override
+	public Integer nuevoCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return clienteDao.nuevoCliente(cliente);
+	}
+
+	@Override
+	public Cliente obtenerClientePorId(int id) {
+		// TODO Auto-generated method stub
+		return clienteDao.obtenerClientePorId(id);
+	}
+
+	@Override
+	public Integer eliminarClientePorId(Integer idcliente) {
+		// TODO Auto-generated method stub
+		return clienteDao.eliminarClientePorId(idcliente);
+	}
+
+	@Override
+	public Integer actualizarClientePorID(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return clienteDao.actualizarClientePorID(cliente);
+	}
+
+	@Override
+	public Cliente obtenerSoloClientePorId(int id) {
+		// TODO Auto-generated method stub
+		return clienteDao.obtenerSoloClientePorId(id);
+	}
+
+	@Override
+	public List<Cliente> listarTodosSoloClientes() {
+		// TODO Auto-generated method stub
+		return clienteDao.listarTodosSoloClientes();
+	}
 }

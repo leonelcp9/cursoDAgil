@@ -43,9 +43,33 @@ public class ClienteDaoImplTest {
 			System.out.println("error: " + e);
 		}
 	}
+	@Test
+	public void consultarSoloClientePorId(){
+		System.out.println("Test para obtener un cliente por Id");
+		try {
+			Cliente cliente = clienteDao.obtenerClientePorId(1);
+			assertNotNull(cliente);
+		} catch (Exception e) {
+			System.out.println("error: " + e);
+		}
+	}
 	
 	@Test
 	public void pruebaConsultarTodo() {
+		int reg;
+		System.out.println("Test consultar todas los clientes");
+	
+		try{
+			List<Cliente> lista = clienteDao.listarTodosClientes();
+			reg=lista.size();
+			assertEquals(lista.size(),reg);
+			System.out.println("\nRegistros en la tabla: " + reg);
+		}catch(Exception ex){
+			System.out.println("error" + ex);
+		}
+	}
+	@Test
+	public void pruebaConsultarTodoSoloCliente() {
 		int reg;
 		System.out.println("Test consultar todas los clientes");
 	

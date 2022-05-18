@@ -16,5 +16,7 @@ public interface ClienteDao {
 	Cliente obtenerClientePorId(int id);
 	Integer eliminarClientePorId(Integer idcliente);
 	Integer actualizarClientePorID(Cliente cliente);
+	Cliente obtenerSoloClientePorId(int id);
+	List<Cliente> listarTodosSoloClientes();
 
 }
