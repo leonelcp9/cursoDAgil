@@ -1,4 +1,4 @@
-package cursoDAgil.dao.marca;
+package cursoDAgil.service.marca;
 
 import java.util.List;
 import java.util.Map;
