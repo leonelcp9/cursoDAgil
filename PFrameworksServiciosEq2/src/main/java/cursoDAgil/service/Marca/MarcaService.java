@@ -1,11 +1,11 @@
-package cursoDAgil.dao.marca;
+package cursoDAgil.service.marca;
 
 import java.util.List;
 import java.util.Map;
 
 import cursoDAgil.bd.domain.Marca;
 
-public interface MarcaDao {
+public interface MarcaService {
 	List<Marca> listarMarcas();
 	public Integer nuevaMarca(Marca nombreMarca);
 	public Integer eliminarMarca(Integer idMarca);
