@@ -1,4 +1,4 @@
-package cursoDAgil.dao.marca;
+package cursoDAgil.service.marca;
 
 import java.io.Serializable;
 import java.util.List;
