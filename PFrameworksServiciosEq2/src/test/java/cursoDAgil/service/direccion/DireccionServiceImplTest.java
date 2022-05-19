@@ -1,6 +1,6 @@
 //////////////////////////////////
 /* Equipo 2							*/
-/* Autor: Lòpez Guevara Jesus Alejandro	*/
+/* Autores: Lòpez Guevara Jesus Alejandro	y Cruz Peralta Leonel*/
 /* Fecha: 16/05/2022				*/
 /////////////////////////////////// 
 package cursoDAgil.service.direccion;
@@ -60,4 +60,48 @@ public class DireccionServiceImplTest {
 		}
 	}
 
+	@Test
+	public void nuevoRegistro(){
+		Direccion direccion= new Direccion();
+		try{
+			direccion.setCalle("Micaela Galindo");
+			direccion.setNumero(3);
+			direccion.setColonia("Centro");
+			direccion.setCiudad("Huajuapan");
+			direccion.setEstado("Oaxaca");
+			direccion.setPais("Mexico");
+			direccion.setCodigoPostal(69000);
+			direccionService.nuevaDireccionCliente(direccion);
+		}catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+	@Test
+	public void eliminardireccion() {
+		try {
+			direccionService.eliminarDireccionPorId(2);
+		}catch(Exception e){
+			System.out.println("Error"+ e );
+		}
+	}
+	@Test
+	public void actualizarDireccion() {
+		System.out.println("Test Actualizar Direccion");
+		Map<String, Integer> mapDireccion = new HashMap<>();
+		Direccion direccion= new Direccion();
+		mapDireccion.put("idDireccion",2);
+		try {
+			direccion.setIdDireccion(2);
+			direccion.setCalle("Micaela GUERRERO");
+			direccion.setNumero(3);
+			direccion.setColonia("Alta Vista");
+			direccion.setCiudad("Huajuapan");
+			direccion.setEstado("Oaxaca");
+			direccion.setPais("Mexico");
+			direccion.setCodigoPostal(69005);
+			direccionService.actualizarDireccionPorID(direccion);
+		}catch(Exception e) {
+			System.out.println("Error"+e);
+		}
+	}
 }

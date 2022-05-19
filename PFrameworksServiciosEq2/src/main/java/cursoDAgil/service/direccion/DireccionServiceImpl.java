@@ -1,6 +1,6 @@
 //////////////////////////////////
 /* Equipo 2							*/
-/* Autor: Lòpez Guevara Jesus Alejandro	*/
+/* Autores: Lòpez Guevara Jesus Alejandro	y Cruz Peralta Leonel*/
 /* Fecha: 16/05/2022				*/
 package cursoDAgil.service.direccion;
 
@@ -33,6 +33,14 @@ private static final long serialVersionUID = 7962397593863792875L;
 		// TODO Auto-generated method stub
 		return direccionDao.obtenerDireccionPorId(mapDireccion);
 	}
-	
+	Integer nuevaDireccionCliente(Direccion direccion){
+		return direccionDao.nuevaDireccionCliente(direccion);
+	}
+	Integer eliminarDireccionPorId(Integer iddireccion){
+		return direccionDao.eliminarDireccionPorId(iddireccion);
+	}
+	Integer actualizarDireccionPorID(Direccion direccion){
+		return direccionDao.actualizarDireccionPorID(direccion);
+	}
 
 }
