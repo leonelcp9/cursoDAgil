@@ -19,8 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.bd.domain.Producto;
-import cursoDAgil.service.cliente.ClienteService;
-import cursoDAgil.service.detalleVentas.DetalleVentasService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 
