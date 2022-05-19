@@ -75,7 +75,7 @@ public class ClienteServiceImplTest {
 	
 	
 	
-	@Ignore
+	@Test
 	public void nuevoRegistro(){
 		
 		//Direccion direccion = consultarDireccionPorId(1);
@@ -93,7 +93,7 @@ public class ClienteServiceImplTest {
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void eliminarcliente() {
 		System.out.println("Test eliminar Direccion");
 		try {
@@ -102,7 +102,7 @@ public class ClienteServiceImplTest {
 			System.out.println("Error"+ e );
 		}
 	}
-	@Ignore
+	@Test
 	public void actualizarCliente() {
 				
 		Cliente cliente= new Cliente();
