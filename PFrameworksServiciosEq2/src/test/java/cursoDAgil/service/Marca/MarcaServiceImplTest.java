@@ -1,3 +1,10 @@
+//////////////////////////////////
+/* Equipo 2			
+/* Autor: Narváez Morales Jorge Lisandro
+/* Fecha: 17/05/2022				
+///////////////////////////////////
+
+
 package cursoDAgil.service.Marca;
 
 import static org.junit.Assert.assertEquals;
