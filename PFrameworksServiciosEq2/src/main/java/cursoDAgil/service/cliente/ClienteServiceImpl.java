@@ -1,3 +1,8 @@
+//////////////////////////////////
+/* Equipo 2							*/
+/* Autor: Mendez Gonzalez William	*/
+/* Fecha: 17/05/2022				*/
+/////////////////////////////////// 
 package cursoDAgil.service.cliente;
 
 import java.io.Serializable;
