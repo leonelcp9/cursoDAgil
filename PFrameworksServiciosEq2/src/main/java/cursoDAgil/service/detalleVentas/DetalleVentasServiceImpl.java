@@ -1,3 +1,8 @@
+//////////////////////////////////////
+/* Equipo 2							*/
+/* Autor: Cruz Peralta Leonel   	*/
+/* Fecha: 18/05/2022				*/
+//////////////////////////////////////
 package cursoDAgil.service.detalleVentas;
 
 import java.io.Serializable;

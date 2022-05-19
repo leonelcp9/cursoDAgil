@@ -1,3 +1,8 @@
+//////////////////////////////////////
+/* Equipo 2							*/
+/* Autor: Cruz Peralta Leonel   	*/
+/* Fecha: 18/05/2022				*/
+//////////////////////////////////////
 package cursoDAgil.service.detalleVentas;
 
 import static org.junit.Assert.assertEquals;
@@ -6,6 +11,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -35,7 +41,7 @@ public class DetalleVentasServiceImplTest {
 			System.out.println("error" + ex);
 		}
 	}
-	@Test
+	@Ignore
 	public void pruebaAltaDetalleVenta() {
 		try {
 			DetalleVentas detalle = new DetalleVentas();
@@ -50,7 +56,7 @@ public class DetalleVentasServiceImplTest {
 			System.out.println("error" + ex);
 		}
 	}
-	@Test
+	@Ignore
 	public void pruebaConsultaTodosDetalleVentas() {
 		
 		try {
