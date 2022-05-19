@@ -8,15 +8,20 @@ package cursoDAgil.service.detalleVentas;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
 
+@Named
 public class DetalleVentasServiceImpl implements DetalleVentasService, Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 229175845631765742L;
+	@Inject
 	DetalleVentasDao detalleVentasDao;
 	
 	@Override

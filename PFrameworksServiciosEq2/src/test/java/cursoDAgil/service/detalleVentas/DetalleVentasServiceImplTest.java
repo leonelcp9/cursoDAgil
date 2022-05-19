@@ -1,8 +1,3 @@
-//////////////////////////////////////
-/* Equipo 2							*/
-/* Autor: Cruz Peralta Leonel   	*/
-/* Fecha: 18/05/2022				*/
-//////////////////////////////////////
 package cursoDAgil.service.detalleVentas;
 
 import static org.junit.Assert.assertEquals;
@@ -11,36 +6,35 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cursoDAgil.service.detalleVentas.DetalleVentasService;
 import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.bd.domain.Producto;
+import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-
 public class DetalleVentasServiceImplTest {
-	@Inject
-	DetalleVentasService detalleVentasService;
 	
+	@Inject
+	DetalleVentasService detalleventasService;
 	
 	@Test
 	public void pruebaConsultarVentas() {
-		System.out.println("Test consultar todas los detalles de ventas y los productos");
 		try {
 			Integer id=1;
-			List<DetalleVentas> lista = detalleVentasService.listarTodosDetalleVentas(id);
+			List<DetalleVentas> lista = detalleventasService.listarTodosDetalleVentas(id);
 			int size = lista.size();
 			assertEquals(lista.size(), size);
 		} catch (Exception ex) {
 			System.out.println("error" + ex);
 		}
 	}
-	@Ignore
+	
+	@Test
 	public void pruebaAltaDetalleVenta() {
 		try {
 			DetalleVentas detalle = new DetalleVentas();
@@ -50,16 +44,15 @@ public class DetalleVentasServiceImplTest {
 			detalle.setProducto(prod);
 			detalle.setProductoId(detalle.getProducto().getIdProducto());
 			detalle.setCantidad(2);
-			detalleVentasService.altaDetalleVenta(detalle);
+			detalleventasService.altaDetalleVenta(detalle);
 		}catch(Exception ex) {
 			System.out.println("error" + ex);
 		}
 	}
-	@Ignore
+	@Test
 	public void pruebaConsultaTodosDetalleVentas() {
-		
 		try {
-			List<DetalleVentas> lista = detalleVentasService.consultaDetalleVenta();
+			List<DetalleVentas> lista = detalleventasService.consultaDetalleVenta();
 			int size = lista.size();
 			assertEquals(lista.size(),size);
 		}catch (Exception ex) {
