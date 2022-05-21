@@ -43,7 +43,7 @@
 		values 
 		(#{clienteId},#{totalVenta},#{fecha})
 	</insert>
-	<select id="eliminarVentaId" resultMap="BaseResultMap">
+	<select id="eliminarVenta" resultMap="BaseResultMap">
 		DELETE FROM ventas WHERE  idVenta = #{idVenta}
 	</select>
 	

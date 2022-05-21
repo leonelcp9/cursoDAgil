@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2022 at 05:03 AM
+-- Generation Time: May 21, 2022 at 03:34 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -43,13 +43,17 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `email`, `sexo`, `idDireccion`) VALUES
 (1, 'Samuel', 'Guerrero', 'itougn15@gmail.com', 'Masculino', 1),
 (2, 'Jorge', 'Narváez', 'jorgito123@gmail.com', 'Femenino', 1),
-(4, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
 (5, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
 (6, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
 (7, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
 (8, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
 (9, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(10, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1);
+(10, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
+(11, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
+(12, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
+(13, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
+(14, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
+(15, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1);
 
 -- --------------------------------------------------------
 
@@ -70,6 +74,8 @@ CREATE TABLE `detalleventas` (
 INSERT INTO `detalleventas` (`ventaId`, `productoId`, `cantidad`) VALUES
 (5, 3, 233),
 (1, 5, 2),
+(1, 3, 2),
+(1, 3, 2),
 (1, 3, 2);
 
 -- --------------------------------------------------------
@@ -100,7 +106,12 @@ INSERT INTO `direccion` (`idDireccion`, `calle`, `numero`, `colonia`, `ciudad`, 
 (5, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
 (6, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
 (7, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(8, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000);
+(8, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
+(9, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
+(10, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
+(11, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
+(12, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
+(13, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000);
 
 -- --------------------------------------------------------
 
@@ -138,7 +149,13 @@ INSERT INTO `ganancias` (`idGanancia`, `ventaId`, `totalGanancia`, `fecha`) VALU
 (16, 1, 15550.5, '2022-05-02'),
 (17, 1, 15550.5, '2022-05-02'),
 (18, 1, 15550.5, '2022-05-02'),
-(19, 1, 15550.5, '2022-05-02');
+(19, 1, 15550.5, '2022-05-02'),
+(20, 1, 2500, '2022-05-20'),
+(21, 1, 2500, '2022-05-20'),
+(22, 2, 2500, '2022-05-20'),
+(23, 1, 15550.5, '2022-05-20'),
+(24, 1, 2500, '2022-05-20'),
+(25, 1, 2500, '2022-05-20');
 
 -- --------------------------------------------------------
 
@@ -162,7 +179,12 @@ INSERT INTO `marcas` (`idMarca`, `nombreMarca`) VALUES
 (5, 'Gamesa'),
 (7, 'Gamesa'),
 (8, 'Gamesa'),
-(9, 'Gamesa');
+(9, 'Gamesa'),
+(10, 'Gamesa'),
+(11, 'Gamesa'),
+(12, 'Gamesa'),
+(13, 'Gamesa'),
+(14, 'Gamesa');
 
 -- --------------------------------------------------------
 
@@ -185,7 +207,12 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`idProducto`, `nombre`, `precio`, `precioVta`, `cantidad`, `marcaId`) VALUES
 (3, 'Fresca', 25, 27, 100, 1),
-(5, 'Fresca', 25, 27, 100, 1);
+(5, 'Fresca', 25, 27, 100, 1),
+(17, 'Manzanita', 25, 28, 150, 3),
+(21, 'Axe Chocolate', 50, 60, 30, 8),
+(22, 'Coke', 25, 27, 100, 3),
+(23, 'Manzanita', 25, 28, 150, 3),
+(24, 'Manzanita', 25, 28, 150, 3);
 
 -- --------------------------------------------------------
 
@@ -215,14 +242,18 @@ INSERT INTO `ventas` (`idVenta`, `clienteId`, `totalVenta`, `fecha`) VALUES
 (8, 1, 900, '2022-05-02'),
 (9, 1, 900, '2022-05-02'),
 (10, 1, 900, '2022-05-02'),
-(11, 1, 900, '2022-05-02'),
 (12, 1, 900, '2022-05-02'),
 (13, 1, 900, '2022-05-02'),
 (14, 1, 900, '2022-05-02'),
 (15, 1, 900, '2022-05-02'),
 (16, 1, 900, '2022-05-02'),
 (17, 1, 900, '2022-05-02'),
-(18, 1, 900, '2022-05-02');
+(18, 1, 900, '2022-05-02'),
+(19, 1, 700, '2022-05-18'),
+(20, 1, 700, '2022-05-20'),
+(21, 1, 900, '2022-05-20'),
+(22, 1, 700, '2022-05-20'),
+(23, 1, 700, '2022-05-20');
 
 --
 -- Indexes for dumped tables
@@ -282,37 +313,37 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ganancias`
 --
 ALTER TABLE `ganancias`
-  MODIFY `idGanancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idGanancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

@@ -49,7 +49,7 @@ import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
 			try {
 				DetalleVentas detalle = new DetalleVentas();
 				Producto prod = new Producto();
-				prod.setIdProducto(2);
+				prod.setIdProducto(3);
 				detalle.setVenvtaId(1);
 				detalle.setProducto(prod);
 				detalle.setProductoId(detalle.getProducto().getIdProducto());
