@@ -12,4 +12,6 @@ public interface ProductoMapper {
 	Integer eliminarProducto(Integer idProducto);
 	Integer actualizarProducto(Producto producto);
 	Producto buscarPorId(Map <String, Integer> mapProducto);
+	Producto buscarPorIdconMarca(Map <String, Integer> mapProducto);
+	List<Producto> listarProductosconMarca();
 }

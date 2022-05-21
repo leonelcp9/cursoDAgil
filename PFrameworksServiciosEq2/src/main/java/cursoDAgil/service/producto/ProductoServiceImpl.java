@@ -1,3 +1,8 @@
+//////////////////////////////////////////////
+/* Equipo 2									*/
+/* Autor: Guerrero Hernández Samuel Antonio	*/
+/* Fecha: 20/05/2022						*/
+////////////////////////////////////////////// 
 package cursoDAgil.service.producto;
 
 import java.io.Serializable;
@@ -40,5 +45,15 @@ public class ProductoServiceImpl implements ProductoService, Serializable{
 	@Override
 	public Producto buscarPorId(Map<String, Integer> mapProducto) {
 		return productoDao.buscarPorId(mapProducto);
+	}
+
+	@Override
+	public Producto buscarPorIdconMarca(Map<String, Integer> mapProducto) {
+		return productoDao.buscarPorIdconMarca(mapProducto);
+	}
+
+	@Override
+	public List<Producto> listarProductosconMarca() {
+		return productoDao.listarProductosconMarca();
 	}
 }

@@ -1,3 +1,8 @@
+//////////////////////////////////////////////
+/* Equipo 2									*/
+/* Autor: Guerrero Hernández Samuel Antonio	*/
+/* Fecha: 20/05/2022						*/
+////////////////////////////////////////////// 
 package cursoDAgil.service.ganancia;
 
 import java.util.List;

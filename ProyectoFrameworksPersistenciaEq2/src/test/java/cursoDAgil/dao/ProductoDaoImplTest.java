@@ -45,7 +45,7 @@ public class ProductoDaoImplTest {
 			System.out.println("Producto dado de alta con exito");
 			producto.setCantidad(100);
 			producto.setIdProducto(7);
-			producto.setMarcaId(2);
+			producto.setMarcaId(3);
 			producto.setNombre("Coke");
 			producto.setPrecio(25);
 			producto.setPrecioVta(27);
@@ -84,7 +84,7 @@ public class ProductoDaoImplTest {
 		System.out.println("Test para consultar por ID");
 		Producto producto = new Producto();
 		Map<String, Integer> mapProducto = new HashMap<>();
-		mapProducto.put("idProducto",2);
+		mapProducto.put("idProducto",5);
 		try{
 			producto=productoDao.buscarPorId(mapProducto);
 			//assertNotNull(producto);
@@ -110,6 +110,31 @@ public class ProductoDaoImplTest {
 			productoDao.eliminarProducto(idPrueba);
 		}catch(Exception e) {
 			System.out.println("Error: "+e);
+		}
+	}
+	
+	@Test
+	public void pruebaBuscarPorIdconMarca() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("Test de buscar producto por id con marca");
+		Map<String, Integer> mapProducto = new HashMap<>();
+		mapProducto.put("idProducto",3);
+		try {
+			//System.out.println("");
+			productoDao.buscarPorIdconMarca(mapProducto);
+		}catch(Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+	
+	@Test
+	public void pruebaListarProductosconMarca() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("Test de listar todos los productos con marca");
+		try {
+			productoDao.listarProductosconMarca();
+		}catch(Exception e) {
+			System.out.println("Error: " + e);
 		}
 	}
 	

@@ -1,3 +1,8 @@
+//////////////////////////////////////////////
+/* Equipo 2									*/
+/* Autor: Guerrero Hernández Samuel Antonio	*/
+/* Fecha: 20/05/2022						*/
+////////////////////////////////////////////// 
 package cursoDAgil.service.producto;
 
 import static org.junit.Assert.assertEquals;
@@ -45,7 +50,7 @@ public class ProductoServiceImplTest {
 			System.out.println("Producto dado de alta con éxito");
 			producto.setCantidad(150);
 			producto.setIdProducto(5);
-			producto.setMarcaId(2);
+			producto.setMarcaId(3);
 			producto.setNombre("Manzanita");
 			producto.setPrecio(25);
 			producto.setPrecioVta(28);
@@ -74,11 +79,11 @@ public class ProductoServiceImplTest {
 		System.out.println("Test de actualizar producto");
 		Map<String, Integer> mapProducto = new HashMap<>();
 		Producto producto = new Producto();
-		mapProducto.put("idProducto",16);
+		mapProducto.put("idProducto",21);
 		try {
 			producto.setCantidad(170);
 			producto.setIdProducto(16);
-			producto.setMarcaId(2);
+			producto.setMarcaId(3);
 			producto.setNombre("Mirinda");
 			producto.setPrecio(28);
 			producto.setPrecioVta(30);
@@ -94,7 +99,7 @@ public class ProductoServiceImplTest {
 		System.out.println("Test para consultar por ID");
 		Producto producto = new Producto();
 		Map<String, Integer> mapProducto = new HashMap<>();
-		mapProducto.put("idProducto",23);
+		mapProducto.put("idProducto",21);
 		try {
 			producto=productoService.buscarPorId(mapProducto);
 			System.out.println("Nombre:" + producto.getNombre());
@@ -108,7 +113,44 @@ public class ProductoServiceImplTest {
 			System.out.println("Error: "+e);
 		}
 	}
+	
+	@Test
+	public void pruebaBuscarPorIdconMarca() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("Test de buscar producto por id con marca");
+		Map<String, Integer> mapProducto = new HashMap<>();
+		mapProducto.put("idProducto",3);
+		try {
+			Producto producto = new Producto();
+			producto=productoService.buscarPorId(mapProducto);
+		}catch(Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+	
+	@Test
+	public void pruebaListarProductosconMarca() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("Test de listar todos los productos con marca");
+		try {	
+			List<Producto> lista = productoService.listarProductosconMarca();
+		}catch(Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+	
 }
 
 
 /* @Before, @After */
+
+
+
+
+
+
+
+
+
+
+

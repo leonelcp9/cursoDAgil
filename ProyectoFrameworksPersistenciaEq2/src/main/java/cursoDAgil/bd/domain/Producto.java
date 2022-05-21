@@ -13,8 +13,18 @@ public class Producto {
 	private float precioVta;
 	private int cantidad;
 	private int marcaId;
+	private Marca marca;
+	public Producto() {
+		setMarca(new Marca());
+	}
 	public int getIdProducto() {
 		return idProducto;
+	}
+	public void setMarca(Marca marca) {
+		this.marca=marca;
+	}
+	public Marca getMarca() {
+		return marca;
 	}
 	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
