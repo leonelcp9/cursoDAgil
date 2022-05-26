@@ -27,7 +27,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	@Override
 	public List<Cliente> listarTodosClientes(){
 		List<Cliente> list =null;
 		try {
@@ -44,7 +43,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return null;
 	}
-	@Override
 	public Integer nuevoCliente(Cliente cliente) {
 		try{
 			ClienteMapper clienteMapper =
@@ -72,7 +70,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return cliente;
 	}
-	@Override
 	public Integer eliminarClientePorId(Integer idcliente) {
 		try {
 			ClienteMapper clientemapper=sqlSession.getMapper(ClienteMapper.class);
@@ -83,7 +80,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return null;
 	}
-	@Override
 	public Integer actualizarClientePorID(Cliente cliente) {
 		try{
 			ClienteMapper clientemapper=sqlSession.getMapper(ClienteMapper.class);
@@ -94,7 +90,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return null;
 	}
-	@Override
 	public List<Cliente> listarTodosSoloClientes(){
 		List<Cliente> list =null;
 		try {
@@ -111,7 +106,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable {
 		}
 		return null;
 	}
-	@Override
 	public Cliente obtenerSoloClientePorId(int id) {
 		Cliente cliente = null;
 		try {

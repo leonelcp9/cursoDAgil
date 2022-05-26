@@ -22,37 +22,30 @@ public class ProductoServiceImpl implements ProductoService, Serializable{
 	
 	ProductoDao productoDao;
 	
-	@Override
 	public List<Producto> listarProducto(){
 		return productoDao.listarProducto();
 	}
 
-	@Override
 	public Integer altaProducto(Producto producto) {
 		return productoDao.altaProducto(producto);
 	}
 
-	@Override
 	public Integer eliminarProducto(Integer idProducto) {
 		return productoDao.eliminarProducto(idProducto);
 	}
 
-	@Override
 	public Integer actualizarProducto(Producto producto) {
 		return productoDao.actualizarProducto(producto);
 	}
 
-	@Override
 	public Producto buscarPorId(Map<String, Integer> mapProducto) {
 		return productoDao.buscarPorId(mapProducto);
 	}
 
-	@Override
 	public Producto buscarPorIdconMarca(Map<String, Integer> mapProducto) {
 		return productoDao.buscarPorIdconMarca(mapProducto);
 	}
 
-	@Override
 	public List<Producto> listarProductosconMarca() {
 		return productoDao.listarProductosconMarca();
 	}
