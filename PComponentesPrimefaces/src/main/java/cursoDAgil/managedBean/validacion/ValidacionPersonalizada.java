@@ -8,6 +8,7 @@ import javax.faces.validator.ValidatorException;
 
 public class ValidacionPersonalizada implements Validator{
 
+	@Override
 	public void validate(FacesContext contexto, UIComponent component, Object object) throws ValidatorException {
 		// TODO Auto-generated method stub
 		//Se obtiene el valor y se realiza un cast dependiento del tipo que
