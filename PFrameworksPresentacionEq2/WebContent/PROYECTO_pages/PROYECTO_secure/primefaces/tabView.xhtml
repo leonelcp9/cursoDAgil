@@ -6,20 +6,43 @@
   xmlns:p="http://primefaces.org/ui"
   xmlns:f="http://java.sun.com/jsf/core"
 >
-  <ui:composition
+  <h:head>
+    <title>Portal de ventas</title>
+
+    <style type="text/css">
+      h5 {
+        font-face: arial;
+        color: red;
+        font-size: 18px;
+      }
+      body {
+        background-color: aqua;
+      }
+      .formTabView{
+        padding: 50px;
+      }
+    </style>
+  </h:head>
+
+  <h:body>
+    <ui:composition
     template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml"
   >
     <!-- Se define la seccion a sustituir del layout -->
     <ui:define name="content">
       <div class="container">
-        <h5>Tab view</h5>
+        <h5  id="First">Sistemas de inventarios</h5>
         <h:form role="form" id="formTabView">
           <p:tabView>
-            <p:tab title="Pestaña 1"> contenido de la pestaña 1 </p:tab>
-            <p:tab title="Pestaña 2" rendered="#{tabViewBean.bandera eq false}">
-              contenido de la pestaña 2
+            <p:tab title="Dirección">
+               <ui:include src="/PROYECTO_pages/PROYECTO_secure/primefaces/inputs.xhtml"/>
+            	Contenido de dirección
             </p:tab>
-            <p:tab title="Pestaña 3"> contenido de la pestaña 3 </p:tab>
+            <p:tab title="Cliente">Contenido de cliente</p:tab>
+            <p:tab title="Marca">Contenido de marca</p:tab>
+            <p:tab title="Producto">Contenido de producto</p:tab>
+            <p:tab title="Venta">Contenido de venta</p:tab>
+            <p:tab title="Ganancia">Contenido de ganancia</p:tab>
           </p:tabView>
         </h:form>
       </div>
@@ -33,4 +56,5 @@
       </div>
     </ui:define>
   </ui:composition>
+  </h:body>
 </html>
