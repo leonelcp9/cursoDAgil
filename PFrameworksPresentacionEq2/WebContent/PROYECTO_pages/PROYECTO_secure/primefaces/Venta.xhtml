@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition
+	template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="col-md-12">
+				<h:form id="form">
+					<p:dataTable id="tablaVenta" var="venta"
+						value="#{ventaBean.listaVentas}" editable="true"
+						paginator="true" rows="10"
+						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rowsPerPageTemplate="5,10,15"
+						emptyMessage="No se encontraron datos">
+						<f:facet name="header">Tabla de Ventas</f:facet>
+						<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="1" headerText="Id Venta" />
+								<p:column rowspan="1" headerText="Id Cliente" />
+								<p:column rowspan="1" headerText="Nombre" />
+								<p:column rowspan="1" headerText="Apellido" />
+								<p:column rowspan="1" headerText="Total" />
+								<p:column rowspan="1" headerText="Fecha" />
+								<p:column rowspan="1" headerText="Eliminar" />
+							</p:row>
+						</p:columnGroup>
+						<p:column headerText="Id Venta" style="text-align: center;">
+							<h:outputText value="#{venta.idVenta}"/>
+						</p:column>
+						<p:column headerText="Id Cliente" style="text-align: center;">
+							<h:outputText value="#{venta.clienteId}"/>
+						</p:column>
+						<p:column headerText="Nombre" style="text-align: center;">
+							<h:outputText value="#{venta.cliente.nombre}"/>
+						</p:column>
+						<p:column headerText="Apellido" style="text-align: center;">
+							<h:outputText value="#{venta.cliente.apellido}"/>
+						</p:column>
+						<p:column headerText="Total" style="text-align: center;">
+							<h:outputText value="#{venta.totalVenta}">
+								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Fecha" style="text-align: center;">
+							<h:outputText value="#{venta.fecha}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column style="text-align: center;">
+			                <p:commandButton process="@this" value="Eliminar" styleClass="btn btn-danger"
+			                                 oncomplete="PF('deleteProductDialog').show()">
+			                    <f:setPropertyActionListener value="#{venta.idVenta}" target="#{ventaBean.ID_venta}"/>
+			                </p:commandButton>
+			            </p:column>
+			            
+			            <f:facet name="footer">
+							<p:commandButton value="Nueva Venta" styleClass="btn btn-success"  type="button" style="margin-right: 5px"
+								onclick="PF('dialogNuevaVenta').show();"/>
+						</f:facet>
+						
+						<f:facet name="footer">
+							<p:commandButton value="Consultar Todo" actionListener="#{ventaBean.init}" styleClass="btn btn-success" style="margin-right: 5px"
+							update=":form:tablaVenta"/>
+						</f:facet>
+						<f:facet name="footer">
+							<p:commandButton value="Consultar ID Venta" styleClass="btn btn-success" style="margin-right: 5px"
+								onclick="PF('dialogListarVenta').show();"/>
+						</f:facet>
+						<f:facet name="footer">
+							<p:commandButton value="Consultar por Cliente" styleClass="btn btn-success" 
+								onclick="PF('dialogListarCliente').show();"/>
+						</f:facet>
+					
+					</p:dataTable>
+				</h:form>
+				
+				<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="310" severity="alert"
+					message="¿Desea Eliminar esta Venta?" header="Eliminar" style="text-align:center">
+					<h:form style="text-align:center">
+						<h:commandButton value="NO" type="button" style="margin-right: 25px"
+							onclick="PF('deleteProductDialog').hide()"/>
+		            	<h:commandButton value="SI" actionListener="#{ventaBean.eliminarVenta}"
+		            		process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
+		            </h:form>
+		        </p:confirmDialog>
+		        
+		        <p:dialog id="dialogNuevaVenta" widgetVar="dialogNuevaVenta" modal="true"
+					resizable="false" header="Nueva Venta">
+					<div class="container">
+						<h:form>
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel value="Cliente:" />
+								<p:selectOneMenu id="selectIdClientes" value="#{ventaBean.ID_Cliente}" effect="fade"
+									filter="true" panelStyle="width:345px" style="width:325px"
+									filterMatchMode="startsWith" required="true">
+									<p:ajax update="@this" process="@this"/>
+									<f:selectItems value="#{ventaBean.consultaIdTodosCliente()}"
+										var="cliente"
+										itemLabel="#{cliente}"
+										itemValue="#{cliente}" />
+								</p:selectOneMenu>
+								
+								<p:outputLabel value="Total:" />
+								<p:inputText id="totalGanancia" style="width:325px"
+									value="#{ventaBean.ID_venta}"
+									styleClass="form-control" required="true"
+									requiredMessage="Campo requerido">
+								</p:inputText>
+								
+								<p:outputLabel value="Fecha:" />
+								<p:outputLabel value="#{ventaBean.fecha1.toString()}" />
+								
+							</h:panelGrid>
+							
+							
+							<p:commandButton id="btnConsultarGuardar" value="Guardar" 
+									update=":form:tablaVenta,:dialogNuevaVenta"
+									actionListener="#{ventaBean.insertarVenta}"/>
+						</h:form>
+					</div>
+					
+				</p:dialog>
+				
+				<p:dialog id="dialogListarCliente" widgetVar="dialogListarCliente" modal="true"
+					resizable="false" header="Seleccione un Cliente:">
+					<div class="container">
+						<h:form>
+							<h:panelGrid columns="2" cellpadding="5">
+				                
+									<p:selectOneMenu id="selectIdCliente" value="#{ventaBean.ID_Cliente}" effect="fade"
+										filter="true" panelStyle="width:345px" style="width:325px"
+										filterMatchMode="startsWith" required="true">
+										<p:ajax update="@this" process="@this"/>
+										<f:selectItems value="#{ventaBean.listaIdCliente}"
+											var="cliente"
+											itemLabel="#{cliente}"
+											itemValue="#{cliente}" />
+										
+									</p:selectOneMenu>
+
+								<p:commandButton id="btnConsultarVentaCliente" value="Aceptar" styleClass="btn btn-success"
+									update=":form:tablaVenta, :dialogListarCliente"
+									actionListener="#{ventaBean.listarVentasCliente}"/>
+							</h:panelGrid>
+						</h:form>
+					</div>
+				</p:dialog>
+				
+				<p:dialog id="dialogListarVenta" widgetVar="dialogListarVenta" modal="true"
+					resizable="false" header="Seleccione el ID:">
+					<div class="container">
+						<h:form>
+							<h:panelGrid columns="2" cellpadding="5">
+								
+								<p:selectOneMenu id="selectID_Venta" value="#{ventaBean.ID_venta}" effect="fade"
+									filter="true" panelStyle="width:345px" style="width:325px"
+									filterMatchMode="startsWith" required="true">
+				                    <p:ajax update="@this" process="@this"/>
+				                    <f:selectItems value="#{ventaBean.listaIdVenta}"
+										var="venta" itemLabel="#{venta}" itemValue="#{venta}" />
+				                </p:selectOneMenu>
+
+								<p:commandButton id="btnConsultarID_Venta" value="Aceptar" 
+									update=":form:tablaVenta,:dialogListarVenta"
+									actionListener="#{ventaBean.listarVentasID}"/>
+							</h:panelGrid>
+						</h:form>
+					</div>
+				</p:dialog>
+				
+				
+			
+			</div>
+		</div>
+		<div class="container">
+			<br />
+			<h:link value="Regresar al Menú"
+				outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml"
+				styleClass="btn btn-warning" />
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
