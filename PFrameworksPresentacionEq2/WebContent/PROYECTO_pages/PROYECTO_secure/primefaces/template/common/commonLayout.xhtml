@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+>
+  <h:head>
+    <title>Portal de ventas</title>
+    <meta charset="UTF-8" />
+    <!-- css boostrap -->
+    <!--  -->
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+
+    <style type="text/css">
+      :root {
+        --independence: #555b6e;
+        --morning-blue: #89b0ae;
+        --powder-blue: #bee3db;
+        --cultured: #89b0ae;
+        --apricot: #ffd6ba;
+      }
+
+      .header-title {
+        border: 2px solid var(--independence);
+        border-radius: 5px;
+        padding: 15px;
+        opacity: 100%;
+        margin-top: 10px;
+        font-weight: bold;
+        color: var(--independence);
+        font-family: Stencil Std, fantasy;
+      }
+      .page-header {
+        background-image: url("./images/wallpaper3.jpg");
+      }
+
+      body {
+        background-color: var(--morning-blue);
+        height: 400vh;
+      }
+      
+      ::-webkit-scrollbar{
+        width: 20px;
+      }
+
+      ::-webkit-scrollbar-track{
+        background: var(--apricot);
+      }
+
+      ::-webkit-scrollbar-thumb{
+        background: var(--independence);
+      }      
+      .formTabView {
+        padding: 30px;
+      }
+
+      .footer {
+        font-size: 18px;
+        color: var(--powder-blue);
+      }
+
+      .social-media {
+        display: flex;
+        align-items: rigth;
+        justify-content: center;
+      }
+
+      .social-media img {
+        width: 20px;
+        height: 20px;
+        margin-inline: 150px;
+      }
+
+      .social-media p {
+        color: var(--independence);
+        text-decoration: none;
+      }
+
+      .item-header p:hover {
+        background-size: 0 3px, 100% 3px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0px 0px 5px var(--powder-blue);
+      }
+
+      .item-header p {
+        background: linear-gradient(
+            to right,
+            rgba(85, 91, 110, 1),
+            rgba(85, 91, 110, 1)
+          ),
+          linear-gradient(
+            to right,
+            rgba(255, 0, 0, 1),
+            rgba(255, 0, 180, 1),
+            rgba(0, 100, 200, 1)
+          );
+        background-size: 100% 3px, 0 3px;
+        background-position: 100% 100%, 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 400ms;
+        
+      }
+    </style>
+  </h:head>
+  <h:body>
+    <!-- header -->
+    <ui:insert name="header">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonHeader.xhtml"
+      />
+    </ui:insert>
+
+    <!-- content -->
+    <ui:insert name="content">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonContent.xhtml"
+      />
+    </ui:insert>
+    <!-- Footer -->
+    <ui:insert name="footer">
+      <ui:include
+        src="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonFooter.xhtml"
+      />
+    </ui:insert>
+    <!-- jquery -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+    ></script>
+
+    <!-- solucion conflicto -->
+    <h:outputScript> $jq = jQuery.noConflict(true); </h:outputScript>
+    <!-- js bootstrap -->
+    <h:outputScript library="js" name="bootstrap.min.js" />
+  </h:body>
+</html>
+
+<!-- https://coolors.co/555b6e-89b0ae-bee3db-faf9f9-ffd6ba  -->

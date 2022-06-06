@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://java.sun.com/jsf/core"
+>
+  <h:head>
+    <title>Portal de ventas</title>
+
+    <style type="text/css">
+      h5 {
+        font-face: arial;
+        color: red;
+        font-size: 18px;
+      }
+      body {
+        background-color: aqua;
+      }
+      .formTabView{
+        padding: 50px;
+      }
+    </style>
+  </h:head>
+
+  <h:body>
+    <ui:composition
+    template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml"
+  >
+    <!-- Se define la seccion a sustituir del layout -->
+    <ui:define name="content">
+      <div class="container">
+        <h5  id="First">Sistemas de inventarios</h5>
+        <h:form role="form" id="formTabView">
+          <p:tabView>
+            <p:tab title="Dirección">
+               <ui:include src="/PROYECTO_pages/PROYECTO_secure/primefaces/inputs.xhtml"/>
+            	Contenido de dirección
+            </p:tab>
+            <p:tab title="Cliente">Contenido de cliente</p:tab>
+            <p:tab title="Marca">Contenido de marca</p:tab>
+            <p:tab title="Producto">Contenido de producto</p:tab>
+            <p:tab title="Venta">Contenido de venta</p:tab>
+            <p:tab title="Ganancia">Contenido de ganancia</p:tab>
+          </p:tabView>
+        </h:form>
+      </div>
+      <div class="container">
+        <br />
+        <h:link
+          value="Regresar a index"
+          outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/index"
+          styleClass="btn btn-warning"
+        />
+      </div>
+    </ui:define>
+  </ui:composition>
+  </h:body>
+</html>

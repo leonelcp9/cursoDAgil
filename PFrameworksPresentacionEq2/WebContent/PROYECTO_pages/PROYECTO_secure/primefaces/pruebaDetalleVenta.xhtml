@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<ui:define name="header">
+		<center>
+			<div class="container">
+				<div class="page-header">
+					<h1>Prueba DetalleVenta</h1>
+
+				</div>
+			</div>
+		</center>
+	</ui:define>
+	<!-- Se define la seccion a sustituir del layout -->
+	<ui:define name="content">
+		<div class="container">
+			<div class="col-md-12">
+				<h:form id="form">
+					<p:growl id="msgs" showDetail="true" />
+					<!-- tiene el prefijo p, esto quiere decir que lo estoy usando desde prime -->
+					<div class="card">
+						<h:form>
+							<p:dialog header="Header Text" widgetVar="detalleVenta"
+								showEffect="fade" hideEffect="fade">
+								//Content
+							</p:dialog>
+							<p:commandButton value="Ver detalle venta" type="button"
+								onclick="PF('detalleVenta').show()" />
+
+						</h:form>
+					</div>
+				</h:form>
+				<div class="container">
+					<br />
+					<h:link value="Regresar a index"
+						outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/pruebas.xhtml"
+						styleClass="btn btn-warning" />
+
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
