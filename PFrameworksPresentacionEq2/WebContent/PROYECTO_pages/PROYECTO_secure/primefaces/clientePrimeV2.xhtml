@@ -1,164 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--/******************************/-->
+<!--/* Equipo 2 */-->
+<!--/* William Mendez Gonzalez */-->
+<!--/* Leonel Cruz Peralta */-->
+<!--/* 3/06/22 */-->
+<!--/*****************************/-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition
-template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
-<ui:define name="header">
-<center>
-<div class="container">
-<div class="page-header">
-<h1>SQL Dinámico + Maven + MyBatis + Spring +
+	template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<ui:define name="header">
+		<center>
+			<div class="container">
+				<div class="page-header">
+					<h1>SQL Dinámico + Maven + MyBatis + Spring + Primefaces +
 
-Primefaces +
+						Facelets</h1>
 
-Facelets</h1>
-
-</div>
-</div>
-</center>
-</ui:define>
-<!-- Se define la seccion a sustituir del layout -->
-<ui:define name="content">
-<div class="container">
-<div class="col-md-12">
-<h:form id="form">
-<p:growl id="msgs" showDetail="true" />
-<!-- tiene el prefijo p, esto quiere decir que lo
+				</div>
+			</div>
+		</center>
+	</ui:define>
+	<!-- Se define la seccion a sustituir del layout -->
+	<ui:define name="content">
+		<div class="container">
+			<div class="col-md-12">
+				<h:form id="form">
+					<p:growl id="msgs" showDetail="true" />
+					<!-- tiene el prefijo p, esto quiere decir que lo
 
 estoy usando desde prime -->
 
-<p:dataTable id="clientes" var="cli"
-value="#{clienteBean.getClienteList()}"
-
-editable="true"
-
-style="margin-bottom:20px">
-<f:facet name="header">
+					<p:dataTable id="clientes" var="cli"
+						value="#{clienteBean.getClienteList()}" editable="true"
+						style="margin-bottom:20px">
+						<f:facet name="header">
 
 edicion de clientes
 </f:facet>
 
-<p:ajax event="rowEdit"
+						<p:ajax event="rowEdit" listener="#{clienteBean.onRowEdit}"
+							update=":form:msgs" />
+						<p:ajax event="rowEditCancel"
+							listener="#{clienteBean.onRowCancel}" update=":form:msgs" />
 
-listener="#{clienteBean.onRowEdit}"
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cli.id}" />
 
-update=":form:msgs" />
-<p:ajax event="rowEditCancel"
-listener="#{clienteBean.onRowCancel}"
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText id="clienteInput" value="#{cli.id}"
+										style="width:100%" />
 
-update=":form:msgs" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Nombre">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cli.nombre}" />
 
-<p:column headerText="Id">
-<p:cellEditor>
-<f:facet name="output">
-<h:outputText
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{cli.nombre}" style="width:100%"
+										label="Nombre" />
 
-value="#{cli.id}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Apellido">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cli.apellido}" />
 
-</f:facet>
-<f:facet name="input">
-<h:inputText
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{cli.apellido}" style="width:100%"
+										label="Apellido" />
 
-id="clienteInput" value="#{cli.id}"
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Email">
+							<p:cellEditor>
+								<f:facet name="output">
 
-style="width:100%" />
+									<h:outputText value="#{cli.email}" />
 
-</f:facet>
-</p:cellEditor>
-</p:column>
-<p:column headerText="Nombre">
-<p:cellEditor>
-<f:facet name="output">
-<h:outputText
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{cli.email}" style="width:100%"
+										label="Email" />
 
-value="#{cli.nombre}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Sexo">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cli.sexo}" />
 
-</f:facet>
-<f:facet name="input">
-<h:inputText
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{cli.sexo}" style="width:100%"
+										label="Estado" />
 
-value="#{cli.nombre}" style="width:100%"
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column style="width:32px">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+				<div class="container">
+					<br />
+					<h:link value="Regresar a index"
+						outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/pruebas.xhtml"
+						styleClass="btn btn-warning" />
 
-label="Nombre" />
-
-</f:facet>
-</p:cellEditor>
-</p:column>
-<p:column headerText="Apellido">
-<p:cellEditor>
-<f:facet name="output">
-<h:outputText
-
-value="#{cli.apellido}" />
-
-</f:facet>
-<f:facet name="input">
-<h:inputText
-
-value="#{cli.apellido}" style="width:100%"
-
-label="Apellido" />
-
-</f:facet>
-</p:cellEditor>
-</p:column>
-<p:column headerText="Email">
-<p:cellEditor>
-<f:facet name="output">
-
-<h:outputText
-
-value="#{cli.email}" />
-
-</f:facet>
-<f:facet name="input">
-<h:inputText
-
-value="#{cli.email}" style="width:100%"
-
-label="Email" />
-
-</f:facet>
-</p:cellEditor>
-</p:column>
-<p:column headerText="Sexo">
-<p:cellEditor>
-<f:facet name="output">
-<h:outputText
-
-value="#{cli.sexo}" />
-
-</f:facet>
-<f:facet name="input">
-<h:inputText
-
-value="#{cli.sexo}" style="width:100%"
-
-label="Estado" />
-
-</f:facet>
-</p:cellEditor>
-</p:column>
-<p:column style="width:32px">
-<p:rowEditor />
-</p:column>
-</p:dataTable>
-</h:form>
-<div class="container">
-<br />
-<h:link value="Regresar a index"
-
-outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/pruebas.xhtml"
-styleClass="btn btn-warning" />
-
-</div>
-</div>
-</div>
-</ui:define>
+				</div>
+			</div>
+		</div>
+	</ui:define>
 </ui:composition>
 </html>

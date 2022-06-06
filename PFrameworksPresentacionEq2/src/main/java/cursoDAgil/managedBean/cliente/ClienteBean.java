@@ -1,3 +1,9 @@
+/******************************/
+/* Equipo 2 */
+/* William Mendez Gonzalez*/
+/* Jesus A Lopez Guevara*/
+/* 30/05/22 */
+/*****************************/
 package cursoDAgil.managedBean.cliente;
 
 import java.util.List;
@@ -13,49 +19,53 @@ import org.primefaces.event.RowEditEvent;
 
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.bd.domain.Cliente;
+
 @Named
 @ViewScoped
 public class ClienteBean {
 	@Inject
 	ClienteService clienteService;
 	private List<Cliente> clienteList;
+
 	public List<Cliente> getClienteList() {
-	if (clienteList == null)
-	setClienteList(clienteService.listarTodosClientes());
-	return clienteList;
+		if (clienteList == null)
+			setClienteList(clienteService.listarTodosClientes());
+		return clienteList;
 	}
+
 	public void setClienteList(List<Cliente> clienteList) {
-	this.clienteList = clienteList;
+		this.clienteList = clienteList;
 	}
+
 	public void onRowEdit(RowEditEvent event) {
-	Cliente cliente = ((Cliente) event.getObject());
-	System.out.println("datos cliente: " + cliente.getId());
-	clienteService.actualizarClientePorID(cliente);
-	FacesMessage msg = new FacesMessage("Cliente editado",
+		Cliente cliente = ((Cliente) event.getObject());
+		System.out.println("datos cliente: " + cliente.getId());
+		clienteService.actualizarClientePorID(cliente);
+		FacesMessage msg = new FacesMessage("Cliente editado",
 
-	cliente.getId().toString());
+				cliente.getId().toString());
 
-	FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
+
 	public void onRowCancel(RowEditEvent event) {
-	FacesMessage msg = new FacesMessage("Edicion cancelada",
-	((Cliente) event.getObject()).getId().toString());
-	FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesMessage msg = new FacesMessage("Edicion cancelada", ((Cliente) event.getObject()).getId().toString());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
+
 	public void onCellEdit(CellEditEvent event) {
-	Object oldValue = event.getOldValue();
-	Object newValue = event.getNewValue();
-	System.out.println("verifica: " + newValue);
-	if (newValue != null && !newValue.equals(oldValue)) {
-	FacesMessage msg = new
+		Object oldValue = event.getOldValue();
+		Object newValue = event.getNewValue();
+		System.out.println("verifica: " + newValue);
+		if (newValue != null && !newValue.equals(oldValue)) {
+			FacesMessage msg = new
 
-	FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente modificado",
-	"Antes: " + oldValue + ", Ahora: " +
+			FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente modificado", "Antes: " + oldValue + ", Ahora: " +
 
-	newValue);
+					newValue);
 
-	FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
 	}
 }
