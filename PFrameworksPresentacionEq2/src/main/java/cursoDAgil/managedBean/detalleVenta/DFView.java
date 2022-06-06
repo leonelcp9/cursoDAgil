@@ -14,6 +14,5 @@ public class DFView {
 	public void verDetalle() {
 		Map<String,Object> options = new HashMap<>();
 		options.put("resizable", false);
-		PrimeFaces.current().dialog().openDynamic("verDetalle",options,null);
 	}
 }
