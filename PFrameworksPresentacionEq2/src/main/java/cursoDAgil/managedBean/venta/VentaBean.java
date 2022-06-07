@@ -1,3 +1,8 @@
+/*************************************/
+/* Equipo 2 */
+/* Lopez Guevara Jesus Alejandro */
+/* 6/06/22 */
+/*************************************/
 package cursoDAgil.managedBean.venta;
 
 import java.io.Serializable;
