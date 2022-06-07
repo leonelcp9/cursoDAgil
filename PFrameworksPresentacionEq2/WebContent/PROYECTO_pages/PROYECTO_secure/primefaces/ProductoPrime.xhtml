@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--/*************************************/-->
+<!--/*********** Equipo 2 ****************/-->
+<!--/* Guerrero Hernández Samuel Antonio */-->
+<!--/************** 3/06/22 **************/-->
+<!--/*************************************/--> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition
+	template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<!-- Se define la seccion a sustituir del layout -->
+	<ui:define name="content">
+		<div class="container">
+			<div class="col-md-12">
+				<h:form id="form">
+					<p:growl id="msgs" showDetail="true" />
+					<!-- tiene el prefijo p, esto quiere decir que se est� usando primefaces -->
+
+					<p:dataTable id="tablaProducto" widgetVar="dtProducto" var="prod"
+						value="#{productoTBean.listaProducto}" editable="true"
+						paginator="true" rows="10"
+						paginatorTemplate="{RowsPerPageDropdown}
+ {FirstPageLink} {PreviousPageLink}
+  {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rowsPerPageTemplate="5,10,15"
+						emptyMessage="No se encontraron datos">
+						<f:facet name="header">
+Tabla de Productos
+
+</f:facet>
+						<p:ajax event="rowEdit" listener="#{productoTBean.onRowEdit}"
+							update=":form:msgs" />
+						<p:ajax event="rowEditCancel"
+							listener="#{productoTBean.onRowCancel}" update=":form:msgs" />
+
+						<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="1" colspan="1" headerText="Id" />
+								
+								<p:column rowspan="1" colspan="4" headerText="Nombre"
+									style="text-align: center;" filterBy="#{prod.nombre}"
+									filterStyle="width:150px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="4" headerText="Precio"
+									style="text-align: center;" filterBy="#{prod.precio}"
+									filterStyle="width:100px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="4" headerText="PrecioVenta"
+									style="text-align: center;" filterBy="#{prod.precioVta}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="4" headerText="Cantidad"
+									style="text-align: center;" filterBy="#{prod.cantidad}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="3" headerText="Cambios"
+									style="width:80px; height:60px;" />
+							</p:row>
+						</p:columnGroup>
+
+						<p:column headerText="Id " colspan="2" style="text-align: center;">
+							<h:outputText value="#{prod.idProducto}" />
+						</p:column>
+
+						<p:column headerText="Nombre" colspan="4"
+							style="text-align: center;">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.nombre}" />
+
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{prod.nombre}" style="width:100%"
+										label="Nombre" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Precio" colspan="3">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.precio}" />
+
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{prod.precio}" style="width:100%"
+										label="Precio" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Precio Venta" colspan="4">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.precioVta}" />
+
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{prod.precioVta}" style="width:100%"
+										label="Precio Venta" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Cantidad" colspan="4">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{prod.cantidad}" />
+
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{prod.cantidad}" style="width:100%"
+										label="Cantidad" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+
+						<p:column style="width:32px" colspan="2">
+							<p:rowEditor />
+
+							<!-- Inicia boton borrar direccion -->
+
+							<p:commandButton icon="pi pi-trash" process="@this"
+								oncomplete="PF('deleteProductDialog').show()">
+								<f:setPropertyActionListener value="#{dir}"
+									target="#{productoTBean.producto}" />
+							</p:commandButton>
+
+							<!-- Termina boton dialogo borrar direccion -->
+
+						</p:column>
+						<f:facet name="footer">
+							<p:commandButton value="Nuevo"
+								onclick="PF('dialogCliente').show();" />
+						</f:facet>
+
+
+					</p:dataTable>
+				</h:form>
+
+				<!-- Inicia borrar direccion -->
+				<h:form>
+
+					<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade"
+						width="300" message="¿Borrar este producto?"
+						header="Confirmación de borrar" severity="warn">
+						<p:commandButton value="si" icon="pi pi-check"
+							actionListener="#{productoTBean.eliminar}" process="@this"
+							oncomplete="PF('deleteProductDialog').hide()" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-button-secondary" icon="pi pi-times"
+							onclick="PF('deleteProductDialog').hide()"
+							oncomplete="PF('dialogCliente').show()" process="@form" />
+					</p:confirmDialog>
+				</h:form>
+
+				<!-- dialogo de registro -->
+				<p:dialog id="dialogCliente" widgetVar="dialogCliente" modal="true"
+					resizable="false" header="Nuevo Producto" width="55%">
+					<div class="row">
+						<h:form role="form" id="formRegProducto">
+							<h:panelGrid columns="3" cellpadding="5">
+								<p:outputLabel value="Nombre: *" />
+								<p:inputText id="Nombre" style="width: 325px"
+									value="#{productoTBean.producto.nombre}"
+									styleClass="form-control" required="true"
+									requiredMessage="Campo requerido"
+									validatorMessage="Ingrese un texto">
+									<f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+								</p:inputText>
+								<p:message for="Nombre" />
+
+								<p:outputLabel value="Precio: *" />
+								<p:inputText id="Precio" style="width: 325px"
+									value="#{productoTBean.producto.precio}"
+									styleClass="form-control" required="true"
+									requiredMessage="Campo requerido"
+									validatorMessage="Ingrese entre 8-80 caracteres">
+									<f:validateLength minimum="1" maximum="80" />
+								</p:inputText>
+								<p:message for="Precio" />
+
+								<p:outputLabel value="Precio de venta: *" />
+								<p:inputText id="PrecioVta" style="width: 325px"
+									value="#{productoTBean.producto.precioVta}"
+									styleClass="form-control" required="true"
+									requiredMessage="Campo requerido"
+									validatorMessage="Ingrese un texto">
+									<f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+								</p:inputText>
+								<p:message for="PrecioVta" />
+
+								<p:outputLabel value="Cantidad: *" />
+								<p:inputText id="Cantidad" style="width: 325px"
+									value="#{productoTBean.producto.cantidad}"
+									styleClass="form-control" required="true"
+									requiredMessage="Campo requerido"
+									validatorMessage="Ingrese un texto">
+									<f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+								</p:inputText>
+								<p:message for="Cantidad" />
+
+								
+
+							</h:panelGrid>
+							<p:commandButton id="btnRegistro" value="Registrar"
+								actionListener="#{productoTBean.registrar}"
+								update=":form:tablaProducto, :dialogCliente, :form:msgs"
+								oncomplete="PF('dialogCliente').show()" process="@form" />
+						</h:form>
+					</div>
+				</p:dialog>
+
+
+			</div>
+		</div>
+
+		<div class="container">
+			<br />
+			<h:link value="Regresar a index"
+				outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/index"
+				styleClass="btn btn-warning" />
+
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>

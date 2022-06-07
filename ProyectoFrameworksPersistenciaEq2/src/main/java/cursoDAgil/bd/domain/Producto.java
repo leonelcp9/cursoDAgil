@@ -7,7 +7,7 @@ package cursoDAgil.bd.domain;
 
 public class Producto {
 
-	private int idProducto;
+	private Integer idProducto;
 	private String nombre;
 	private float precio;
 	private float precioVta;
@@ -17,7 +17,7 @@ public class Producto {
 	public Producto() {
 		setMarca(new Marca());
 	}
-	public int getIdProducto() {
+	public Integer getIdProducto() {
 		return idProducto;
 	}
 	public void setMarca(Marca marca) {
