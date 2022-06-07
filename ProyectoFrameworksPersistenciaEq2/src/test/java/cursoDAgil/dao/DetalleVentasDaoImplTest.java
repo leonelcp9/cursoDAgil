@@ -32,11 +32,12 @@ import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
 		
 		@Test
 		public void pruebaConsultarVentas() {
-			System.out.println("Test consultar todas los detalles de ventas y los productos");
+			System.out.println("Test consultar todos los DetalleVentas de una Venta");
 			try {
-				Integer id=1;
+				Integer id=2;
 				List<DetalleVentas> lista = detalleventasDao.listarTodosDetalleVentas(id);
 				int size = lista.size();
+				System.out.println("Tamaño del resultado = "+size);
 				assertEquals(lista.size(), size);
 			} catch (Exception ex) {
 				System.out.println("error" + ex);
@@ -59,7 +60,7 @@ import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
 				System.out.println("error" + ex);
 			}
 		}
-		@Test
+		@Ignore
 		public void pruebaConsultaTodosDetalleVentas() {
 			System.out.println("Prueba consultar todos los detalles de Venta");
 			try {

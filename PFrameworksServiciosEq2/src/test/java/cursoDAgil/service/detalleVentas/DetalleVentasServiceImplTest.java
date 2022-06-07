@@ -27,7 +27,7 @@ public class DetalleVentasServiceImplTest {
 	public void pruebaConsultarVentas() {
 		try {
 			
-			Integer id=4;
+			Integer id=2;
 			System.out.println("-----------------------------------------------------------------");
 			System.out.println("Consultar detalle de ventas con ventaid="+id);
 			List<DetalleVentas> lista = detalleventasService.listarTodosDetalleVentas(id);
