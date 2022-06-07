@@ -191,7 +191,37 @@
 
 					<div class="container">
 						<h:form>
-							Hola
+							<p:dataTable id="tablaVenta" var="venta"
+						value="#{ventaBean.listaDetalle}" editable="false"
+						paginator="true" rows="10"
+						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rowsPerPageTemplate="5,10,15"
+						emptyMessage="No se encontraron datos">
+						<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="1" headerText="Id Producto" />
+								<p:column rowspan="1" headerText="Nombre" />
+								<p:column rowspan="1" headerText="Cantidad" />
+								<p:column rowspan="1" headerText="Precio Venta" />
+							</p:row>
+						</p:columnGroup>
+						<p:column headerText="Id Producto" style="text-align: center;">
+							<h:outputText value="#{venta.idVenta}"/>
+						</p:column>
+						<p:column headerText="Nombre" style="text-align: center;">
+							<h:outputText value="#{venta.cliente.nombre}"/>
+						</p:column>
+						<p:column headerText="Cantidad" style="text-align: center;">
+							<h:outputText value="#{venta.cliente.apellido}"/>
+						</p:column>
+						<p:column headerText="Precio Venta" style="text-align: center;">
+							<h:outputText value="#{venta.totalVenta}">
+								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+							</h:outputText>
+						</p:column>
+						
+					
+					</p:dataTable>
 						</h:form>
 					</div>
 				</p:dialog>

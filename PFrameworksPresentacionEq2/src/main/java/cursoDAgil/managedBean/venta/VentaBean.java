@@ -1,6 +1,6 @@
 /*************************************/
 /* Equipo 2 */
-/* Lopez Guevara Jesus Alejandro */
+/* Lopez Guevara Jesus Alejandro y Cruz Peralta Leonel*/
 /* 6/06/22 */
 /*************************************/
 package cursoDAgil.managedBean.venta;
@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import cursoDAgil.bd.domain.Cliente;
+import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.venta.VentaService;
@@ -38,6 +39,9 @@ public class VentaBean implements Serializable {
 	private List<String> listaIdVenta;
 	private List<Cliente> listaIdCLienteN;
 	private List<String> listaIdCLienteNs;
+	
+	private List<DetalleVentas> listaDetalle;
+	
 	private String ID_venta;
 	private String ID_Cliente;
 	private Venta NewVenta;
@@ -53,6 +57,8 @@ public class VentaBean implements Serializable {
 			listaIdCliente = new ArrayList<String>();
 		if(listaIdVenta == null)
 			listaIdVenta = new ArrayList<String>();
+		if(listaDetalle == null)
+			listaDetalle = new ArrayList<DetalleVentas>();
 		
 		fecha1 = new java.sql.Date(System.currentTimeMillis());
 		setListaVentas(ventaService.listarTodasVentas());
@@ -77,6 +83,10 @@ public class VentaBean implements Serializable {
 		System.out.println(getID_venta());
 		ventaService.eliminarVenta(Integer.parseInt(getID_venta()));
 		init();
+	}
+	
+	public void listarDetalleVenta() {
+		System.out.println("id venta= "+getID_venta());
 	}
 	
 	public void insertarVenta() {
@@ -156,4 +166,13 @@ public class VentaBean implements Serializable {
 	public void setNewTotalVenta(String newTotalVenta) {
 		NewTotalVenta = newTotalVenta;
 	}
+
+	public List<DetalleVentas> getListaDetalle() {
+		return listaDetalle;
+	}
+
+	public void setListaDetalle(List<DetalleVentas> listaDetalle) {
+		this.listaDetalle = listaDetalle;
+	}
+	
 }
