@@ -27,6 +27,7 @@
 								<p:column rowspan="1" headerText="Total" />
 								<p:column rowspan="1" headerText="Fecha" />
 								<p:column rowspan="1" headerText="Eliminar" />
+								<p:column rowspan="1" headerText="Detalle Venta" />
 							</p:row>
 						</p:columnGroup>
 						<p:column headerText="Id Venta" style="text-align: center;">
@@ -55,6 +56,12 @@
 						<p:column style="text-align: center;">
 			                <p:commandButton process="@this" value="Eliminar" styleClass="btn btn-danger"
 			                                 oncomplete="PF('deleteProductDialog').show()">
+			                    <f:setPropertyActionListener value="#{venta.idVenta}" target="#{ventaBean.ID_venta}"/>
+			                </p:commandButton>
+			            </p:column>
+			            <p:column style="text-align: center;">
+			                <p:commandButton process="@this" value="Detalle Venta" styleClass="btn btn-danger">
+			                                <!--   oncomplete="PF('deleteProductDialog').show()"-->
 			                    <f:setPropertyActionListener value="#{venta.idVenta}" target="#{ventaBean.ID_venta}"/>
 			                </p:commandButton>
 			            </p:column>
