@@ -27,11 +27,7 @@
 						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 						rowsPerPageTemplate="5,10,15"
 						emptyMessage="No se encontraron datos">
-						<f:facet name="header">Clientes
-						<span class="filter-container ui-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <p:inputText id="globalFilter" onkeyup="PF('dtCliente').filter()" placeholder="Search"/></span>
-						</f:facet>
+					<f:facet name="header">Tabla de Clientes con Direccion</f:facet>
 						<p:ajax event="rowEdit"
 							listener="#{clienteDireccion2Bean.onRowEdit}" update=":form:msgs"/>
 						<p:ajax event="rowEditCancel"
@@ -41,15 +37,27 @@
 							<p:row>
 								<p:column rowspan="1" colspan="1" headerText="Id" />
 
-								<p:column rowspan="1" colspan="2" headerText="Nombre" />
+								<p:column rowspan="1" colspan="2" headerText="Nombre" 
+								style="text-align: center;" filterBy="#{cli.nombre}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains"/>
 
-								<p:column rowspan="1" colspan="2" headerText="Apellido" />
+								<p:column rowspan="1" colspan="2" headerText="Apellido" 
+								style="text-align: center;" filterBy="#{cli.apellido}"
+									filterStyle="width:60px; height:30px;"
+									filterMatchMode="contains"/>
 
-								<p:column rowspan="1" colspan="2" headerText="Email" />
+								<p:column rowspan="1" colspan="2" headerText="Email" 
+								style="text-align: center;" filterBy="#{cli.email}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
 
-								<p:column rowspan="1" colspan="1" headerText="Sexo" />
+								<p:column rowspan="1" colspan="2" headerText="Sexo"
+								style="text-align: center;" filterBy="#{cli.sexo}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
 
-								<p:column rowspan="1" colspan="2" headerText="Direccion" />
+								<p:column rowspan="1" colspan="2" headerText="Direccion"/>
 
 								<p:column rowspan="1" colspan="1" headerText="Cambios" />
 							</p:row>
@@ -67,6 +75,7 @@
 										label="Nombre" />
 								</f:facet>
 							</p:cellEditor>
+							
 						</p:column>
 						<p:column headerText="Apellido" colspan="2" filterBy="#{cli.apellido}">
 							<p:cellEditor>
@@ -90,7 +99,7 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Sexo" colspan="1">
+						<p:column headerText="Sexo" colspan="2">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.sexo}" />

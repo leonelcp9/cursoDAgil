@@ -3,7 +3,7 @@
 <!--/* Equipo 2 */-->
 <!--/* William Mendez Gonzalez */-->
 <!--/* 3/06/22 */-->
-<!--/*****************************/--> 
+<!--/*****************************/-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -74,7 +74,7 @@ Tabla de Direccion
 							</p:row>
 						</p:columnGroup>
 
-						<p:column headerText="Id " colspan="2" style="text-align: center;">
+						<p:column headerText="Id " colspan="1" style="text-align: center;">
 							<h:outputText value="#{dir.iddireccion}" />
 						</p:column>
 
@@ -92,7 +92,7 @@ Tabla de Direccion
 							</p:cellEditor>
 						</p:column>
 
-						<p:column headerText="numero" colspan="3">
+						<p:column headerText="numero" colspan="4">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{dir.numero}" />
@@ -144,7 +144,7 @@ Tabla de Direccion
 							</p:cellEditor>
 						</p:column>
 
-						<p:column headerText="pais" colspan="4">
+						<p:column headerText="pais" colspan="3">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{dir.pais}" />
@@ -171,7 +171,7 @@ Tabla de Direccion
 						</p:column>
 
 
-						<p:column style="width:32px" colspan="2">
+						<p:column style="width:32px" colspan="3">
 							<p:rowEditor />
 
 							<!-- Inicia boton borrar direccion -->

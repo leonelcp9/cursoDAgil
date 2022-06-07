@@ -33,24 +33,45 @@
 			<div class="col-md-12">
 				<h:form id="form">
 					<p:growl id="msgs" showDetail="true" />
-					<!-- tiene el prefijo p, esto quiere decir que lo
-
-estoy usando desde prime -->
+					<!-- tiene el prefijo p, esto quiere decir que lo estoy usando desde prime -->
 
 					<p:dataTable id="clientes" var="cli"
 						value="#{clienteBean.getClienteList()}" editable="true"
 						style="margin-bottom:20px">
-						<f:facet name="header">
-
-edicion de clientes
-</f:facet>
+						<f:facet name="header">Clientes</f:facet>
 
 						<p:ajax event="rowEdit" listener="#{clienteBean.onRowEdit}"
 							update=":form:msgs" />
 						<p:ajax event="rowEditCancel"
 							listener="#{clienteBean.onRowCancel}" update=":form:msgs" />
+							
+							<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="1" colspan="1" headerText="Id" />
+								<p:column rowspan="1" colspan="4" headerText="nombre"
+									style="text-align: center;" filterBy="#{cli.nombre}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
 
-						<p:column headerText="Id">
+								<p:column rowspan="1" colspan="4" headerText="apellido"
+									style="text-align: center;" filterBy="#{cli.apellido}"
+									filterStyle="width:60px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="4" headerText="email"
+									style="text-align: center;" filterBy="#{cli.email}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="1" colspan="3" headerText="sexo"
+									style="text-align: center;" filterBy="#{cli.sexo}"
+									filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								
+								<p:column rowspan="1" colspan="3" headerText="Cambios"
+									style="width:80px; height:60px;" />
+							</p:row>
+						</p:columnGroup>
+
+						<p:column headerText="Id" colspan="1">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.id}" />
@@ -63,7 +84,7 @@ edicion de clientes
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Nombre">
+						<p:column headerText="Nombre" colspan="4">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.nombre}" />
@@ -76,7 +97,7 @@ edicion de clientes
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Apellido">
+						<p:column headerText="Apellido" colspan="4">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.apellido}" />
@@ -89,7 +110,7 @@ edicion de clientes
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Email">
+						<p:column headerText="Email" colspan="4">
 							<p:cellEditor>
 								<f:facet name="output">
 
@@ -103,7 +124,7 @@ edicion de clientes
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Sexo">
+						<p:column headerText="Sexo" colspan="3">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.sexo}" />
@@ -116,7 +137,7 @@ edicion de clientes
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column style="width:32px">
+						<p:column style="width:32px" colspan="3">
 							<p:rowEditor />
 						</p:column>
 					</p:dataTable>
