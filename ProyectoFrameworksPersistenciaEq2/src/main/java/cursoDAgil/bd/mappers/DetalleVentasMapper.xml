@@ -26,7 +26,7 @@
 
 	
 	<select id="listarTodosDetalleVentas" resultMap="ResultDetalleVentasProducto">
-		SELECT dv.ventaId, dv.productoId, dv.cantidad, p.idProducto,p.nombre,p.precio,p.precioVta,p.cantidad,p.marcaId FROM equipo2.detalleventas dv INNER JOIN productos AS p ON dv.productoId = p.idProducto WHERE ventaId = #{venvtaId}
+		SELECT dv.*, p.* FROM detalleventas dv INNER JOIN productos p ON dv.productoId = p.idProducto WHERE ventaId = #{venvtaId}
 	</select>
 	
 	<select id="consultaDetalleVenta" resultMap = "ResultDetalleVentasProducto">

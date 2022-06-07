@@ -43,7 +43,7 @@ import cursoDAgil.dao.detalleVentas.DetalleVentasDao;
 			}
 		}
 		
-		@Test
+		@Ignore
 		public void pruebaAltaDetalleVenta() {
 			System.out.println("Test insertar detalle Venta");
 			try {

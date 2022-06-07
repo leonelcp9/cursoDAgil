@@ -35,14 +35,12 @@ public class DetalleVentasDaoImpl implements DetalleVentasDao, Serializable{
 
 	public List<DetalleVentas> listarTodosDetalleVentas(Integer id) {
 		List<DetalleVentas> list = null;
-		id=1;
 		try {
 			DetalleVentasMapper detalleVentasMapper = sqlSession.getMapper(DetalleVentasMapper.class);
 			list = detalleVentasMapper.listarTodosDetalleVentas(id);
+			System.out.println("Tamaño de lista= "+list.size());
 			for(DetalleVentas ven:list) {
 				System.out.println("ventaId: "+ ven.getVenvtaId());
-				System.out.println("productoId: "+ ven.getVenvtaId());
-				System.out.println("totalVenta: "+ ven.getCantidad());
 				System.out.println("Producto(idProduto): "+ ven.getProducto().getIdProducto());
 				System.out.println("Producto(nombre): "+ ven.getProducto().getNombre());
 				System.out.println("Producto(precio): "+ ven.getProducto().getPrecio());

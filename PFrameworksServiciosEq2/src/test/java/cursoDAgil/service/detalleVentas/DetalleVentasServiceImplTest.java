@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,16 +26,20 @@ public class DetalleVentasServiceImplTest {
 	@Test
 	public void pruebaConsultarVentas() {
 		try {
-			Integer id=1;
+			
+			Integer id=4;
+			System.out.println("-----------------------------------------------------------------");
+			System.out.println("Consultar detalle de ventas con ventaid="+id);
 			List<DetalleVentas> lista = detalleventasService.listarTodosDetalleVentas(id);
 			int size = lista.size();
 			assertEquals(lista.size(), size);
+			System.out.println("-----------------------------------------------------------------");
 		} catch (Exception ex) {
 			System.out.println("error" + ex);
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void pruebaAltaDetalleVenta() {
 		try {
 			DetalleVentas detalle = new DetalleVentas();
@@ -52,9 +57,12 @@ public class DetalleVentasServiceImplTest {
 	@Test
 	public void pruebaConsultaTodosDetalleVentas() {
 		try {
+			System.out.println("-----------------------------------------------------------------");
+			System.out.println("Consultar todos los detalle de ventas");
 			List<DetalleVentas> lista = detalleventasService.consultaDetalleVenta();
 			int size = lista.size();
 			assertEquals(lista.size(),size);
+			System.out.println("-----------------------------------------------------------------");
 		}catch (Exception ex) {
 			System.out.println("error" + ex);
 		}
