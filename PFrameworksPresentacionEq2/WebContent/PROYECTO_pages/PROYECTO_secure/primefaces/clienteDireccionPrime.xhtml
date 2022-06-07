@@ -114,7 +114,7 @@
 										converter="#{direccionConverter}" effect="fade" filter="true"
 										panelStyle="width:345px" style="width:325px"
 										filterMatchMode="startsWith" required="true">
-										<f:selectItems value="#{direccionTBean.getDireccionList()}"
+										<f:selectItems value="#{direccionTBean.getlistaDireccion()}"
 											var="direccion"
 											itemLabel="#{direccion.calle} No. #{direccion.numero}"
 											itemValue="#{direccion}" />
