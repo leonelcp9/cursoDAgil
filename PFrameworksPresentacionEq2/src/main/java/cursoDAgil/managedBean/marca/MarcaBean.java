@@ -1,3 +1,8 @@
+/*************************************/
+/* Equipo 2 */
+/* Narvaez Morales Jorge Lisandro*/
+/* 6/06/22 */
+/*************************************/
 package cursoDAgil.managedBean.marca;
 
 import java.io.Serializable;

@@ -1,5 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/*************************************/-->
+<!--/*********** Equipo 2 ****************/-->
+<!--/* Narvaez Morales Jorge Lisandro */-->
+<!--/************** 6/06/22 **************/-->
+<!--/*************************************/--> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -20,8 +25,7 @@ se está usando primefaces -->
 					<p:dataTable id="tablaMarca" var="mar"
 						value="#{marcaBean.marcaList}" editable="true"
 						paginator="true" rows="10"
-						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink}
-						{LastPageLink}"
+						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 						rowsPerPageTemplate="5,10,15"
 						emptyMessage="No se encontraron marcas" 
 						widgetVar="tablaMarcas"
@@ -47,10 +51,8 @@ se está usando primefaces -->
 
 						<p:columnGroup type="header">
 							<p:row>
-								<p:column rowspan="1" colspan="1" headerText="Id"  filterMatchMode="contains" filterBy="#{mar.id}" 
-								filterStyle="display:none;	visibility:hidden;"/>
-								<p:column rowspan="1" colspan="1" headerText="Nombre de la marca" filterMatchMode="contains" filterBy="#{mar.nombreMarca}"  
-								filterStyle="display:none; visibility:hidden;" />
+								<p:column rowspan="1" colspan="1" headerText="Id"  filterMatchMode="contains" filterBy="#{mar.idMarca}"  filterStyle="display:none;	visibility:hidden;"/>
+								<p:column rowspan="1" colspan="1" headerText="Nombre de la marca" filterMatchMode="contains" filterBy="#{mar.nombreMarca}" filterStyle="display:none; visibility:hidden;" />
 								<p:column rowspan="1" colspan="1" headerText="Editar" />
 								<p:column rowspan="1" colspan="1" headerText="Eliminar" />
 							</p:row>
@@ -58,7 +60,7 @@ se está usando primefaces -->
 
 						<p:column headerText="Id" colspan="1"  
 							style="text-align: center; width:18%;">
-							<h:outputText value="#{mar.id}" />
+							<h:outputText value="#{mar.idMarca}" />
 						</p:column>
 
 						<p:column headerText="Nombre" colspan="1"  
@@ -76,17 +78,14 @@ se está usando primefaces -->
 
 						</p:column>
 
-						<p:column style="width:32px; text-align: center; width:15%"
-							headerText="Editar" colspan="1">
+						<p:column style="width:32px; text-align: center; width:15%" headerText="Editar" colspan="1">
 							<p:rowEditor oncomplete="PF('tablaMarcas').filter()"/>
 						</p:column>
 
 						<p:column headerText="Eliminar" colspan="1"
 							style="text-align: center; width:15%;">
-							<p:commandButton icon="ui-icon-trash" process="@this"
-								oncomplete="PF('deleteMarcaDialog').show(); PF('tablaMarcas').filter()">
-								<f:setPropertyActionListener value="#{mar}"
-									target="#{marcaBean.marca}" />
+							<p:commandButton icon="ui-icon-trash" process="@this" oncomplete="PF('deleteMarcaDialog').show(); PF('tablaMarcas').filter()">
+								<f:setPropertyActionListener value="#{mar}" target="#{marcaBean.marca}" />
 							</p:commandButton>
 
 							
@@ -120,7 +119,7 @@ se está usando primefaces -->
 				</h:form>
 
 
-				<!-- dialog de registro -->
+				<!-- dialogos de registro -->
 				<p:dialog id="dialogMarca1" widgetVar="dialogMarca" modal="true"
 					resizable="false" header="Nueva Marca" width="55%">
 
