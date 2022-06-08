@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--/*************************************/-->
 <!--/*********** Equipo 2 ****************/-->
-<!--/* Lopez Guevara Jesus Alejandro */-->
+<!--/* Lopez Guevara Jesus Alejandro y Cruz Peralta Leonel*/-->
 <!--/************** 6/06/22 **************/-->
 <!--/*************************************/--> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -66,9 +66,11 @@
 			            </p:column>
 			            <p:column style="text-align: center;">
 			                <p:commandButton process="@this" value="Detalle Venta" styleClass="btn btn-danger"
-			                					oncomplete="PF('detalleVentaDialog').show()">
+			                					oncomplete="PF('detalleVentaDialog').show()"
+			                					update=":h2:detalleVentas" action="#{ventaBean.listarDetalleVenta}" >
 			                              
-			                    <f:setPropertyActionListener value="#{venta.idVenta}" target="#{ventaBean.ID_venta}"/>
+			                    <f:setPropertyActionListener value="#{venta.idVenta}" target="#{ventaBean.ID_venta}" />
+			                    
 			                </p:commandButton>
 			            </p:column>
 			            
@@ -186,48 +188,42 @@
 						</h:form>
 					</div>
 				</p:dialog>
-				<p:dialog id="detalleVentaDialog" widgetVar="detalleVentaDialog" modal="true" 
-					resizable="false" header="Detalle de Venta">
-
-					<div class="container">
-						<h:form>
-							<p:dataTable id="tablaVenta" var="venta"
-						value="#{ventaBean.listaDetalle}" editable="false"
-						paginator="true" rows="10"
-						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rowsPerPageTemplate="5,10,15"
-						emptyMessage="No se encontraron datos">
-						<p:columnGroup type="header">
-							<p:row>
-								<p:column rowspan="1" headerText="Id Producto" />
-								<p:column rowspan="1" headerText="Nombre" />
-								<p:column rowspan="1" headerText="Cantidad" />
-								<p:column rowspan="1" headerText="Precio Venta" />
-							</p:row>
-						</p:columnGroup>
-						<p:column headerText="Id Producto" style="text-align: center;">
-							<h:outputText value="#{venta.idVenta}"/>
-						</p:column>
-						<p:column headerText="Nombre" style="text-align: center;">
-							<h:outputText value="#{venta.cliente.nombre}"/>
-						</p:column>
-						<p:column headerText="Cantidad" style="text-align: center;">
-							<h:outputText value="#{venta.cliente.apellido}"/>
-						</p:column>
-						<p:column headerText="Precio Venta" style="text-align: center;">
-							<h:outputText value="#{venta.totalVenta}">
-								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
-							</h:outputText>
-						</p:column>
-						
-					
-					</p:dataTable>
-						</h:form>
-					</div>
+				<p:dialog id="detalleVentaDialog" widgetVar="detalleVentaDialog"
+					modal="true" resizable="false" header="Detalle de Venta"
+					actionListener="#{ventaBean.listarDetalleVenta}" width="55%">
+					<h:form id="h2">
+						<p:dataTable id="detalleVentas" var="detalleVentas"
+							value="#{ventaBean.listaDetalle}" editable="false"
+							emptyMessage="No se encontraron datos">
+							<p:columnGroup type="header">
+								<p:row>
+									<p:column rowspan="1" headerText="Id Producto" />
+									<p:column rowspan="1" headerText="Nombre" />
+									<p:column rowspan="1" headerText="Cantidad" />
+									<p:column rowspan="1" headerText="Precio Venta" />
+								</p:row>
+							</p:columnGroup>
+							<p:column headerText="Id Producto" style="text-align: center;">
+								<h:outputText value="#{detalleVentas.productoId}" />
+							</p:column>
+							<p:column headerText="Nombre" style="text-align: center;">
+								<h:outputText value="#{detalleVentas.producto.nombre}" />
+							</p:column>
+							<p:column headerText="Cantidad" style="text-align: center;">
+								<h:outputText value="#{detalleVentas.cantidad}" />
+							</p:column>
+							<p:column headerText="Precio Venta" style="text-align: center;">
+								<h:outputText value="#{detalleVentas.producto.precioVta}">
+									<f:convertNumber type="currency" currencySymbol="$"
+										locale="en_US" />
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+					</h:form>
 				</p:dialog>
-				
-				
-			
+
+
+
 			</div>
 		</div>
 		<div class="container">
