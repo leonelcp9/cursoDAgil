@@ -9,7 +9,7 @@
 	
 	
 	<resultMap id="ResultDetalleVentasProducto" type="cursoDAgil.bd.domain.DetalleVentas">
-		<id column="ventaId" jdbcType="INTEGER" property="venvtaId"/>
+		<result column="ventaId" jdbcType="INTEGER" property="venvtaId"/>
 		<result column="productoId" jdbcType="INTEGER" property="productoId"/>
 		<result column="cantidad" jdbcType="INTEGER" property="cantidad"/>
 		<association property="producto" column="productoId" resultMap="ResultProductoMap" />
