@@ -18,6 +18,7 @@ import cursoDAgil.bd.domain.Cliente;
 import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
+import cursoDAgil.service.detalleVentas.DetalleVentasService;
 import cursoDAgil.service.venta.VentaService;
 
 @Named
@@ -33,6 +34,9 @@ public class VentaBean implements Serializable {
 	
 	@Inject
 	ClienteService clienteService;
+	
+	@Inject
+	DetalleVentasService detalleService;
 	
 	private List<Venta> listaVentas;
 	private List<String> listaIdCliente;
@@ -86,7 +90,9 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void listarDetalleVenta() {
-		System.out.println("id venta= "+getID_venta());
+		int id=Integer.parseInt(getID_venta());
+		System.out.println("id venta= "+id);
+		setListaDetalle(detalleService.listarTodosDetalleVentas(id));
 	}
 	
 	public void insertarVenta() {
