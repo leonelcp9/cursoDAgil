@@ -106,10 +106,38 @@
       
       .list-group-item{
       	text-align: center;
-      	background-color: #FFFFFF;
+      	background-color: #EAE5BE;
       }
       
+      tbody tr:nth-child(odd){
+      	background-color: #EEE8D0;
+      }
+      
+      tbody tr:nth-child(even){
+      	background-color: #fffCF2;
+      }
+      
+      a:where(:hover, :focus-visible) {
+  		background-size: 100% var(--bg-h);
+  		background-position-x: left;
+  	  }
+  	  
+
+  	  	a {
+		  background: linear-gradient(0deg, slateblue, slateblue) no-repeat right bottom / 0 var(--bg-h);
+		  transition: background-size 350ms;
+		  --bg-h: 100%;
+		}
 		
+		.underline {
+		  padding-bottom: 2px;
+		  --bg-h: 2px;
+		}
+		a {
+		  text-decoration: none;
+		  color: inherit;
+		  line-height: 1;
+		}
 		      
     </style>
   </h:head>
