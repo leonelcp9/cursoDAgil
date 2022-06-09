@@ -68,7 +68,7 @@
 	</select>
 	
 	<insert id="nuevoCliente" parameterType="cursoDAgil.bd.domain.Cliente" useGeneratedKeys="true" keyProperty="id" >
-		INSERT INTO cliente(nombre, apellido, email,sexo,idDireccion) VALUES (#{nombre}, #{apellido},#{email}, #{sexo}, #{idDireccion})
+		INSERT INTO cliente(nombre, apellido, email,sexo,idDireccion) VALUES (#{nombre}, #{apellido},#{email}, #{sexo}, #{direccion.iddireccion})
 	</insert>
 	<delete id="eliminarClientePorId" parameterType="cursoDAgil.bd.domain.Cliente">
 		DELETE FROM cliente WHERE  id =#{id}

@@ -29,7 +29,9 @@ public class DireccionConverter implements Converter {
 			try{
 				Map<String,Integer>mapDireccion =new HashMap<>();
 				mapDireccion.put("idDireccion", Integer.parseInt(value));
-				return direccionService.obtenerDireccionPorId(mapDireccion);
+				Direccion direccion =direccionService.obtenerDireccionPorId(mapDireccion);
+				System.out.println("IDDireccion: "+direccion.getIddireccion()+"------Nombre:"+direccion.getCalle()+" "+direccion.getCiudad());
+				return direccion ;
 				
 			}catch(NumberFormatException e){
 				return null;
