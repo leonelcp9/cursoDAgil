@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import cursoDAgil.bd.domain.Venta;
@@ -37,11 +39,18 @@ public class VentaCliente2Bean implements Serializable{
 		}
 		//se invoca el metodo del servicio para obtener
 		//las ventas con su cliente
-		//setListaVenta(ventaService.)
+		setListaVenta(ventaService.consultarVentaCliente(null));
+		
 	}
 
+	public void registrar() {
+		ventaService.altaVenta(getVenta());
+		setVenta(new Venta());
+		setListaVenta(ventaService.consultarVentaCliente(null));
+		getListaVenta();
+		FacesContext.getCurrentInstance().addMessage("null", new FacesMessage("Registro exitoso"));
+	}
 	
-
 	public List<Venta> getListaVenta() {
 		return listaVenta;
 	}

@@ -112,12 +112,14 @@
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel value="Cliente:" />
 								<p:selectOneMenu id="selectIdClientes" value="#{ventaBean.ID_Cliente}" effect="fade"
+									var="temp" converter="#{ClienteConverter}"
 									filter="true" panelStyle="width:345px" style="width:325px"
 									filterMatchMode="startsWith" required="true">
-									<p:ajax update="@this" process="@this"/>
-									<f:selectItems value="#{ventaBean.consultaIdTodosCliente()}"
+									<f:selectItem itemLabel="Seleccione un Cliente"
+											itemValue="#{null}" process="@this" />
+									<f:selectItems value="#{clienteBean.getClienteList()}"
 										var="cliente"
-										itemLabel="#{cliente}"
+										itemLabel="#{cliente.nombre} #{cliente.apellido}"
 										itemValue="#{cliente}" />
 								</p:selectOneMenu>
 								
