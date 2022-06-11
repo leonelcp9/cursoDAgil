@@ -26,6 +26,17 @@ public class ClienteBean {
 	@Inject
 	ClienteService clienteService;
 	private List<Cliente> clienteList;
+	private Cliente cliente;
+	
+	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public List<Cliente> getClienteList() {
 		if (clienteList == null)
