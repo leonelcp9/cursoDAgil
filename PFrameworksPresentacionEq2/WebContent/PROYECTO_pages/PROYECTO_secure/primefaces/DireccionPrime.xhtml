@@ -45,7 +45,7 @@ Tabla de Direccion
 									filterStyle="width:90px; height:30px;"
 									filterMatchMode="contains" />
 
-								<p:column rowspan="1" colspan="4" headerText=" numero"
+								<p:column rowspan="1" colspan="3" headerText=" numero"
 									style="text-align: center;" filterBy="#{dir.numero}"
 									filterStyle="width:60px; height:30px;"
 									filterMatchMode="contains" />
@@ -69,8 +69,10 @@ Tabla de Direccion
 									style="text-align: center;" filterBy="#{dir.codigoPostal}"
 									filterStyle="width:90px; height:30px;"
 									filterMatchMode="contains" />
-								<p:column rowspan="1" colspan="3" headerText="Cambios"
-									style="width:80px; height:60px;" />
+								<p:column rowspan="1" colspan="3" headerText="Cambios" style="text-align: center;" filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="3" colspan="3" headerText="Eliminar" style="text-align: center;" filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains"/>
 							</p:row>
 						</p:columnGroup>
 
@@ -92,7 +94,7 @@ Tabla de Direccion
 							</p:cellEditor>
 						</p:column>
 
-						<p:column headerText="numero" colspan="4">
+						<p:column headerText="numero" colspan="3">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{dir.numero}" />
@@ -170,21 +172,24 @@ Tabla de Direccion
 							</p:cellEditor>
 						</p:column>
 
-
-						<p:column style="width:32px" colspan="3">
+						<p:column style="width:32px" headerText="Cambios" colspan="3">
 							<p:rowEditor />
+							<!-- Inicia boton borrar cliente -->
 
-							<!-- Inicia boton borrar direccion -->
+							
 
-							<p:commandButton icon="pi pi-trash" process="@this"
-								oncomplete="PF('deleteProductDialog').show()">
-								<f:setPropertyActionListener value="#{dir}"
-									target="#{direccionTBean.direccion}" />
-							</p:commandButton>
-
-							<!-- Termina boton dialogo borrar direccion -->
-
+							<!-- Termina boton dialogo borrar cliente -->
+							
 						</p:column>
+						
+						<p:column style="text-align: center;" headerText="Eliminar" colspan="3" >
+			                <p:commandButton process="@this" value="Eliminar" styleClass="btn btn-danger"
+			                                 oncomplete="PF('deleteProductDialog').show()">
+			                    <f:setPropertyActionListener value="#{dir}"
+									target="#{direccionTBean.direccion}" />
+			                </p:commandButton>
+			            </p:column>
+						
 						<f:facet name="footer">
 							<p:commandButton value="Nuevo"
 								onclick="PF('dialogCliente').show();" />

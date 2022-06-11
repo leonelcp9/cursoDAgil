@@ -47,7 +47,7 @@
 									filterStyle="width:60px; height:30px;"
 									filterMatchMode="contains"/>
 
-								<p:column rowspan="1" colspan="2" headerText="Email" 
+								<p:column rowspan="1" colspan="3" headerText="Email" 
 								style="text-align: center;" filterBy="#{cli.email}"
 									filterStyle="width:90px; height:30px;"
 									filterMatchMode="contains" />
@@ -59,7 +59,10 @@
 
 								<p:column rowspan="1" colspan="2" headerText="Direccion"/>
 
-								<p:column rowspan="1" colspan="1" headerText="Cambios" />
+								<p:column rowspan="1" colspan="2" headerText="Cambios" style="text-align: center;" filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains" />
+								<p:column rowspan="3" colspan="2" headerText="Eliminar" style="text-align: center;" filterStyle="width:90px; height:30px;"
+									filterMatchMode="contains"/>
 							</p:row>
 						</p:columnGroup>
 						<p:column headerText="Id" colspan="1" style="text-align: center;" filterBy="#{cli.id}">
@@ -88,7 +91,7 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column headerText="Email" colspan="2">
+						<p:column headerText="Email" colspan="3">
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{cli.email}" />
@@ -137,19 +140,23 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<p:column style="width:32px">
+						<p:column style="width:32px" headerText="Cambios" colspan="2">
 							<p:rowEditor />
 							<!-- Inicia boton borrar cliente -->
 
-							<p:commandButton icon="pi pi-trash" process="@this"
-								oncomplete="PF('deleteProductDialog').show()">
-								<f:setPropertyActionListener value="#{cli}"
-									target="#{clienteDireccion2Bean.cliente}" />
-							</p:commandButton>
+							
 
 							<!-- Termina boton dialogo borrar cliente -->
 							
 						</p:column>
+						
+						<p:column style="text-align: center;" headerText="Eliminar" colspan="2" >
+			                <p:commandButton process="@this" value="Eliminar" styleClass="btn btn-danger"
+			                                 oncomplete="PF('deleteProductDialog').show()">
+			                    <f:setPropertyActionListener value="#{cli}"
+									target="#{clienteDireccion2Bean.cliente}" />
+			                </p:commandButton>
+			            </p:column>
 						<f:facet name="footer">
 							<p:commandButton value="Nuevo"
 								onclick="PF('dialogCliente').show();" />
@@ -164,6 +171,7 @@
 					width="300" message="Borrar este cliente?" header="Confirmacion de borrar"
 					severity="warn">
 					<p:commandButton value="si" icon="pi pi-check"
+					update=":form:tablaCliente,:dialogCliente,:form:msgs"
 						actionListener="#{clienteDireccion2Bean.eliminar}" process="@this"
 						oncomplete="PF('deleteProductDialog').hide()" />
 					<p:commandButton value="No" type="button"
