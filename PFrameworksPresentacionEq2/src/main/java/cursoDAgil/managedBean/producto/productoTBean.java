@@ -18,6 +18,7 @@ import javax.inject.Named;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
+import cursoDAgil.bd.domain.Marca;
 import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.service.producto.ProductoService;
 
@@ -50,6 +51,7 @@ public class productoTBean {
 		FacesContext.getCurrentInstance().addMessage("null", new FacesMessage("Registro exitoso!"));
 	}
 
+
 	public void eliminar() {
 		Integer prod;
 
@@ -65,6 +67,31 @@ public class productoTBean {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("Producto eliminado ", productoEliminado));
 	}
+	
+	/*
+	public void eliminar() {
+		Producto producto = getProducto();
+		Integer id = producto.getIdProducto();
+		System.out.println("Eliminar" + producto.getIdProducto());		
+		int ban = 0;
+		try {
+			ban = productoService.eliminarProducto(id);
+			setListaProducto(productoService.listarProducto());
+			
+			if (productoService.eliminarProducto(id)==1) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Producto eliminado"));
+				
+			}else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error, No se eliminó"));
+				
+			}
+			setProducto(new Producto());
+			
+		}catch(Exception e){
+			System.out.println(e);
+			
+		}
+	}	*/
 
 	public void onRowEdit(RowEditEvent event) {
 		Producto producto = ((Producto) event.getObject());

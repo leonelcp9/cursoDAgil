@@ -24,10 +24,10 @@
             <!-- tiene el prefijo p, esto quiere decir que se est� usando primefaces -->
 
             <p:dataTable
-              id="tablaProducto"
-              widgetVar="dtProducto"
-              var="prod"
-              value="#{productoTBean.listaProducto}"
+              id="tablaGanancia"
+              widgetVar="dtGanancia"
+              var="gan"
+              value="#{gananciaTBean.listaGanancia}"
               editable="true"
               paginator="true"
               rows="10"
@@ -37,17 +37,7 @@
               rowsPerPageTemplate="5,10,15"
               emptyMessage="No se encontraron datos"
             >
-              <f:facet name="header"> Tabla de Productos </f:facet>
-              <p:ajax
-                event="rowEdit"
-                listener="#{productoTBean.onRowEdit}"
-                update=":form:msgs"
-              />
-              <p:ajax
-                event="rowEditCancel"
-                listener="#{productoTBean.onRowCancel}"
-                update=":form:msgs"
-              />
+              <f:facet name="header"> Tabla de Ganancias </f:facet>
 
               <p:columnGroup type="header">
                 <p:row>
@@ -56,134 +46,88 @@
                   <p:column
                     rowspan="1"
                     colspan="4"
-                    headerText="Nombre"
+                    headerText="Id Venta"
                     style="text-align: center"
-                    filterBy="#{prod.nombre}"
+                    filterBy="#{gan.ventaId}"
                     filterStyle="width:150px; height:30px;"
                     filterMatchMode="contains"
                   />
                   <p:column
                     rowspan="1"
                     colspan="4"
-                    headerText="Precio"
+                    headerText="Total ganancia"
                     style="text-align: center"
-                    filterBy="#{prod.precio}"
+                    filterBy="#{gan.totalGanancia}"
                     filterStyle="width:100px; height:30px;"
                     filterMatchMode="contains"
                   />
                   <p:column
                     rowspan="1"
                     colspan="4"
-                    headerText="PrecioVenta"
+                    headerText="Fecha"
                     style="text-align: center"
-                    filterBy="#{prod.precioVta}"
+                    filterBy="#{gan.fecha}"
                     filterStyle="width:90px; height:30px;"
                     filterMatchMode="contains"
                   />
-                  <p:column
-                    rowspan="1"
-                    colspan="4"
-                    headerText="Cantidad"
-                    style="text-align: center"
-                    filterBy="#{prod.cantidad}"
-                    filterStyle="width:90px; height:30px;"
-                    filterMatchMode="contains"
-                  />
-                  <p:column
-                    rowspan="1"
-                    colspan="3"
-                    headerText="Cambios"
-                    style="width: 80px; height: 60px"
-                  />
+
                 </p:row>
               </p:columnGroup>
 
               <p:column headerText="Id " colspan="2" style="text-align: center">
-                <h:outputText value="#{prod.idProducto}" />
+                <h:outputText value="#{gan.idGanancia}" />
               </p:column>
 
               <p:column
-                headerText="Nombre"
+                headerText="Id Venta"
                 colspan="4"
                 style="text-align: center"
               >
                 <p:cellEditor>
                   <f:facet name="output">
-                    <h:outputText value="#{prod.nombre}" />
+                    <h:outputText value="#{gan.ventaId}" />
                   </f:facet>
                   <f:facet name="input">
                     <h:inputText
-                      value="#{prod.nombre}"
+                      value="#{gan.ventaId}"
                       style="width: 100%"
-                      label="Nombre"
+                      label="Id Venta"
                     />
                   </f:facet>
                 </p:cellEditor>
               </p:column>
 
-              <p:column headerText="Precio" colspan="3">
+              <p:column headerText="Total Ganancia" colspan="3">
                 <p:cellEditor>
                   <f:facet name="output">
-                    <h:outputText value="#{prod.precio}" />
+                    <h:outputText value="#{gan.totalGanancia}" />
                   </f:facet>
                   <f:facet name="input">
                     <h:inputText
-                      value="#{prod.precio}"
+                      value="#{gan.totalGanancia}"
                       style="width: 100%"
-                      label="Precio"
+                      label="Total Ganancia"
                     />
                   </f:facet>
                 </p:cellEditor>
               </p:column>
 
-              <p:column headerText="Precio Venta" colspan="4">
+              <p:column headerText="Fecha" colspan="4">
                 <p:cellEditor>
                   <f:facet name="output">
-                    <h:outputText value="#{prod.precioVta}" />
+                    <h:outputText value="#{gan.fecha}" />
                   </f:facet>
                   <f:facet name="input">
                     <h:inputText
-                      value="#{prod.precioVta}"
+                      value="#{gan.fecha}"
                       style="width: 100%"
-                      label="Precio Venta"
+                      label="Fecha"
                     />
                   </f:facet>
                 </p:cellEditor>
               </p:column>
 
-              <p:column headerText="Cantidad" colspan="4">
-                <p:cellEditor>
-                  <f:facet name="output">
-                    <h:outputText value="#{prod.cantidad}" />
-                  </f:facet>
-                  <f:facet name="input">
-                    <h:inputText
-                      value="#{prod.cantidad}"
-                      style="width: 100%"
-                      label="Cantidad"
-                    />
-                  </f:facet>
-                </p:cellEditor>
-              </p:column>
 
-              <p:column style="width: 32px" colspan="2">
-                <p:rowEditor />
-
-                <!-- Inicia boton borrar direccion -->
-
-                <p:commandButton
-                  icon="pi pi-trash"
-                  process="@this"
-                  oncomplete="PF('deleteProductDialog').show()"
-                >
-                  <f:setPropertyActionListener
-                    value="#{dir}"
-                    target="#{productoTBean.producto}"
-                  />
-                </p:commandButton>
-
-                <!-- Termina boton dialogo borrar direccion -->
-              </p:column>
               <f:facet name="footer">
                 <p:commandButton
                   value="Nuevo"
@@ -193,34 +137,6 @@
             </p:dataTable>
           </h:form>
 
-          <!-- Inicia borrar direccion -->
-          <h:form>
-            <p:confirmDialog
-              widgetVar="deleteProductDialog"
-              showEffect="fade"
-              width="300"
-              message="¿Borrar este producto?"
-              header="Confirmación de borrar"
-              severity="warn"
-            >
-              <p:commandButton
-                value="si"
-                icon="pi pi-check"
-                actionListener="#{productoTBean.eliminar}"
-                process="@this"
-                oncomplete="PF('deleteProductDialog').hide()"
-              />
-              <p:commandButton
-                value="No"
-                type="button"
-                styleClass="ui-button-secondary"
-                icon="pi pi-times"
-                onclick="PF('deleteProductDialog').hide()"
-                oncomplete="PF('dialogCliente').show()"
-                process="@form"
-              />
-            </p:confirmDialog>
-          </h:form>
 
           <!-- dialogo de registro -->
           <p:dialog
@@ -228,31 +144,30 @@
             widgetVar="dialogCliente"
             modal="true"
             resizable="false"
-            header="Nuevo Producto"
+            header="Nueva Ganancia"
             width="55%"
           >
             <div class="row">
-              <h:form role="form" id="formRegProducto">
+              <h:form role="form" id="formRegGanancia">
                 <h:panelGrid columns="3" cellpadding="5">
-                  <p:outputLabel value="Nombre: *" />
+                  <p:outputLabel value="Venta ID: *" />
                   <p:inputText
-                    id="Nombre"
+                    id="VentaId"
                     style="width: 325px"
-                    value="#{productoTBean.producto.nombre}"
+                    value="#{gananciaTBean.ganancia.ventaId}"
                     styleClass="form-control"
                     required="true"
                     requiredMessage="Campo requerido"
-                    validatorMessage="Ingrese un texto"
+                    validatorMessage="Ingrese un n�mero"
                   >
-                    <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
                   </p:inputText>
-                  <p:message for="Nombre" />
+                  <p:message for="VentaId" />
 
-                  <p:outputLabel value="Precio: *" />
+                  <p:outputLabel value="Total ganancia: *" />
                   <p:inputText
-                    id="Precio"
+                    id="TotalGanancia"
                     style="width: 325px"
-                    value="#{productoTBean.producto.precio}"
+                    value="#{gananciaTBean.ganancia.totalGanancia}"
                     styleClass="form-control"
                     required="true"
                     requiredMessage="Campo requerido"
@@ -260,41 +175,27 @@
                   >
                     <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
-                  <p:message for="Precio" />
+                  <p:message for="TotalGanancia" />
 
-                  <p:outputLabel value="Precio de venta: *" />
+                  <p:outputLabel value="Fecha: *" />
                   <p:inputText
-                    id="PrecioVta"
+                    id="Fecha"
                     style="width: 325px"
-                    value="#{productoTBean.producto.precioVta}"
+                    value="#{gananciaTBean.ganancia.fecha}"
                     styleClass="form-control"
                     required="true"
                     requiredMessage="Campo requerido"
                     validatorMessage="Ingrese un texto"
                   >
-                    <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+                    <f:validateRegex pattern="((?=-.*[a-z]).{3,})" />
                   </p:inputText>
-                  <p:message for="PrecioVta" />
-
-                  <p:outputLabel value="Cantidad: *" />
-                  <p:inputText
-                    id="Cantidad"
-                    style="width: 325px"
-                    value="#{productoTBean.producto.cantidad}"
-                    styleClass="form-control"
-                    required="true"
-                    requiredMessage="Campo requerido"
-                    validatorMessage="Ingrese un texto"
-                  >
-                    <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
-                  </p:inputText>
-                  <p:message for="Cantidad" />
+                  <p:message for="Fecha" />
                 </h:panelGrid>
                 <p:commandButton
                   id="btnRegistro"
                   value="Registrar"
                   actionListener="#{productoTBean.registrar}"
-                  update=":form:tablaProducto, :dialogCliente, :form:msgs"
+                  update=":form:tablaGanancia, :dialogCliente, :form:msgs"
                   oncomplete="PF('dialogCliente').show()"
                   process="@form"
                 />

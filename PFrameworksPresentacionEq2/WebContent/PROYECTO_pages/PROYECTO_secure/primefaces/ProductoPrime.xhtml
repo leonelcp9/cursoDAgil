@@ -169,7 +169,7 @@
               <p:column style="width: 32px" colspan="2">
                 <p:rowEditor />
 
-                <!-- Inicia boton borrar direccion -->
+                <!-- Inicia boton borrar Producto -->
 
                 <p:commandButton
                   icon="pi pi-trash"
@@ -177,7 +177,7 @@
                   oncomplete="PF('deleteProductDialog').show()"
                 >
                   <f:setPropertyActionListener
-                    value="#{dir}"
+                    value="#{prod}"
                     target="#{productoTBean.producto}"
                   />
                 </p:commandButton>
@@ -193,22 +193,22 @@
             </p:dataTable>
           </h:form>
 
-          <!-- Inicia borrar direccion -->
+          <!-- Inicia borrar producto -->
           <h:form>
             <p:confirmDialog
               widgetVar="deleteProductDialog"
               showEffect="fade"
               width="300"
-              message="¿Borrar este producto?"
-              header="Confirmación de borrar"
+              message="¿Esta seguro de borrar este producto?"
+              header="Confirmacion de borrar"
               severity="warn"
             >
               <p:commandButton
                 value="si"
                 icon="pi pi-check"
-                actionListener="#{productoTBean.eliminar}"
+                actionListener="#{productoTBean.eliminar()}"
                 process="@this"
-                oncomplete="PF('deleteProductDialog').hide()"
+                oncomplete="PF('deleteProductDialog').hide(); PF('tablaProducto').filter()"
               />
               <p:commandButton
                 value="No"
@@ -216,10 +216,9 @@
                 styleClass="ui-button-secondary"
                 icon="pi pi-times"
                 onclick="PF('deleteProductDialog').hide()"
-                oncomplete="PF('dialogCliente').show()"
                 process="@form"
               />
-            </p:confirmDialog>
+            </p:confirmDialog>  
           </h:form>
 
           <!-- dialogo de registro -->
@@ -247,6 +246,7 @@
                     <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
                   </p:inputText>
                   <p:message for="Nombre" />
+                  
 
                   <p:outputLabel value="Precio: *" />
                   <p:inputText
@@ -261,6 +261,8 @@
                     <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
                   <p:message for="Precio" />
+                  
+                  
 
                   <p:outputLabel value="Precio de venta: *" />
                   <p:inputText
@@ -270,11 +272,13 @@
                     styleClass="form-control"
                     required="true"
                     requiredMessage="Campo requerido"
-                    validatorMessage="Ingrese un texto"
+                    validatorMessage="Ingrese entre 8-80 caracteres"
                   >
-                    <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+                    <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
                   <p:message for="PrecioVta" />
+                  
+                  
 
                   <p:outputLabel value="Cantidad: *" />
                   <p:inputText
@@ -284,11 +288,12 @@
                     styleClass="form-control"
                     required="true"
                     requiredMessage="Campo requerido"
-                    validatorMessage="Ingrese un texto"
+                    validatorMessage="Ingrese entre 8-80 caracteres"
                   >
-                    <f:validateRegex pattern="((?=.*[a-z]).{3,})" />
+                    <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
-                  <p:message for="Cantidad" />
+                  <p:message for="Cantidad" />                  
+                  
                 </h:panelGrid>
                 <p:commandButton
                   id="btnRegistro"
