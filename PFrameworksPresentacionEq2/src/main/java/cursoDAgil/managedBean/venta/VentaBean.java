@@ -43,7 +43,7 @@ public class VentaBean implements Serializable {
 	private List<String> listaIdVenta;
 	private List<Cliente> listaIdCLienteN;
 	private List<String> listaIdCLienteNs;
-	
+	private List<String> listaNombreClientes;
 	private List<DetalleVentas> listaDetalle;
 	
 	private String ID_venta;
@@ -51,7 +51,8 @@ public class VentaBean implements Serializable {
 	private Venta NewVenta;
 	private java.sql.Date fecha1;
 	private String NewTotalVenta;
-	
+	private Venta venta;
+	private Cliente cliente;
 	
 	@PostConstruct
 	public void init() {
@@ -63,7 +64,10 @@ public class VentaBean implements Serializable {
 			listaIdVenta = new ArrayList<String>();
 		if(listaDetalle == null)
 			listaDetalle = new ArrayList<DetalleVentas>();
-		
+		if(venta == null)
+			venta = new Venta();
+			venta.setCliente(null);
+			cliente = new Cliente();
 		fecha1 = new java.sql.Date(System.currentTimeMillis());
 		setListaVentas(ventaService.listarTodasVentas());
 		listaIdVenta.clear();
@@ -95,27 +99,30 @@ public class VentaBean implements Serializable {
 		setListaDetalle(detalleService.listarTodosDetalleVentas(id));
 	}
 	
+	
 	public void insertarVenta() {
-		NewVenta = new Venta();
-		NewVenta.setFecha(fecha1);
-		NewVenta.setTotalVenta(Double.parseDouble(getID_venta()));
-		NewVenta.setClienteId(Integer.parseInt(getID_Cliente()));
+		Cliente cli = venta.getCliente();
+		venta = new Venta();
+		venta.setCliente(cli);
+		venta.setFecha(fecha1);
+		venta.setTotalVenta(Double.parseDouble(getID_venta()));
+		venta.setClienteId(cli.getId());
 		
-		System.out.println(getFecha1());
-		System.out.println(getID_Cliente());
-		System.out.println(getID_venta());//TOTAL GANANCIA
+		System.out.println(venta.getClienteId());
+		System.out.println(venta.getTotalVenta());
+		System.out.println(venta.getFecha());//TOTAL GANANCIA
 		
-		ventaService.altaVenta(NewVenta);
+		ventaService.altaVenta(venta);
 		init();
 	}
 	
 	public List<String> consultaIdTodosCliente(){
 		listaIdCLienteN = new ArrayList<Cliente>();
-		listaIdCLienteNs = new ArrayList<String>();
+		listaNombreClientes = new ArrayList<String>();
 		setListaIdCLienteN(clienteService.listarTodosClientes());
 		for(Cliente i:listaIdCLienteN)
-			listaIdCLienteNs.add(i.getId().toString());
-		return listaIdCLienteNs;
+			listaNombreClientes.add(i.getNombre()+" "+i.getApellido());
+		return listaNombreClientes;
 	}
 	
 	public List<Venta> getListaVentas() {
@@ -179,6 +186,22 @@ public class VentaBean implements Serializable {
 
 	public void setListaDetalle(List<DetalleVentas> listaDetalle) {
 		this.listaDetalle = listaDetalle;
+	}
+
+	public Venta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 }

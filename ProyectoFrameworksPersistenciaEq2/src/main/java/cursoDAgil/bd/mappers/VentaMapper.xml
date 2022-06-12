@@ -46,5 +46,7 @@
 	<select id="eliminarVenta" resultMap="BaseResultMap">
 		DELETE FROM ventas WHERE  idVenta = #{idVenta}
 	</select>
-	
+	<update id="actualizarVenta" parameterType="cursoDAgil.bd.domain.Venta">
+		UPDATE ventas SET clienteId=#{clienteId}, totalVenta=#{totalVenta}, fecha=#{fecha} WHERE idVenta = #{idVenta}
+	</update>
 </mapper>

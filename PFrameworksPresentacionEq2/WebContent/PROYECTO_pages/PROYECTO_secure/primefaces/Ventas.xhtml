@@ -76,7 +76,7 @@
 			            
 			            <f:facet name="footer">
 							<p:commandButton value="Nueva Venta" styleClass="btn btn-success"  type="button" style="margin-right: 5px"
-								onclick="PF('dialogNuevaVenta').show();"/>
+								onclick="PF('dialogNuevaVenta').show();" />
 						</f:facet>
 						
 						<f:facet name="footer">
@@ -106,21 +106,28 @@
 		        </p:confirmDialog>
 		        
 		        <p:dialog id="dialogNuevaVenta" widgetVar="dialogNuevaVenta" modal="true"
-					resizable="false" header="Nueva Venta">
+					resizable="false" header="Nueva Venta" >
 					<div class="container">
 						<h:form>
 							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel value="Cliente:" />
-								<p:selectOneMenu id="selectIdClientes" value="#{ventaBean.ID_Cliente}" effect="fade"
-									var="temp" converter="#{ClienteConverter}"
+								<p:selectOneMenu id="selectIdClientes" value="#{ventaBean.venta.cliente}" effect="fade"
+									var="temp" converter="#{clienteConverter}"
 									filter="true" panelStyle="width:345px" style="width:325px"
-									filterMatchMode="startsWith" required="true">
+									filterMatchMode="startsWith" required="true"
+									requiredMessage="Debe seleccionar un cliente.">
 									<f:selectItem itemLabel="Seleccione un Cliente"
 											itemValue="#{null}" process="@this" />
-									<f:selectItems value="#{clienteBean.getClienteList()}"
+									<f:selectItems value="#{clienteDireccion2Bean.getlistaCliente()}"
 										var="cliente"
 										itemLabel="#{cliente.nombre} #{cliente.apellido}"
 										itemValue="#{cliente}" />
+									<p:column style="width:10%">
+										<h:outputText value="#{temp.nombre}"/>
+									</p:column>
+									<p:column style="width:10%">
+										<h:outputText value="#{temp.apellido}"/>
+									</p:column>
 								</p:selectOneMenu>
 								
 								<p:outputLabel value="Total:" />
