@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -30,7 +31,7 @@ public class VentaDaoImplTest {
 	@Inject
 	VentaDao ventaDao;
 	
-	@Test
+	@Ignore
 	public void pruebaConsultarVentas() {
 		System.out.println("Test consultar todas las ventas y los clientes a los que pertenece");
 		try {
@@ -41,7 +42,7 @@ public class VentaDaoImplTest {
 			System.out.println("error" + ex);
 		}
 	}
-	@Test
+	@Ignore
 	public void pruebaConsultarVentasCliente() {
 		System.out.println("inicio de prueba CONSULTA POR CLIENTE");
 		try {
@@ -54,7 +55,7 @@ public class VentaDaoImplTest {
 			System.out.println("error" + ex);
 		}
 	}
-	@Test
+	@Ignore
 	public void pruebaConsultarVentaId() {
 		System.out.println("inicio de prueba CONSULTA POR IDventa");
 		try {
@@ -69,7 +70,7 @@ public class VentaDaoImplTest {
 	/*
 	 * Función que prueba a insertar una venta nueva en la base de datos
 	 */
-	@Test
+	@Ignore
 	public void pruebaInsertarVenta() {
 		System.out.println("Test insertar venta");
 		try {
@@ -85,7 +86,7 @@ public class VentaDaoImplTest {
 		}
 		System.out.println("Venta insertada con exito");
 	}
-	@Test
+	@Ignore
 	public void pruebaEliminarVenta() {
 		System.out.println("------------------------------------------------------");
 		System.out.println("Test de eliminar Venta");
@@ -96,5 +97,22 @@ public class VentaDaoImplTest {
 		}catch(Exception e) {
 			System.out.println("Error: "+e);
 		}
+	}
+	@Test
+	public void pruebaActualizarVenta() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("Test de actualizar Venta");
+		try {
+			Venta venta = new Venta();
+		Date date = new Date(System.currentTimeMillis());
+		venta.setIdVenta(1);
+		venta.setClienteId(1);
+		venta.setTotalVenta(900f);
+		venta.setFecha(date);
+		ventaDao.actualizarVenta(venta);
+		}catch(Exception e) {
+			System.out.println("Error: "+e);
+		}
+		
 	}
 }

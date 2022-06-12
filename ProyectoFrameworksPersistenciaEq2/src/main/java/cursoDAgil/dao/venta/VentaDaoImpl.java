@@ -122,4 +122,14 @@ public class VentaDaoImpl implements VentaDao, Serializable{
 		return null;
 	}
 
+	public Integer actualizarVenta(Venta venta) {
+		try {
+			VentaMapper ventaMapper = sqlSession.getMapper(VentaMapper.class);
+			return ventaMapper.actualizarVenta(venta);
+			
+		}catch(Exception e) {
+			System.out.println("Error: "+e);
+		}
+		return null;
+	}
 }

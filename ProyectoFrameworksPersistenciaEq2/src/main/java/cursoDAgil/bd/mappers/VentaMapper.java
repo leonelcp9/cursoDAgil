@@ -15,4 +15,5 @@ public interface VentaMapper {
 	Integer altaVenta(Venta venta);
 	List<Venta> consultarVentaId(Integer idVenta);
 	Integer eliminarVenta(Integer idVenta);
+	Integer actualizarVenta(Venta venta);
 }

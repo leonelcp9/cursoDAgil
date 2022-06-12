@@ -51,4 +51,11 @@ public class VentaServiceImpl implements VentaService,Serializable{
 		return ventaDao.eliminarVenta(idVenta);
 	}
 
+
+	
+	public Integer actualizarVenta(Venta venta) {
+		// TODO Auto-generated method stub
+		return ventaDao.actualizarVenta(venta);
+	}
+
 }
