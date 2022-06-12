@@ -187,14 +187,14 @@
                     requiredMessage="Campo requerido"
                     validatorMessage="Ingrese un texto"
                   >
-                    <f:validateRegex pattern="((?=-.*[a-z]).{3,})" />
+
                   </p:inputText>
                   <p:message for="Fecha" />
                 </h:panelGrid>
                 <p:commandButton
                   id="btnRegistro"
                   value="Registrar"
-                  actionListener="#{productoTBean.registrar}"
+                  actionListener="#{gananciaTBean.registrar}"
                   update=":form:tablaGanancia, :dialogCliente, :form:msgs"
                   oncomplete="PF('dialogCliente').show()"
                   process="@form"
@@ -207,11 +207,6 @@
 
       <div class="container">
         <br />
-        <h:link
-          value="Regresar a index"
-          outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/index"
-          styleClass="btn btn-warning"
-        />
       </div>
     </ui:define>
   </ui:composition>

@@ -18,7 +18,6 @@ import javax.inject.Named;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
-import cursoDAgil.bd.domain.Marca;
 import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.service.producto.ProductoService;
 

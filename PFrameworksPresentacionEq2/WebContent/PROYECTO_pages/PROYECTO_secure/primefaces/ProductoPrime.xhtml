@@ -74,7 +74,7 @@
                   <p:column
                     rowspan="1"
                     colspan="4"
-                    headerText="PrecioVenta"
+                    headerText="Precio Venta"
                     style="text-align: center"
                     filterBy="#{prod.precioVta}"
                     filterStyle="width:90px; height:30px;"
@@ -89,6 +89,17 @@
                     filterStyle="width:90px; height:30px;"
                     filterMatchMode="contains"
                   />
+                  
+                  <p:column
+                    rowspan="1"
+                    colspan="4"
+                    headerText="Marca Id"
+                    style="text-align: center"
+                    filterBy="#{prod.marcaId}"
+                    filterStyle="width:90px; height:30px;"
+                    filterMatchMode="contains"
+                  />
+                  
                   <p:column
                     rowspan="1"
                     colspan="3"
@@ -165,6 +176,21 @@
                   </f:facet>
                 </p:cellEditor>
               </p:column>
+              
+              <p:column headerText="Marca Id" colspan="4">
+                <p:cellEditor>
+                  <f:facet name="output">
+                    <h:outputText value="#{prod.marcaId}" />
+                  </f:facet>
+                  <f:facet name="input">
+                    <h:inputText
+                      value="#{prod.marcaId}"
+                      style="width: 100%"
+                      label="MarcaId"
+                    />
+                  </f:facet>
+                </p:cellEditor>
+              </p:column>              
 
               <p:column style="width: 32px" colspan="2">
                 <p:rowEditor />
@@ -172,7 +198,7 @@
                 <!-- Inicia boton borrar Producto -->
 
                 <p:commandButton
-                  icon="pi pi-trash"
+                  icon="ui-icon-trash"
                   process="@this"
                   oncomplete="PF('deleteProductDialog').show()"
                 >
@@ -292,7 +318,21 @@
                   >
                     <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
-                  <p:message for="Cantidad" />                  
+                  <p:message for="Cantidad" />       
+                             
+                  <p:outputLabel value="Marca Id: *" />
+                  <p:inputText
+                    id="MarcaId"
+                    style="width: 325px"
+                    value="#{productoTBean.producto.marcaId}"
+                    styleClass="form-control"
+                    required="true"
+                    requiredMessage="Campo requerido"
+                    validatorMessage="Ingrese entre 8-80 caracteres"
+                  >
+                    <f:validateLength minimum="1" maximum="80" />
+                  </p:inputText>
+                  <p:message for="MarcaId" />                                   
                   
                 </h:panelGrid>
                 <p:commandButton
@@ -311,11 +351,7 @@
 
       <div class="container">
         <br />
-        <h:link
-          value="Regresar a index"
-          outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/index"
-          styleClass="btn btn-warning"
-        />
+
       </div>
     </ui:define>
   </ui:composition>

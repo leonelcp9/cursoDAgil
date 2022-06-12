@@ -5,6 +5,18 @@
   xmlns:h="http://java.sun.com/jsf/html"
   xmlns:f="http://java.sun.com/jsf/core"
 >
+
+<body>
+    <input type="submit" id="submitBtn"/>
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", myFunction);
+      function myFunction() {
+        window.location.href="http://programminghead.com";
+      }
+    </script>
+
+</body>
+
   <ui:composition>
     <center>
       <div class="container">
@@ -30,15 +42,17 @@
       </div>
       <div class="opciones">
 
-      	<button class="glow-on-hover" type="button"><a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/clienteDireccionPrime.xhtml">Clientes</a></button>
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/clienteDireccionPrime.xhtml"><button class="glow-on-hover" type="button">Clientes</button></a>
 
-      	<button class="glow-on-hover" type="button"><a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/DireccionPrime.xhtml">Direccciones </a></button>
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/DireccionPrime.xhtml"><button class="glow-on-hover" type="button">Direccciones</button></a>
 
-      	<button class="glow-on-hover" type="button"><a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/ProductoPrime.xhtml">Productos </a></button>
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/ProductoPrime.xhtml"><button class="glow-on-hover" type="button">Productos</button></a>
 
-      	<button class="glow-on-hover" type="button"><a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml">Ventas </a></button>
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml"><button class="glow-on-hover" type="button">Ventas</button></a>
 
-      	<button class="glow-on-hover" type="button"><a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/MarcaPrime.xhtml">Marcas</a></button>
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/MarcaPrime.xhtml"><button class="glow-on-hover" type="button">Marcas</button></a>
+      	
+      	<a href="http://localhost:8081/PFrameworksPresentacionEq2/PROYECTO_pages/PROYECTO_secure/primefaces/GananciaPrime.xhtml"><button class="glow-on-hover" type="button">Ganancias</button></a>
 
       </div>
     </center>
