@@ -51,9 +51,7 @@ public class ClienteDireccion2Bean implements Serializable {
 		setCliente(new Cliente());
 		setlistaCliente(clienteService.listarTodosClientes());
 		getlistaCliente();
-		FacesContext.getCurrentInstance().addMessage("null", new
-
-		FacesMessage("Registro exitoso!"));
+		FacesContext.getCurrentInstance().addMessage("null", new FacesMessage("Registro exitoso!"));
 
 	}
 

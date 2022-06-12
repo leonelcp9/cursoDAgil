@@ -34,8 +34,8 @@
 		SELECT v.idVenta, v.clienteId, v.totalVenta, v.fecha, cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion FROM equipo2.ventas v INNER JOIN cliente AS cli ON v.clienteId = cli.id WHERE clienteId = #{clienteId}
 	</select>
 	
-	<select id="consultarVentaId" resultMap="BaseResultMap">
-		SELECT * FROM equipo2.ventas WHERE idVenta = #{idVenta}
+	<select id="consultarVentaId" resultMap="ResultVentaCliente">
+		SELECT v.idVenta, v.clienteId, v.totalVenta, v.fecha, cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion FROM equipo2.ventas v INNER JOIN cliente AS cli ON v.clienteId = cli.id WHERE idVenta = #{idVenta}
 	</select>
 	
 	<insert id="altaVenta" useGeneratedKeys="true" keyProperty="idVenta" parameterType="cursoDAgil.bd.domain.Venta">

@@ -68,4 +68,11 @@ public class Cliente {
 		this.idDireccion = iddireccion;
 	}
 
+	public boolean equals(Object object) {
+		if(!(object instanceof Cliente)) {
+			return false;
+		}
+		Cliente regCliente = (Cliente) object;
+		return (this.id == regCliente.id);
+	}
 }
