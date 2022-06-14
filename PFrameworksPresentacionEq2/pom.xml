@@ -47,7 +47,7 @@
       <artifactId>primefaces-extensions</artifactId>
       <version>3.0.0</version>
     </dependency>
-
+	<!-- Borrar esta dependencia si da error la anotación PostConstruct-->
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
