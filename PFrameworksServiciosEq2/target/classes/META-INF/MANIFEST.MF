@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: itoug
+=======
+Built-By: Leonel
+>>>>>>> 274c7e34e4c5948d327c0164ee0ca3f1c061948b
 Build-Jdk: 17.0.2
 Created-By: Maven Integration for Eclipse
 
