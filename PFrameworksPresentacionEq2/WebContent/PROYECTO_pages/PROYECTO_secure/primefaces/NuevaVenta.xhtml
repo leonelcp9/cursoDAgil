@@ -18,12 +18,12 @@
 			<FONT COLOR="white">Nueva Venta</FONT>
 			</h4>			
 			<h:form class="col-md-12" id="productoForm">
-				<h:panelGrid columns="4" cellpadding="10">
-					<p:outputLabel value="Cliente:" style="color: white"/>
+				<h:panelGrid columns="4" cellpadding="17">
+					<p:outputLabel value="Cliente:" style="color: black"/>
 					<p:selectOneMenu id="selectCliente"
 						value="#{null}" var="cli_selec"
 						converter="#{null}" effect="fade" filter="true"
-						panelStyle="width:345px" style="width:325px; margin-right: 270px"
+						panelStyle="width:345px" style="width:325px; margin-right: 275px"
 						filterMatchMode="startsWith" required="true"
 						requiredMessage="Debe seleccionar un Cliente">
 						<f:selectItem itemLabel="Seleccione un Cliente"
@@ -41,16 +41,16 @@
 						</p:column>
 					</p:selectOneMenu>
 					
-					<p:outputLabel value="Fecha:" style="color: white"/>
+					<p:outputLabel value="Fecha:" style="color: black"/>
 					<p:inputText value="#{null}" readonly="true" style="text-align:center"/>
 				</h:panelGrid>
 						
-				<h:panelGrid columns="8" cellpadding="10" >
-					<p:outputLabel value="Producto:" style="color: white"/>
+				<h:panelGrid columns="8" cellpadding="14" >
+					<p:outputLabel value="Producto:" style="color: black"/>
 					<p:selectOneMenu id="selectProducto"
 						value="#{null}" var="product_selec"
 						converter="#{null}" effect="fade" filter="true"
-						panelStyle="width:345px" style="width:325px"
+						panelStyle="width:345px" style="width:328px"
 						filterMatchMode="startsWith" required="true"
 						requiredMessage="Debe seleccionar un Producto">
 						<f:selectItem itemLabel="Seleccione un Producto"
@@ -68,7 +68,7 @@
 					
 					
 					
-					<p:outputLabel value="Cantidad:" style="color: white; margin-left: 250px"/>
+					<p:outputLabel value="Cantidad:" style="color: black; margin-left: 250px"/>
 					<p:spinner id="horizontalAfter" value="#{null}" min="1" size="7"/>
 					
 					<h:commandButton id="btnAgregarProducto" value="Agregar" styleClass="btn btn-success"
