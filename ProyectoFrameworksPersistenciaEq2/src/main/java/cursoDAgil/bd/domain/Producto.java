@@ -60,4 +60,12 @@ public class Producto {
 		this.marcaId = marcaId;
 	}
 	
+	public boolean equals(Object object) {
+		if(!(object instanceof Producto)) {
+			return false;
+		}
+		Producto regProducto = (Producto) object;
+		return (this.idProducto == regProducto.idProducto);
+	}
+	
 }
