@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/*************************************/-->
+<!--/*********** Equipo 2 ****************/-->
+<!--/* Lopez Guevara Jesus Alejandro y Cruz Peralta Leonel*/-->
+<!--/************** 6/06/22 **************/-->
+<!--/*************************************/--> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition
+	template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<h4 style="text-align:center" >
+			<FONT COLOR="white">Nueva Venta</FONT>
+			</h4>			
+			<h:form class="col-md-12" id="productoForm">
+				<h:panelGrid columns="4" cellpadding="10">
+					<p:outputLabel value="Cliente:" style="color: white"/>
+					<p:selectOneMenu id="selectCliente"
+						value="#{null}" var="cli_selec"
+						converter="#{null}" effect="fade" filter="true"
+						panelStyle="width:345px" style="width:325px; margin-right: 270px"
+						filterMatchMode="startsWith" required="true"
+						requiredMessage="Debe seleccionar un Cliente">
+						<f:selectItem itemLabel="Seleccione un Cliente"
+							itemValue="#{null}" process="@this" />
+						<f:selectItems value="#{null}"
+							var="cliente" itemValue="#{null}"
+							itemLabel="#{null} | #{null} #{null}"/>
+							<!-- itemLabel, como muestra la informacion en el spinner-->
+							<!-- cada columna que aparecera en el menu desplegable -->
+						<p:column>
+							<h:outputText value="#{null}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{null} #{null}" />
+						</p:column>
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Fecha:" style="color: white"/>
+					<p:inputText value="#{null}" readonly="true" style="text-align:center"/>
+				</h:panelGrid>
+						
+				<h:panelGrid columns="8" cellpadding="10" >
+					<p:outputLabel value="Producto:" style="color: white"/>
+					<p:selectOneMenu id="selectProducto"
+						value="#{null}" var="product_selec"
+						converter="#{null}" effect="fade" filter="true"
+						panelStyle="width:345px" style="width:325px"
+						filterMatchMode="startsWith" required="true"
+						requiredMessage="Debe seleccionar un Producto">
+						<f:selectItem itemLabel="Seleccione un Producto"
+							itemValue="#{null}" process="@this"/>
+						<f:selectItems value="#{null}"
+							var="producto" itemValue="#{null}"
+							itemLabel="#{null} | #{null}"/>
+						<p:column>
+							<h:outputText value="#{null}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{null}" />
+						</p:column>
+					</p:selectOneMenu>
+					
+					
+					
+					<p:outputLabel value="Cantidad:" style="color: white; margin-left: 250px"/>
+					<p:spinner id="horizontalAfter" value="#{null}" min="1" size="7"/>
+					
+					<h:commandButton id="btnAgregarProducto" value="Agregar" styleClass="btn btn-success"
+						/>
+				</h:panelGrid>
+			</h:form>
+			
+			<div class="col-md-12">
+				<h:form id="carritoVenta">
+					<p:growl id="msgs" showDetail="true" />
+					<p:dataTable id="tablaCarrito" var="compraItem" value="#{nuevaVentaBean.listaCompra}"
+						editable="true" style="margin-bottom:20px"
+						emptyMessage="Aún no se han agregado productos al carrito">
+						<f:facet name="header">Lista de Productos de la Venta</f:facet>
+						
+						<p:column headerText="N/P" style="text-align: center; width:70px">
+							<h:outputText value="#{null}" />
+						</p:column>
+						
+						<p:column headerText="Cantidad" style="text-align: center; width:160px">
+							<h:outputText value="#{null}" />
+						</p:column>
+						
+						<p:column headerText="Producto" style="text-align: center">
+							<h:outputText value="#{null}" />
+						</p:column>
+						
+						<p:column headerText="Precio Unitario" style="text-align: center; width:160px">
+							<h:outputText value="#{null}">
+								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Total" style="text-align: center; width:160px">
+							<h:outputText value="#{null}">
+								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column style="text-align: center; width:160px">
+							<h:commandButton  value="Eliminar" styleClass="btn btn-danger"/>
+						</p:column>
+						
+						
+						
+						
+						
+						<f:facet name="footer">
+							<p:outputLabel value="TOTAL:" style="margin-right:20px"/>
+							<p:inputText value="#{null}" readonly="true" style="text-align:center; width:200px">
+								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+							</p:inputText>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
+			
+				
+				
+				
+		        
+				<div class="container">
+					<h:form style="text-align:center">
+						<h:link value="Cancelar" styleClass="btn btn-secondary" style="margin-right: 20px"
+							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml"/>
+							
+						<h:commandButton id="btnNuevaVenta" value="Generar Venta" styleClass="btn btn-success"
+							action="Venta"  />
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
