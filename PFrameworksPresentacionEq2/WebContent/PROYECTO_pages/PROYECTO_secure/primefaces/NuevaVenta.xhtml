@@ -23,40 +23,24 @@
         <h:form class="col-md-12" id="productoForm">
           <h:panelGrid columns="4" cellpadding="17">
             <p:outputLabel value="Cliente:" style="color: black" />
-            <p:selectOneMenu
-            
-              id="selectCliente"
-              value="#{ventaBean.venta.cliente}"
-              var="temp"
-              converter="#{clienteConverter}"
-              effect="fade"
-              filter="true"
-              panelStyle="width:345px"
-              style="width: 325px; margin-right: 275px"
-              filterMatchMode="startsWith"
-              required="true"
-              requiredMessage="Debe seleccionar un Cliente"
-            >
-              <f:selectItem
-                itemLabel="Seleccione un Cliente"
-                itemValue="#{null}"
-                process="@this"
-              />
-              <f:selectItems
-                value="#{clienteDireccion2Bean.getlistaCliente()}"
-                var="cliente"
-                itemValue="#{cliente.nombre} #{cliente.apellido}"
-                itemLabel="#{cliente}"
-              />
-              <!-- itemLabel, como muestra la informacion en el spinner-->
-              <!-- cada columna que aparecera en el menu desplegable -->
-              <p:column>
-                <h:outputText value="#{temp.nombre}" />
-              </p:column>
-              <p:column>
-                <h:outputText value="#{temp.apellido}" />
-              </p:column>
-            </p:selectOneMenu>
+           <p:selectOneMenu id="selectIdClientes" value="#{ventaBean.venta.cliente}" effect="fade"
+									var="temp" converter="#{clienteConverter}"
+									filter="true" panelStyle="width:345px" style="width:325px"
+									filterMatchMode="startsWith" required="true"
+									requiredMessage="Debe seleccionar un cliente.">
+									<f:selectItem itemLabel="Seleccione un Cliente"
+											itemValue="#{null}" process="@this" />
+									<f:selectItems value="#{clienteDireccion2Bean.getlistaCliente()}"
+										var="cliente"
+										itemLabel="#{cliente.nombre} #{cliente.apellido}"
+										itemValue="#{cliente}" />
+									<p:column style="width:10%">
+										<h:outputText value="#{temp.nombre}"/>
+									</p:column>
+									<p:column style="width:10%">
+										<h:outputText value="#{temp.apellido}"/>
+									</p:column>
+								</p:selectOneMenu>
 
             <p:outputLabel value="Fecha:" style="color: black" />
             <p:inputText

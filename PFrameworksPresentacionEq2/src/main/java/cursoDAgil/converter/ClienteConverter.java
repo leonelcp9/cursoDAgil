@@ -18,7 +18,7 @@ import cursoDAgil.service.cliente.ClienteService;
 public class ClienteConverter implements Converter{
 	 @Inject
 	 ClienteService clienteService;
-	
+	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		if(value != null && (value.trim().length() >0)) {
 			try {
@@ -31,7 +31,7 @@ public class ClienteConverter implements Converter{
 		}
 	}
 
-	
+	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if(((value != null) && ((Cliente) value).getId()!=null)) {
 			return ((Cliente) value).getId().toString();
