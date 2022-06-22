@@ -24,10 +24,11 @@
           <h:panelGrid columns="4" cellpadding="17">
             <p:outputLabel value="Cliente:" style="color: black" />
             <p:selectOneMenu
+            
               id="selectCliente"
-              value="#{null}"
-              var="cli_selec"
-              converter="#{null}"
+              value="#{ventaBean.venta.cliente}"
+              var="temp"
+              converter="#{clienteConverter}"
               effect="fade"
               filter="true"
               panelStyle="width:345px"
@@ -42,24 +43,24 @@
                 process="@this"
               />
               <f:selectItems
-                value="#{null}"
+                value="#{clienteDireccion2Bean.getlistaCliente()}"
                 var="cliente"
-                itemValue="#{null}"
-                itemLabel="#{null} | #{null} #{null}"
+                itemValue="#{cliente.nombre} #{cliente.apellido}"
+                itemLabel="#{cliente}"
               />
               <!-- itemLabel, como muestra la informacion en el spinner-->
               <!-- cada columna que aparecera en el menu desplegable -->
               <p:column>
-                <h:outputText value="#{null}" />
+                <h:outputText value="#{temp.nombre}" />
               </p:column>
               <p:column>
-                <h:outputText value="#{null} #{null}" />
+                <h:outputText value="#{temp.apellido}" />
               </p:column>
             </p:selectOneMenu>
 
             <p:outputLabel value="Fecha:" style="color: black" />
             <p:inputText
-              value="#{null}"
+              value="#{ventaBean.fecha1.toString()}"
               readonly="true"
               style="text-align: center"
             />
