@@ -12,39 +12,40 @@ import java.util.Map;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.service.producto.ProductoService;
-
+import cursoDAgil.bd.domain.Producto;
 @Named
-public class ProductoConverter implements Converter{
+
+public class ProductoConverter implements Converter {
 	@Inject
 	ProductoService productoService;
 	
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		if(value != null && (value.trim().length() > 0)) {
-			try {
-				Map<String, Integer> mapProducto = new HashMap<>();
-				mapProducto.put("idProducto",Integer.parseInt(value));
-				return productoService.buscarPorId(mapProducto);
-			} catch(NumberFormatException e) {
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value){
+		if(value != null && (value.trim().length()>0)){
+			try{
+				Map<String,Integer>mapProducto =new HashMap<>();
+				mapProducto.put("idProducto", Integer.parseInt(value));
+				Producto producto = productoService.buscarPorId(mapProducto);
+				//System.out.println("Nombre: " + producto.getNombre());
+				return producto ;
+				
+			}catch(NumberFormatException e){
 				return null;
 			}
-		}else {
+		}else{
 			return null;
 		}
 	}
-	
-	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		if(((value != null) && ((Producto) value).getIdProducto().toString() !=null)) {
-			return ((Producto) value).getIdProducto().toString();
-		}
-		else {
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value){
+		if(((value !=null)&& ((Producto)value).getIdProducto()!=null)){
+			return ((Producto)value).getIdProducto().toString();
+		}else
 			return null;
-		}
 	}
-	
-	
 }
