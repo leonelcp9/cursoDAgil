@@ -29,9 +29,8 @@ public class gananciaTBean {
 		if (ganancia == null) {
 			ganancia = new Ganancia();
 		}
-
+		
 		setListaGanancia(gananciaService.listarGanancia());
-
 	}
 
 	public void registrar() {
