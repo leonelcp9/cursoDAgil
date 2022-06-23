@@ -1,7 +1,9 @@
 /*************************************/
 /* Equipo 2 */
-/* Lopez Guevara Jesus Alejandro y Cruz Peralta Leonel*/
-/* 6/06/22 */
+/* Mendez Gonzalez William
+ * Cruz Peralta Leonel
+ * Lopez Guevara Jesus A.*/
+/* 20/06/22 */
 /*************************************/
 package cursoDAgil.managedBean.venta;
 
@@ -213,7 +215,8 @@ public class VentaBean implements Serializable {
 		for(DetalleVentas d : listaDetalle) {
 			d.setVenvtaId(venta.getIdVenta());
 			detalleService.altaDetalleVenta(d);
-			gan+=d.getProducto().getPrecioVta()-d.getProducto().getPrecio();
+			gan+=d.getProducto().getPrecioVta()*d.getCantidad()-d.getCantidad()*d.getProducto().getPrecio();
+			System.out.println(gan+"HOLA");
 		}
 		ganancia.setTotalGanancia(gan);
 		System.out.println("-------------------------------------------------------");
