@@ -174,18 +174,18 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void insertarVenta() {
-		//System.out.println(venta.getCliente().getNombre());
-//		venta.setFecha(fecha1);
-//		venta.setTotalVenta(totalVenta);
-//		//venta.setClienteId(venta.getCliente().getId());
-//		System.out.println("----------Generar venta------------");
-//		System.out.println(venta.getClienteId());
-//		System.out.println(venta.getTotalVenta());
-//		
-//		//ventaService.altaVenta(venta);
-//		//
-//		venta=null;
-//		init();
+		System.out.println(venta.getCliente().getNombre());
+		venta.setFecha(fecha1);
+		venta.setTotalVenta(totalVenta);
+		venta.setClienteId(venta.getCliente().getId());
+		System.out.println("----------Generar venta------------");
+		System.out.println(venta.getClienteId());
+		System.out.println(venta.getTotalVenta());
+		
+		ventaService.altaVenta(venta);
+		//
+		venta=null;
+		init();
 	}
 	
 	public List<String> consultaIdTodosCliente(){
