@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -127,6 +129,10 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void agregarAcarrito() {
+		if(producto.getCantidad()<cantidad) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido sobrepasa el inventario"));
+			return;
+		}
 		carrito.add(producto);
 		detalle.setProducto(producto);
 		detalle.setCantidad(cantidad);
@@ -168,19 +174,18 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void insertarVenta() {
-		Cliente cli = venta.getCliente();
-		venta = new Venta();
-		venta.setCliente(cli);
-		venta.setFecha(fecha1);
-		venta.setTotalVenta(Double.parseDouble(getID_venta()));
-		venta.setClienteId(cli.getId());
-		
-		System.out.println(venta.getClienteId());
-		System.out.println(venta.getTotalVenta());
-		System.out.println(venta.getFecha());//TOTAL GANANCIA
-		
-		ventaService.altaVenta(venta);
-		init();
+		//System.out.println(venta.getCliente().getNombre());
+//		venta.setFecha(fecha1);
+//		venta.setTotalVenta(totalVenta);
+//		//venta.setClienteId(venta.getCliente().getId());
+//		System.out.println("----------Generar venta------------");
+//		System.out.println(venta.getClienteId());
+//		System.out.println(venta.getTotalVenta());
+//		
+//		//ventaService.altaVenta(venta);
+//		//
+//		venta=null;
+//		init();
 	}
 	
 	public List<String> consultaIdTodosCliente(){
