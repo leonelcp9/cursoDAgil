@@ -138,9 +138,10 @@
 
 				<div class="container">
 					<h:form style="text-align: center">
-						<h:link value="Cancelar" styleClass="btn btn-secondary"
+						<h:commandButton value="Cancelar" styleClass="btn btn-secondary"
 							style="margin-right: 20px"
 							actionListener="#{ventaBean.borrarTodo}"
+							action="Ventas"
 							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml" />
 
 						<h:commandButton id="btnNuevaVenta" value="Generar Venta" update=":form"

@@ -75,7 +75,8 @@
 			            </p:column>
 			            
 			            <f:facet name="footer">
-							  <h:commandButton value="Nueva Venta" action="NuevaVenta" styleClass="btn btn-success" style="margin-right: 5px"/> 
+							  <h:commandButton value="Nueva Venta" 
+							  actionListener="#{ventaBean.borrarTodo}" action="NuevaVenta" styleClass="btn btn-success" style="margin-right: 5px"/> 
 						</f:facet>
 						
 						<f:facet name="footer">

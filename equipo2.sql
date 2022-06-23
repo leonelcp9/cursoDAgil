@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2022 at 03:34 AM
+-- Generation Time: Jun 23, 2022 at 10:33 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -41,19 +41,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `email`, `sexo`, `idDireccion`) VALUES
-(1, 'Samuel', 'Guerrero', 'itougn15@gmail.com', 'Masculino', 1),
+(1, 'Samuel', 'Guerrero', 'itougn15@gmail.com', 'Femenino', 1),
 (2, 'Jorge', 'Narváez', 'jorgito123@gmail.com', 'Femenino', 1),
-(5, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(6, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(7, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(8, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(9, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(10, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(11, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(12, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(13, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(14, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1),
-(15, 'Test', 'asdasd', 'asdas@gmail.com', 'femenino', 1);
+(24, 'David', 'Martínez Torres', 'dtorres@gmail.com', 'M', 1);
 
 -- --------------------------------------------------------
 
@@ -72,11 +62,17 @@ CREATE TABLE `detalleventas` (
 --
 
 INSERT INTO `detalleventas` (`ventaId`, `productoId`, `cantidad`) VALUES
-(5, 3, 233),
-(1, 5, 2),
-(1, 3, 2),
-(1, 3, 2),
-(1, 3, 2);
+(46, 3, 1),
+(47, 3, 1),
+(49, 17, 1),
+(51, 17, 1),
+(52, 3, 1),
+(54, 22, 1),
+(58, 3, 2),
+(58, 17, 3),
+(62, 3, 1),
+(62, 33, 1),
+(63, 34, 1);
 
 -- --------------------------------------------------------
 
@@ -101,17 +97,7 @@ CREATE TABLE `direccion` (
 
 INSERT INTO `direccion` (`idDireccion`, `calle`, `numero`, `colonia`, `ciudad`, `estado`, `pais`, `codigoPostal`) VALUES
 (1, 'Alamos', 4, 'Los Presidentes', 'Huajuapan', 'Oaxaca', 'Mexico', 690007),
-(3, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(4, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(5, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(6, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(7, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(8, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(9, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(10, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(11, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(12, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000),
-(13, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000);
+(3, 'Micaela Galindo', 3, 'Centro', 'Huajuapan', 'Oaxaca', 'Mexico', 69000);
 
 -- --------------------------------------------------------
 
@@ -131,31 +117,15 @@ CREATE TABLE `ganancias` (
 --
 
 INSERT INTO `ganancias` (`idGanancia`, `ventaId`, `totalGanancia`, `fecha`) VALUES
-(1, 1, 10, '2022-04-28'),
-(2, 1, 10, '2022-04-28'),
-(3, 2, 10, '2022-04-23'),
-(4, 3, 230, '2022-04-20'),
-(5, 1, 15550.5, '2022-05-01'),
-(6, 1, 15550.5, '2022-05-02'),
-(7, 1, 15550.5, '2022-05-02'),
-(8, 1, 15550.5, '2022-05-02'),
-(9, 1, 15550.5, '2022-05-02'),
-(10, 1, 15550.5, '2022-05-02'),
-(11, 1, 15550.5, '2022-05-02'),
-(12, 1, 15550.5, '2022-05-02'),
-(13, 1, 15550.5, '2022-05-02'),
-(14, 1, 15550.5, '2022-05-02'),
-(15, 1, 15550.5, '2022-05-02'),
-(16, 1, 15550.5, '2022-05-02'),
-(17, 1, 15550.5, '2022-05-02'),
-(18, 1, 15550.5, '2022-05-02'),
-(19, 1, 15550.5, '2022-05-02'),
-(20, 1, 2500, '2022-05-20'),
-(21, 1, 2500, '2022-05-20'),
-(22, 2, 2500, '2022-05-20'),
-(23, 1, 15550.5, '2022-05-20'),
-(24, 1, 2500, '2022-05-20'),
-(25, 1, 2500, '2022-05-20');
+(35, 55, 10, '2022-06-23'),
+(36, 56, 10, '2022-06-23'),
+(37, 57, 15, '2022-06-23'),
+(38, 58, 15, '2022-06-23'),
+(39, 59, 10, '2022-06-23'),
+(40, 60, 15, '2022-06-23'),
+(41, 61, 10, '2022-06-23'),
+(42, 62, 402, '2022-06-23'),
+(43, 63, 5000, '2022-06-23');
 
 -- --------------------------------------------------------
 
@@ -176,15 +146,16 @@ INSERT INTO `marcas` (`idMarca`, `nombreMarca`) VALUES
 (1, 'NVIDIA'),
 (3, 'Gamesa'),
 (4, 'Adidas'),
-(5, 'Gamesa'),
-(7, 'Gamesa'),
-(8, 'Gamesa'),
-(9, 'Gamesa'),
-(10, 'Gamesa'),
-(11, 'Gamesa'),
-(12, 'Gamesa'),
-(13, 'Gamesa'),
-(14, 'Gamesa');
+(22, 'CocaCola'),
+(23, 'Nike'),
+(24, 'Marinela'),
+(25, 'Logitech'),
+(26, 'Samsung'),
+(27, 'Xiaomi'),
+(28, 'Apple'),
+(29, 'Sony'),
+(30, 'Microsoft'),
+(31, 'Tupperware');
 
 -- --------------------------------------------------------
 
@@ -206,13 +177,13 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`idProducto`, `nombre`, `precio`, `precioVta`, `cantidad`, `marcaId`) VALUES
-(3, 'Fresca', 25, 27, 100, 1),
-(5, 'Fresca', 25, 27, 100, 1),
+(3, 'Fresca', 25, 27, 99, 1),
 (17, 'Manzanita', 25, 28, 150, 3),
-(21, 'Axe Chocolate', 50, 60, 30, 8),
 (22, 'Coke', 25, 27, 100, 3),
-(23, 'Manzanita', 25, 28, 150, 3),
-(24, 'Manzanita', 25, 28, 150, 3);
+(32, 'NVIDIA RTX 3080Ti', 70000, 80000, 10, 1),
+(33, 'Licencia Microsoft Windows 11', 2600, 3000, 49, 30),
+(34, 'iPhone 13 Pro Max', 30000, 35000, 19, 28),
+(35, 'Bocinas Logitec z506', 2400, 2900, 36, 25);
 
 -- --------------------------------------------------------
 
@@ -232,28 +203,22 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`idVenta`, `clienteId`, `totalVenta`, `fecha`) VALUES
-(1, 2, 5412, '2022-04-13'),
-(2, 1, 564.5, '2022-04-10'),
-(3, 1, 900, '2022-04-28'),
-(4, 1, 900, '2022-04-28'),
-(5, 1, 900, '2022-04-30'),
-(6, 1, 900, '2022-04-30'),
-(7, 1, 900, '2022-05-02'),
-(8, 1, 900, '2022-05-02'),
-(9, 1, 900, '2022-05-02'),
-(10, 1, 900, '2022-05-02'),
-(12, 1, 900, '2022-05-02'),
-(13, 1, 900, '2022-05-02'),
-(14, 1, 900, '2022-05-02'),
-(15, 1, 900, '2022-05-02'),
-(16, 1, 900, '2022-05-02'),
-(17, 1, 900, '2022-05-02'),
-(18, 1, 900, '2022-05-02'),
-(19, 1, 700, '2022-05-18'),
-(20, 1, 700, '2022-05-20'),
-(21, 1, 900, '2022-05-20'),
-(22, 1, 700, '2022-05-20'),
-(23, 1, 700, '2022-05-20');
+(46, 1, 27, '2022-06-23'),
+(47, 2, 147, '2022-06-23'),
+(48, 1, 120, '2022-06-23'),
+(49, 1, 28, '2022-06-23'),
+(50, 2, 240, '2022-06-23'),
+(51, 1, 28, '2022-06-23'),
+(52, 1, 27, '2022-06-23'),
+(53, 1, 60, '2022-06-23'),
+(54, 1, 27, '2022-06-23'),
+(56, 1, 60, '2022-06-23'),
+(58, 2, 378, '2022-06-23'),
+(59, 1, 60, '2022-06-23'),
+(60, 1, 115, '2022-06-23'),
+(61, 1, 60, '2022-06-23'),
+(62, 24, 3027, '2022-06-23'),
+(63, 1, 35000, '2022-06-23');
 
 --
 -- Indexes for dumped tables
@@ -313,37 +278,37 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `ganancias`
 --
 ALTER TABLE `ganancias`
-  MODIFY `idGanancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idGanancia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Constraints for dumped tables
