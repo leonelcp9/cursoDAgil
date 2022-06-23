@@ -194,7 +194,19 @@ public class VentaBean implements Serializable {
 		System.out.println("Fin----------");
 		idVenta=listaVenta.size();
 		venta=listaVenta.get(idVenta-1);
+		
+		for(DetalleVentas d : listaDetalle) {
+			d.setVenvtaId(venta.getIdVenta());
+			detalleService.altaDetalleVenta(d);
+		}
+		
+		
+		//terminar
+		venta=null;
 		listaDetalle=null;
+		carrito=null;
+		listaVenta=null;
+		totalVenta=0f;
 		init();
 	}
 	

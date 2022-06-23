@@ -143,8 +143,9 @@
 							actionListener="#{ventaBean.borrarTodo}"
 							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml" />
 
-						<h:commandButton id="btnNuevaVenta" value="Generar Venta"
-							styleClass="btn btn-success" action="Venta" actionListener="#{ventaBean.insertarVenta}"/>
+						<h:commandButton id="btnNuevaVenta" value="Generar Venta" update=":form"
+							styleClass="btn btn-success"  actionListener="#{ventaBean.insertarVenta}"
+							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml" />
 					</h:form>
 				</div>
 			</div>
