@@ -16,6 +16,7 @@ import javax.inject.Named;
 
 import cursoDAgil.bd.domain.Cliente;
 import cursoDAgil.bd.domain.DetalleVentas;
+import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.detalleVentas.DetalleVentasService;
@@ -45,25 +46,39 @@ public class VentaBean implements Serializable {
 	private List<String> listaIdCLienteNs;
 	private List<String> listaNombreClientes;
 	private List<DetalleVentas> listaDetalle;
+	private List<Producto> carrito;
 	
 	private String ID_venta;
 	private String ID_Cliente;
-	private Venta NewVenta;
 	private java.sql.Date fecha1;
 	private String NewTotalVenta;
 	private Venta venta;
 	private Cliente cliente;
+	private Producto producto;
+	private Integer cantidad;
+	private DetalleVentas detalle;
 	
 	@PostConstruct
 	public void init() {
+		cantidad = 1;
 		if(listaVentas == null)
 			listaVentas = new ArrayList<Venta>();
 		if(listaIdCliente == null)
 			listaIdCliente = new ArrayList<String>();
 		if(listaIdVenta == null)
 			listaIdVenta = new ArrayList<String>();
-		if(listaDetalle == null)
+		if(listaDetalle == null) {
 			listaDetalle = new ArrayList<DetalleVentas>();
+			
+			
+		}
+		if(detalle == null)
+			detalle = new DetalleVentas();
+		detalle.setProducto(null);
+		producto = new Producto();
+		if(carrito == null)
+			carrito = new ArrayList<Producto>();
+		
 		if(venta == null)
 			venta = new Venta();
 			venta.setCliente(null);
@@ -72,6 +87,7 @@ public class VentaBean implements Serializable {
 		setListaVentas(ventaService.listarTodasVentas());
 		listaIdVenta.clear();
 		listaIdCliente.clear();
+		carrito.clear();
 		for(Venta i:listaVentas) {
 			listaIdVenta.add(i.getIdVenta().toString());
 			if(!listaIdCliente.contains(i.getClienteId().toString()))
@@ -99,7 +115,10 @@ public class VentaBean implements Serializable {
 		setListaDetalle(detalleService.listarTodosDetalleVentas(id));
 	}
 	
-	
+	public void agregarAcarrito() {
+		System.out.println(venta.getCliente().getNombre());
+		System.out.println(producto.getNombre());
+	}
 	public void insertarVenta() {
 		Cliente cli = venta.getCliente();
 		venta = new Venta();
@@ -202,6 +221,38 @@ public class VentaBean implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public List<Producto> getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(List<Producto> carrito) {
+		this.carrito = carrito;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public DetalleVentas getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(DetalleVentas detalle) {
+		this.detalle = detalle;
 	}
 	
 }

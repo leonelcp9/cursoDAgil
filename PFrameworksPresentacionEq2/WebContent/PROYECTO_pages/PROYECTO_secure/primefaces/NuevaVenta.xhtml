@@ -5,197 +5,143 @@
 <!--/************** 6/06/22 **************/-->
 <!--/*************************************/-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:ui="http://java.sun.com/jsf/facelets"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:p="http://primefaces.org/ui"
->
-  <ui:composition
-    template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml"
-  >
-    <ui:define name="content">
-      <div class="container">
-        <h4 style="text-align: center">
-          <font color="white">Nueva Venta</font>
-        </h4>
-        <h:form class="col-md-12" id="productoForm">
-          <h:panelGrid columns="4" cellpadding="17">
-            <p:outputLabel value="Cliente:" style="color: black" />
-           <p:selectOneMenu id="selectIdClientes" value="#{ventaBean.venta.cliente}" effect="fade"
-									var="temp" converter="#{clienteConverter}"
-									filter="true" panelStyle="width:345px" style="width:325px"
-									filterMatchMode="startsWith" required="true"
-									requiredMessage="Debe seleccionar un cliente.">
-									<f:selectItem itemLabel="Seleccione un Cliente"
-											itemValue="#{null}" process="@this" />
-									<f:selectItems value="#{clienteDireccion2Bean.getlistaCliente()}"
-										var="cliente"
-										itemLabel="#{cliente.nombre} #{cliente.apellido}"
-										itemValue="#{cliente}" />
-									<p:column style="width:10%">
-										<h:outputText value="#{temp.nombre}"/>
-									</p:column>
-									<p:column style="width:10%">
-										<h:outputText value="#{temp.apellido}"/>
-									</p:column>
-								</p:selectOneMenu>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition
+	template="/PROYECTO_pages/PROYECTO_secure/primefaces/template/common/commonLayout.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<h4 style="text-align: center">
+				<font color="white">Nueva Venta</font>
+			</h4>
+			<h:form class="col-md-12" id="productoForm">
+				<h:panelGrid columns="4" cellpadding="17">
+					<p:outputLabel value="Cliente:" style="color: black" />
+					<p:selectOneMenu id="selectIdClientes"
+						value="#{ventaBean.venta.cliente}" effect="fade" var="temp"
+						converter="#{clienteConverter}" filter="true"
+						panelStyle="width:345px" style="width:325px"
+						filterMatchMode="startsWith" required="true"
+						requiredMessage="Debe seleccionar un cliente.">
+						<f:selectItem itemLabel="Seleccione un Cliente"
+							itemValue="#{null}" process="@this" />
+						<f:selectItems value="#{clienteDireccion2Bean.getlistaCliente()}"
+							var="cliente" itemLabel="#{cliente.nombre} #{cliente.apellido}"
+							itemValue="#{cliente}" />
+						<p:column style="width:10%">
+							<h:outputText value="#{temp.nombre}" />
+						</p:column>
+						<p:column style="width:10%">
+							<h:outputText value="#{temp.apellido}" />
+						</p:column>
+					</p:selectOneMenu>
 
-            <p:outputLabel value="Fecha:" style="color: black" />
-            <p:inputText
-              value="#{ventaBean.fecha1.toString()}"
-              readonly="true"
-              style="text-align: center"
-            />
-          </h:panelGrid>
+					<p:outputLabel value="Fecha:" style="color: black" />
+					<p:inputText value="#{ventaBean.fecha1.toString()}" readonly="true"
+						style="text-align: center" />
+				</h:panelGrid>
 
-          <h:panelGrid columns="8" cellpadding="14">
-            <p:outputLabel value="Productos:" style="color: black" />
+				<h:panelGrid columns="8" cellpadding="14">
+					<p:outputLabel value="Producto:" style="color: black" />
 
-            <p:selectOneMenu
-              id="selectProducto"
-              value="#{productoTBean.producto}"
-              var="product_selec"
-              converter="#{productoConverter}"
-              effect="fade"
-              filter="true"
-              panelStyle="width:345px"
-              style="width: 328px"
-              filterMatchMode="startsWith"
-              required="true"
-              requiredMessage="Debe seleccionar un Producto"
-            >
-              <f:selectItem
-                itemLabel="Seleccione un Producto"
-                itemValue="#{null}"
-                process="@this"
-              />
-              <f:selectItems
-                value="#{productoTBean.getListaProducto()}"
-                var="producto"
-                itemLabel="#{producto.nombre}, Precio unitario:  #{producto.precioVta}"
-                itemValue="#{producto}"
-              />
-              <p:column>
-                <h:outputText value="#{product_selec.nombre}" />
-              </p:column>
-              <p:column>
-                <h:outputText value="#{product_selec.precio}" />
-              </p:column>
-            </p:selectOneMenu>
+					<p:selectOneMenu id="selectProducto" value="#{ventaBean.detalle.producto}"
+						var="product_selec" converter="#{productoConverter}" effect="fade"
+						filter="true" panelStyle="width:345px" style="width: 325px"
+						filterMatchMode="startsWith" required="false"
+						requiredMessage="Debe seleccionar un Producto"
+						converterMessage="Fallo de conversion">
+						<f:selectItem itemLabel="Seleccione un Producto"
+							itemValue="#{null}" process="@this" />
+						<f:selectItems value="#{productoTBean.getListaProducto()}"
+							var="producto"
+							itemLabel="#{producto.nombre}, Precio unitario:  #{producto.precioVta}"
+							itemValue="#{producto}" />
+						<p:column>
+							<h:outputText value="#{product_selec.nombre}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{product_selec.precioVta}" />
+						</p:column>
+					</p:selectOneMenu>
 
-            <p:outputLabel
-              value="Cantidad:"
-              style="color: black; margin-left: 250px"
-            />
-            <p:spinner id="horizontalAfter" value="#{null}" min="1" size="7" />
+					<p:outputLabel value="Cantidad:"
+						style="color: black; margin-left: 250px" />
+					<p:spinner id="horizontalAfter" value="1" min="1" size="7" />
 
-            <h:commandButton
-              id="btnAgregarProducto"
-              value="Agregar"
-              styleClass="btn btn-success"
-            />
-          </h:panelGrid>
-        </h:form>
+					<h:commandButton id="btnAgregarProducto" value="Agregar"
+						styleClass="btn btn-success"
+						actionListener="#{ventaBean.agregarAcarrito}" />
+				</h:panelGrid>
+			</h:form>
 
-        <div class="col-md-12">
-          <h:form id="carritoVenta">
-            <p:growl id="msgs" showDetail="true" />
-            <p:dataTable
-              id="tablaCarrito"
-              var="compraItem"
-              value="#{nuevaVentaBean.listaCompra}"
-              editable="true"
-              style="margin-bottom: 20px"
-              emptyMessage="Aún no se han agregado productos al carrito"
-            >
-              <f:facet name="header">Lista de Productos de la Venta</f:facet>
+			<div class="col-md-12">
+				<h:form id="carritoVenta">
+					<p:growl id="msgs" showDetail="true" />
+					<p:dataTable id="tablaCarrito" var="compraItem"
+						value="#{nuevaVentaBean.listaCompra}" editable="true"
+						style="margin-bottom: 20px"
+						emptyMessage="Aún no se han agregado productos al carrito">
+						<f:facet name="header">Lista de Productos de la Venta</f:facet>
 
-              <p:column
-                headerText="N/P"
-                style="text-align: center; width: 70px"
-              >
-                <h:outputText value="#{null}" />
-              </p:column>
+						<p:column headerText="N/P" style="text-align: center; width: 70px">
+							<h:outputText value="#{null}" />
+						</p:column>
 
-              <p:column
-                headerText="Cantidad"
-                style="text-align: center; width: 160px"
-              >
-                <h:outputText value="#{null}" />
-              </p:column>
+						<p:column headerText="Cantidad"
+							style="text-align: center; width: 160px">
+							<h:outputText value="#{null}" />
+						</p:column>
 
-              <p:column headerText="Producto" style="text-align: center">
-                <h:outputText value="#{null}" />
-              </p:column>
+						<p:column headerText="Producto" style="text-align: center">
+							<h:outputText value="#{null}" />
+						</p:column>
 
-              <p:column
-                headerText="Precio Unitario"
-                style="text-align: center; width: 160px"
-              >
-                <h:outputText value="#{null}">
-                  <f:convertNumber
-                    type="currency"
-                    currencySymbol="$"
-                    locale="en_US"
-                  />
-                </h:outputText>
-              </p:column>
+						<p:column headerText="Precio Unitario"
+							style="text-align: center; width: 160px">
+							<h:outputText value="#{null}">
+								<f:convertNumber type="currency" currencySymbol="$"
+									locale="en_US" />
+							</h:outputText>
+						</p:column>
 
-              <p:column
-                headerText="Total"
-                style="text-align: center; width: 160px"
-              >
-                <h:outputText value="#{null}">
-                  <f:convertNumber
-                    type="currency"
-                    currencySymbol="$"
-                    locale="en_US"
-                  />
-                </h:outputText>
-              </p:column>
+						<p:column headerText="Total"
+							style="text-align: center; width: 160px">
+							<h:outputText value="#{null}">
+								<f:convertNumber type="currency" currencySymbol="$"
+									locale="en_US" />
+							</h:outputText>
+						</p:column>
 
-              <p:column style="text-align: center; width: 160px">
-                <h:commandButton value="Eliminar" styleClass="btn btn-danger" />
-              </p:column>
+						<p:column style="text-align: center; width: 160px">
+							<h:commandButton value="Eliminar" styleClass="btn btn-danger" />
+						</p:column>
 
-              <f:facet name="footer">
-                <p:outputLabel value="TOTAL:" style="margin-right: 20px" />
-                <p:inputText
-                  value="#{null}"
-                  readonly="true"
-                  style="text-align: center; width: 200px"
-                >
-                  <f:convertNumber
-                    type="currency"
-                    currencySymbol="$"
-                    locale="en_US"
-                  />
-                </p:inputText>
-              </f:facet>
-            </p:dataTable>
-          </h:form>
+						<f:facet name="footer">
+							<p:outputLabel value="TOTAL:" style="margin-right: 20px" />
+							<p:inputText value="#{null}" readonly="true"
+								style="text-align: center; width: 200px">
+								<f:convertNumber type="currency" currencySymbol="$"
+									locale="en_US" />
+							</p:inputText>
+						</f:facet>
+					</p:dataTable>
+				</h:form>
 
-          <div class="container">
-            <h:form style="text-align: center">
-              <h:link
-                value="Cancelar"
-                styleClass="btn btn-secondary"
-                style="margin-right: 20px"
-                outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml"
-              />
+				<div class="container">
+					<h:form style="text-align: center">
+						<h:link value="Cancelar" styleClass="btn btn-secondary"
+							style="margin-right: 20px"
+							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml" />
 
-              <h:commandButton
-                id="btnNuevaVenta"
-                value="Generar Venta"
-                styleClass="btn btn-success"
-                action="Venta"
-              />
-            </h:form>
-          </div>
-        </div>
-      </div>
-    </ui:define>
-  </ui:composition>
+						<h:commandButton id="btnNuevaVenta" value="Generar Venta"
+							styleClass="btn btn-success" action="Venta" />
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>

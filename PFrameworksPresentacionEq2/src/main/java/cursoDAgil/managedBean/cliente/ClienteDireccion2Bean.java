@@ -111,9 +111,7 @@ public class ClienteDireccion2Bean implements Serializable {
 	public List<Cliente> getlistaCliente() {
 		if(listaCliente == null)
 			init();
-		for(Cliente c: listaCliente) {
-			System.out.println(c.getNombre());
-		}
+		
 		return listaCliente;
 	}
 

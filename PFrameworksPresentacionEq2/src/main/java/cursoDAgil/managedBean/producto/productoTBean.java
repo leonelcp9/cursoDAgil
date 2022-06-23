@@ -28,6 +28,7 @@ public class productoTBean {
 	ProductoService productoService;
 	private List<Producto> listaProducto;
 	private Producto producto;
+	private List<Producto> carrito;
 	
 	@PostConstruct
 	public void init() {
@@ -67,6 +68,10 @@ public class productoTBean {
 				new FacesMessage("Producto eliminado ", productoEliminado));
 	}
 	
+	public void agregarAcarrito() {
+		System.out.println("----------------------------------------------");
+		System.out.println(producto.getNombre());
+	}
 	/*
 	public void eliminar() {
 		Producto producto = getProducto();
