@@ -69,7 +69,7 @@
 
 					<p:outputLabel value="Cantidad:"
 						style="color: black; margin-left: 250px" />
-					<p:spinner id="horizontalAfter" value="1" min="1" size="7" />
+					<p:spinner id="horizontalAfter" value="#{ventaBean.cantidad}" min="1" size="7" />
 
 					<h:commandButton id="btnAgregarProducto" value="Agregar"
 						styleClass="btn btn-success"
@@ -80,48 +80,54 @@
 			<div class="col-md-12">
 				<h:form id="carritoVenta">
 					<p:growl id="msgs" showDetail="true" />
-					<p:dataTable id="tablaCarrito" var="compraItem"
-						value="#{nuevaVentaBean.listaCompra}" editable="true"
+					<p:dataTable id="tablaCarrito" var="detalle"
+						value="#{ventaBean.listaDetalle}" editable="true"
 						style="margin-bottom: 20px"
 						emptyMessage="Aún no se han agregado productos al carrito">
 						<f:facet name="header">Lista de Productos de la Venta</f:facet>
 
-						<p:column headerText="N/P" style="text-align: center; width: 70px">
-							<h:outputText value="#{null}" />
-						</p:column>
-
-						<p:column headerText="Cantidad"
-							style="text-align: center; width: 160px">
-							<h:outputText value="#{null}" />
-						</p:column>
+						
 
 						<p:column headerText="Producto" style="text-align: center">
-							<h:outputText value="#{null}" />
+							<h:outputText value="#{detalle.producto.nombre}" />
+						</p:column>
+						
+						<p:column headerText="Cantidad"
+							style="text-align: center; width: 160px">
+							<p:spinner id="horizontalAfter" value="#{detalle.cantidad}" min="1" size="7" valueChangeListener="#{ventaBean.cambioDeCantidad}">
+								<f:ajax execute="@form" update=":form:tablaCarrito"
+								value = "#{detalle.productoId}" target="#{ventaBean.idProducto}"
+								event="valueChange" listener="#{ventaBean.cambioDeCantidad}"/>
+							</p:spinner>
 						</p:column>
 
-						<p:column headerText="Precio Unitario"
+						<p:column headerText="Precio"
 							style="text-align: center; width: 160px">
-							<h:outputText value="#{null}">
+							<h:outputText value="#{detalle.producto.precioVta}">
 								<f:convertNumber type="currency" currencySymbol="$"
 									locale="en_US" />
 							</h:outputText>
 						</p:column>
 
-						<p:column headerText="Total"
+						<p:column headerText="Importe"
 							style="text-align: center; width: 160px">
-							<h:outputText value="#{null}">
+							<h:outputText value="#{detalle.producto.precioVta * detalle.cantidad}">
 								<f:convertNumber type="currency" currencySymbol="$"
 									locale="en_US" />
 							</h:outputText>
 						</p:column>
 
 						<p:column style="text-align: center; width: 160px">
-							<h:commandButton value="Eliminar" styleClass="btn btn-danger" />
+							<h:commandButton value="Eliminar" styleClass="btn btn-danger"
+							process="@this"  action="#{ventaBean.eliminarDeCarrito}" update=":form:tablaCarrito">
+								<f:setPropertyActionListener 
+								value = "#{detalle.productoId}" target="#{ventaBean.idProducto}"/>
+							</h:commandButton>
 						</p:column>
 
 						<f:facet name="footer">
 							<p:outputLabel value="TOTAL:" style="margin-right: 20px" />
-							<p:inputText value="#{null}" readonly="true"
+							<p:inputText value="#{ventaBean.totalVenta}" readonly="true"
 								style="text-align: center; width: 200px">
 								<f:convertNumber type="currency" currencySymbol="$"
 									locale="en_US" />
@@ -137,7 +143,7 @@
 							outcome="/PROYECTO_pages/PROYECTO_secure/primefaces/Ventas.xhtml" />
 
 						<h:commandButton id="btnNuevaVenta" value="Generar Venta"
-							styleClass="btn btn-success" action="Venta" />
+							styleClass="btn btn-success" action="Venta" actionListener="#{ventaBean.borrarTodo}"/>
 					</h:form>
 				</div>
 			</div>

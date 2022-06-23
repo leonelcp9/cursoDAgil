@@ -56,7 +56,11 @@ public class VentaBean implements Serializable {
 	private Cliente cliente;
 	private Producto producto;
 	private Integer cantidad;
+	private Float  precioUnitario;
+	private Float totalProducto;
+	private Float totalVenta=0f;
 	private DetalleVentas detalle;
+	private String idProducto;
 	
 	@PostConstruct
 	public void init() {
@@ -76,8 +80,11 @@ public class VentaBean implements Serializable {
 			detalle = new DetalleVentas();
 		detalle.setProducto(null);
 		producto = new Producto();
-		if(carrito == null)
+		if(carrito == null) {
 			carrito = new ArrayList<Producto>();
+			totalVenta=0f;
+		}
+			
 		
 		if (producto == null) {
 			producto = new Producto();
@@ -120,9 +127,46 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void agregarAcarrito() {
-		System.out.println(venta.getCliente().getNombre());
-		System.out.println(producto.getNombre());
+		carrito.add(producto);
+		detalle.setProducto(producto);
+		detalle.setCantidad(cantidad);
+		detalle.setProductoId(detalle.getProducto().getIdProducto());
+		
+		boolean encontrado=false;
+		for(DetalleVentas d : listaDetalle) {
+			if(d.getProductoId()==detalle.getProductoId()) {
+				encontrado=true;
+				d.setCantidad(d.getCantidad()+detalle.getCantidad());
+				
+			}
+		}
+		if(!encontrado) {
+			listaDetalle.add(detalle);
+		}
+		
+		
+		detalle=new DetalleVentas();
+		totalVenta=0f;
+		for(DetalleVentas d : listaDetalle) {
+			totalVenta+=d.getProducto().getPrecioVta()*d.getCantidad();
+		}
+		
+		
 	}
+	
+	public void eliminarDeCarrito() {
+		System.out.println("Eliminar idProducto = "+idProducto);
+		for(DetalleVentas d : listaDetalle) {
+			if(d.getProductoId()==Integer.valueOf(idProducto)) {
+				listaDetalle.remove(d);
+			}
+		}
+	}
+	
+	public void cambioDeCantidad() {
+		System.out.println("Cambio id="+idProducto);
+	}
+	
 	public void insertarVenta() {
 		Cliente cli = venta.getCliente();
 		venta = new Venta();
@@ -147,7 +191,10 @@ public class VentaBean implements Serializable {
 			listaNombreClientes.add(i.getNombre()+" "+i.getApellido());
 		return listaNombreClientes;
 	}
-	
+	public void borrarTodo() {
+		carrito=null;
+		init();
+	}
 	public List<Venta> getListaVentas() {
 		return listaVentas;
 	}
@@ -257,6 +304,38 @@ public class VentaBean implements Serializable {
 
 	public void setDetalle(DetalleVentas detalle) {
 		this.detalle = detalle;
+	}
+
+	public Float getPrecioUnitario() {
+		return precioUnitario;
+	}
+
+	public void setPrecioUnitario(Float precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+
+	public Float getTotalProducto() {
+		return totalProducto;
+	}
+
+	public void setTotalProducto(Float totalProducto) {
+		this.totalProducto = totalProducto;
+	}
+
+	public Float getTotalVenta() {
+		return totalVenta;
+	}
+
+	public void setTotalVenta(Float totalVenta) {
+		this.totalVenta = totalVenta;
+	}
+
+	public String getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(String idProducto) {
+		this.idProducto = idProducto;
 	}
 	
 }
