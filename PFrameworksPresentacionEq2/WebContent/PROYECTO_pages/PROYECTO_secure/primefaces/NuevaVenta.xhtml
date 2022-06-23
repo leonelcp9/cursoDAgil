@@ -47,7 +47,7 @@
 				<h:panelGrid columns="8" cellpadding="14">
 					<p:outputLabel value="Producto:" style="color: black" />
 
-					<p:selectOneMenu id="selectProducto" value="#{ventaBean.detalle.producto}"
+					<p:selectOneMenu id="selectProducto" value="#{ventaBean.producto}"
 						var="product_selec" converter="#{productoConverter}" effect="fade"
 						filter="true" panelStyle="width:345px" style="width: 325px"
 						filterMatchMode="startsWith" required="false"

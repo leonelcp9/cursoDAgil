@@ -78,9 +78,9 @@ public class ProductoDaoImpl implements ProductoDao, Serializable{
 	}
 	@Override
 	public Producto buscarPorId(Map<String, Integer> mapProducto) {
+		Producto producto = new Producto();
 		try {
 			ProductoMapper productoMapper = sqlSession.getMapper(ProductoMapper.class);
-			Producto producto = new Producto();
 			producto = productoMapper.buscarPorId(mapProducto);
 			System.out.println("ID producto: "+ producto.getIdProducto());
 			System.out.println("Nombre producto: "+producto.getNombre());
@@ -89,16 +89,18 @@ public class ProductoDaoImpl implements ProductoDao, Serializable{
 			System.out.println("Cantidad: "+producto.getCantidad());
 			System.out.println("marcaId: "+producto.getMarcaId());
 			System.out.println();
+			return productoMapper.buscarPorId(mapProducto);
 		}catch(Exception e) {
 			System.out.println("Error: "+e);
 		}
-		return null;
+		return producto;
 	}
 	@Override
 	public Producto buscarPorIdconMarca(Map<String, Integer> mapProducto) {
+		Producto producto = new Producto();
 		try {
 			ProductoMapper productoMapper = sqlSession.getMapper(ProductoMapper.class);
-			Producto producto = new Producto();
+
 			producto = productoMapper.buscarPorIdconMarca(mapProducto);
 			System.out.println("ID producto: "+ producto.getIdProducto());
 			System.out.println("Nombre producto: "+producto.getNombre());
@@ -112,11 +114,12 @@ public class ProductoDaoImpl implements ProductoDao, Serializable{
 			System.out.println("Id de la marca: " + marca.getIdMarca());
 			System.out.println("Nombre de la marca "+ marca.getNombreMarca());
 			System.out.println();
+			return producto;
 		}
 		catch(Exception e) {
 			System.out.println("Error: "+e);
 		}
-		return null;
+		return producto;
 	}
 	@Override
 	public List<Producto> listarProductosconMarca() {

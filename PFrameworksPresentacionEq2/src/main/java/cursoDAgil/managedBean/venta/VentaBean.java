@@ -79,6 +79,10 @@ public class VentaBean implements Serializable {
 		if(carrito == null)
 			carrito = new ArrayList<Producto>();
 		
+		if (producto == null) {
+			producto = new Producto();
+		}
+		
 		if(venta == null)
 			venta = new Venta();
 			venta.setCliente(null);

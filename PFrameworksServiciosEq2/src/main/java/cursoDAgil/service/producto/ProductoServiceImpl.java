@@ -39,7 +39,8 @@ public class ProductoServiceImpl implements ProductoService, Serializable{
 	}
 
 	public Producto buscarPorId(Map<String, Integer> mapProducto) {
-		return productoDao.buscarPorId(mapProducto);
+		Producto producto = productoDao.buscarPorId(mapProducto);
+		return producto; 
 	}
 
 	public Producto buscarPorIdconMarca(Map<String, Integer> mapProducto) {

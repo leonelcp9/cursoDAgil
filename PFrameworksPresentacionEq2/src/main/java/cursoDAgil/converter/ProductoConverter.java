@@ -29,9 +29,10 @@ public class ProductoConverter implements Converter {
 		if(value != null && (value.trim().length()>0)){
 			try{
 				Map<String,Integer>mapProducto =new HashMap<>();
+				System.out.println("Sí entra");
 				mapProducto.put("idProducto", Integer.parseInt(value));
 				Producto producto = productoService.buscarPorId(mapProducto);
-				//System.out.println("Nombre: " + producto.getNombre());
+				
 				return producto ;
 				
 			}catch(NumberFormatException e){

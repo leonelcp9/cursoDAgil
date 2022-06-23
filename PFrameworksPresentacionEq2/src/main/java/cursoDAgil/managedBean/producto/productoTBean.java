@@ -72,30 +72,6 @@ public class productoTBean {
 		System.out.println("----------------------------------------------");
 		System.out.println(producto.getNombre());
 	}
-	/*
-	public void eliminar() {
-		Producto producto = getProducto();
-		Integer id = producto.getIdProducto();
-		System.out.println("Eliminar" + producto.getIdProducto());		
-		int ban = 0;
-		try {
-			ban = productoService.eliminarProducto(id);
-			setListaProducto(productoService.listarProducto());
-			
-			if (productoService.eliminarProducto(id)==1) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Producto eliminado"));
-				
-			}else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error, No se eliminó"));
-				
-			}
-			setProducto(new Producto());
-			
-		}catch(Exception e){
-			System.out.println(e);
-			
-		}
-	}	*/
 
 	public void onRowEdit(RowEditEvent event) {
 		Producto producto = ((Producto) event.getObject());
@@ -115,7 +91,7 @@ public class productoTBean {
 		Object newValue = event.getNewValue();
 		System.out.println("verifica: " + newValue);
 		if (newValue != null && !newValue.equals(oldValue)) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Pruducto modificado",
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Producto modificado",
 					"Antes: " + oldValue + "Ahora" + newValue);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
