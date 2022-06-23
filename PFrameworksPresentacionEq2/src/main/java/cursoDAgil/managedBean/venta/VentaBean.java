@@ -1,7 +1,9 @@
 /*************************************/
 /* Equipo 2 */
-/* Lopez Guevara Jesus Alejandro y Cruz Peralta Leonel*/
-/* 6/06/22 */
+/* Mendez Gonzalez William
+ * Cruz Peralta Leonel
+ * Lopez Guevara Jesus A.*/
+/* 20/06/22 */
 /*************************************/
 package cursoDAgil.managedBean.venta;
 
@@ -18,10 +20,12 @@ import javax.inject.Named;
 
 import cursoDAgil.bd.domain.Cliente;
 import cursoDAgil.bd.domain.DetalleVentas;
+import cursoDAgil.bd.domain.Ganancia;
 import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.detalleVentas.DetalleVentasService;
+import cursoDAgil.service.ganancia.GananciaService;
 import cursoDAgil.service.venta.VentaService;
 
 @Named
@@ -40,6 +44,9 @@ public class VentaBean implements Serializable {
 	
 	@Inject
 	DetalleVentasService detalleService;
+	
+	@Inject
+	GananciaService gananciaService;
 	
 	private List<Venta> listaVentas;
 	private List<String> listaIdCliente;
@@ -63,6 +70,9 @@ public class VentaBean implements Serializable {
 	private Float totalVenta=0f;
 	private DetalleVentas detalle;
 	private String idProducto;
+	private List<Venta> listaVenta;
+	
+	private Integer idVenta=0;
 	
 	@PostConstruct
 	public void init() {
@@ -174,18 +184,53 @@ public class VentaBean implements Serializable {
 	}
 	
 	public void insertarVenta() {
-		//System.out.println(venta.getCliente().getNombre());
-//		venta.setFecha(fecha1);
-//		venta.setTotalVenta(totalVenta);
-//		//venta.setClienteId(venta.getCliente().getId());
-//		System.out.println("----------Generar venta------------");
-//		System.out.println(venta.getClienteId());
-//		System.out.println(venta.getTotalVenta());
-//		
-//		//ventaService.altaVenta(venta);
-//		//
-//		venta=null;
-//		init();
+		System.out.println(venta.getCliente().getNombre());
+		venta.setFecha(fecha1);
+		venta.setTotalVenta(totalVenta);
+		venta.setClienteId(venta.getCliente().getId());
+		System.out.println("----------Generar venta------------");
+		System.out.println(venta.getClienteId());
+		System.out.println(venta.getTotalVenta());
+		
+		ventaService.altaVenta(venta);
+		
+		//se invoca el metodo del servicio para obtener
+		//las ventas con su cliente
+		System.out.println("INICIO----------");
+		listaVenta=ventaService.listarTodasVentas();
+		System.out.println("Fin----------");
+		idVenta=listaVenta.size();
+		venta=listaVenta.get(idVenta-1);
+		
+		
+		
+		
+		//crear ganancia
+		Ganancia ganancia = new Ganancia();
+		ganancia.setFecha(fecha1.toString());
+		ganancia.setVentaId(venta.getIdVenta());
+		Float gan=0f;
+		
+		//crear detalle ventas
+		for(DetalleVentas d : listaDetalle) {
+			d.setVenvtaId(venta.getIdVenta());
+			detalleService.altaDetalleVenta(d);
+			gan+=d.getProducto().getPrecioVta()*d.getCantidad()-d.getCantidad()*d.getProducto().getPrecio();
+			System.out.println(gan+"HOLA");
+		}
+		ganancia.setTotalGanancia(gan);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("IdVenta de Ganancia= "+ganancia.getVentaId()+" Total= "+ganancia.getTotalGanancia() +" Fecha= "+ganancia.getFecha());
+		System.out.println("-------------------------------------------------------");
+		gananciaService.altaGanancia(ganancia);
+		
+		//terminar
+		venta=null;
+		listaDetalle=null;
+		carrito=null;
+		listaVenta=null;
+		totalVenta=0f;
+		init();
 	}
 	
 	public List<String> consultaIdTodosCliente(){
