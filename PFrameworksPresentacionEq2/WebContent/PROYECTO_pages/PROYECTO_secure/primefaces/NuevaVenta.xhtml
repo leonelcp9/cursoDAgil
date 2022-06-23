@@ -94,11 +94,8 @@
 						
 						<p:column headerText="Cantidad"
 							style="text-align: center; width: 160px">
-							<p:spinner id="horizontalAfter" value="#{detalle.cantidad}" min="1" size="7" valueChangeListener="#{ventaBean.cambioDeCantidad}">
-								<f:ajax execute="@form" update=":form:tablaCarrito"
-								value = "#{detalle.productoId}" target="#{ventaBean.idProducto}"
-								event="valueChange" listener="#{ventaBean.cambioDeCantidad}"/>
-							</p:spinner>
+							
+							<h:outputText value="#{detalle.cantidad}" />
 						</p:column>
 
 						<p:column headerText="Precio"
