@@ -185,6 +185,7 @@ public class VentaBean implements Serializable {
 		ventaService.altaVenta(venta);
 		//
 		venta=null;
+		listaDetalle=null;
 		init();
 	}
 	
