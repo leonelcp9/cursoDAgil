@@ -1,7 +1,7 @@
 /***************************************/
 /* Equipo 2 						   */
 /* Guerrero Hernández Samuel Antonio l */
-/* 20/06/22                             */
+/* 23/06/22                             */
 /***************************************/
 
 package cursoDAgil.converter;
@@ -16,24 +16,24 @@ import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import cursoDAgil.service.producto.ProductoService;
-import cursoDAgil.bd.domain.Producto;
+import cursoDAgil.service.Marca.MarcaService;
+
+import cursoDAgil.bd.domain.Marca;
 @Named
 
-public class ProductoConverter implements Converter {
+public class MarcaConverter implements Converter {
 	@Inject
-	ProductoService productoService;
+	MarcaService marcaService;
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value){
 		if(value != null && (value.trim().length()>0)){
 			try{
-				Map<String,Integer>mapProducto =new HashMap<>();
-				mapProducto.put("idProducto", Integer.parseInt(value));
-				Producto producto = productoService.buscarPorId(mapProducto);
-				
-				return producto ;
-				
+				Map<String,Integer>mapMarca =new HashMap<>();
+				mapMarca.put("idMarca", Integer.parseInt(value));
+				Marca marca = marcaService.obtenerMarcaporId(mapMarca);
+				System.out.println("Nombre marca: " + marca.getNombreMarca());
+				return marca ;
 			}catch(NumberFormatException e){
 				return null;
 			}
@@ -43,8 +43,8 @@ public class ProductoConverter implements Converter {
 	}
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value){
-		if(((value !=null)&& ((Producto)value).getIdProducto()!=null)){
-			return ((Producto)value).getIdProducto().toString();
+		if(((value !=null)&& ((Marca)value).getIdMarca()!=null)){
+			return ((Marca)value).getIdMarca().toString();
 		}else
 			return null;
 	}

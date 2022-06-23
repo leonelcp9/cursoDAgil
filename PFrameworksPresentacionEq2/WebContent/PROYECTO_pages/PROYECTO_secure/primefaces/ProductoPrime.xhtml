@@ -139,7 +139,7 @@
                   </f:facet>
                   <f:facet name="input">
                     <h:inputText
-                      value="#{prod.precio}"
+                      value="${prod.precio}"
                       style="width: 100%"
                       label="Precio"
                     />
@@ -150,11 +150,11 @@
               <p:column headerText="Precio Venta" colspan="4">
                 <p:cellEditor>
                   <f:facet name="output">
-                    <h:outputText value="#{prod.precioVta}" />
+                    <h:outputText value="#${prod.precioVta}" />
                   </f:facet>
                   <f:facet name="input">
                     <h:inputText
-                      value="#{prod.precioVta}"
+                      value="${prod.precioVta}"
                       style="width: 100%"
                       label="Precio Venta"
                     />
@@ -318,8 +318,29 @@
                   >
                     <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
-                  <p:message for="Cantidad" />       
-                             
+                  <p:message for="Cantidad" />   
+                  
+                  
+                  <p:selectOneMenu
+                    id="selectIdMarca"
+                    value="#{productoTBean.idMarca}"
+                    effect="fade"
+                    filter="true"
+                    panelStyle="width:345px"
+                    style="width: 325px"
+                    filterMatchMode="startsWith"
+                    required="true"
+                  >
+                    <p:ajax update="@this" process="@this" />
+                    <f:selectItems
+                      value="#{marcaBean.marcaList}"
+                      var="marca"
+                      itemLabel="#{marca.nombreMarca}"
+                      itemValue="#{marca.idMarca}"
+                    />
+                  </p:selectOneMenu>
+                      
+                     <!--         
                   <p:outputLabel value="Marca Id: *" />
                   <p:inputText
                     id="MarcaId"
@@ -333,7 +354,7 @@
                     <f:validateLength minimum="1" maximum="80" />
                   </p:inputText>
                   <p:message for="MarcaId" />                                   
-                  
+                   -->
                 </h:panelGrid>
                 <p:commandButton
                   id="btnRegistro"

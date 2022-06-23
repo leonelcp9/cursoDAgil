@@ -50,6 +50,8 @@ public class MarcaBean implements Serializable{
 	
 	private List<Marca> marcasFiltradas;
 	
+	public String idMarca;
+	
 	@PostConstruct
 	public void init() {
 		if (marcaList == null)
@@ -81,6 +83,10 @@ public class MarcaBean implements Serializable{
 
 	public void setmarcaList(List<Marca> marcaList) {
 		this.marcaList = marcaList;
+	}
+	
+	public void prueba() {
+		System.out.println("ID -> " + idMarca);
 	}
 
 	public void onRowEdit(RowEditEvent event) {
@@ -169,5 +175,15 @@ public class MarcaBean implements Serializable{
 
 	public void setmarca(Marca marca) {
 		this.marca = marca;
+	}
+
+
+	public String getIdMarca() {
+		return idMarca;
+	}
+
+
+	public void setIdMarca(String idMarca) {
+		this.idMarca = idMarca;
 	}
 }

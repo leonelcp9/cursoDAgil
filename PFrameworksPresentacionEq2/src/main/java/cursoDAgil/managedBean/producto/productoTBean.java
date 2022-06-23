@@ -19,6 +19,7 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import cursoDAgil.bd.domain.Producto;
+import cursoDAgil.bd.domain.Marca;
 import cursoDAgil.service.producto.ProductoService;
 
 @Named
@@ -29,6 +30,8 @@ public class productoTBean {
 	private List<Producto> listaProducto;
 	private Producto producto;
 	private List<Producto> carrito;
+	private Marca marca;
+	private String idMarca;
 	
 	@PostConstruct
 	public void init() {
@@ -43,7 +46,18 @@ public class productoTBean {
 	}
 
 	public void registrar() {
-		productoService.altaProducto(getProducto());
+		System.out.println("Registro de: " + idMarca);
+		
+		
+		Producto newProducto = getProducto();
+		newProducto.setMarcaId(Integer.parseInt(idMarca));;
+		System.out.println(newProducto.getCantidad());
+		System.out.println(newProducto.getMarcaId());
+		System.out.println(newProducto.getNombre());
+		System.out.println(newProducto.getPrecio());
+		System.out.println(newProducto.getPrecioVta());
+		
+		productoService.altaProducto(newProducto);
 		setProducto(new Producto());
 		setListaProducto(productoService.listarProducto());
 		getListaProducto();
@@ -113,6 +127,14 @@ public class productoTBean {
 
 	public void setListaProducto(List<Producto> listaProducto) {
 		this.listaProducto = listaProducto;
+	}
+	
+	public String getIdMarca() {
+		return idMarca;
+	}	
+	
+	public void setIdMarca(String idMarca) {
+		this.idMarca = idMarca;
 	}
 
 }
