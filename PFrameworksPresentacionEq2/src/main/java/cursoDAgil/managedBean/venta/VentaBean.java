@@ -26,6 +26,7 @@ import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.detalleVentas.DetalleVentasService;
 import cursoDAgil.service.ganancia.GananciaService;
+import cursoDAgil.service.producto.ProductoService;
 import cursoDAgil.service.venta.VentaService;
 
 @Named
@@ -47,6 +48,9 @@ public class VentaBean implements Serializable {
 	
 	@Inject
 	GananciaService gananciaService;
+	
+	@Inject 
+	ProductoService productoService;
 	
 	private List<Venta> listaVentas;
 	private List<String> listaIdCliente;
@@ -170,13 +174,25 @@ public class VentaBean implements Serializable {
 		
 	}
 	
+	public void calcularTotalVenta() {
+		totalVenta=0f;
+		for(DetalleVentas d : listaDetalle) {
+			totalVenta+=d.getProducto().getPrecioVta()*d.getCantidad();
+		}
+	}
+	
 	public void eliminarDeCarrito() {
 		System.out.println("Eliminar idProducto = "+idProducto);
+		int indice =-1;
 		for(DetalleVentas d : listaDetalle) {
 			if(d.getProductoId()==Integer.valueOf(idProducto)) {
-				listaDetalle.remove(d);
+				indice = listaDetalle.indexOf(d);
 			}
 		}
+		if(indice!=-1)
+			listaDetalle.remove(indice);
+		calcularTotalVenta();
+		//listaDetalle.removeIf((DetalleVentas d) -> d.getProductoId() == Integer.valueOf(idProducto));
 	}
 	
 	public void cambioDeCantidad() {
@@ -211,17 +227,21 @@ public class VentaBean implements Serializable {
 		ganancia.setVentaId(venta.getIdVenta());
 		Float gan=0f;
 		
-		//crear detalle ventas
+		//crear detalle ventas y actualizar cantidades
 		for(DetalleVentas d : listaDetalle) {
 			d.setVenvtaId(venta.getIdVenta());
 			detalleService.altaDetalleVenta(d);
 			gan+=d.getProducto().getPrecioVta()*d.getCantidad()-d.getCantidad()*d.getProducto().getPrecio();
-			System.out.println(gan+"HOLA");
+			
+			//actualizar inventario
+			Producto p = d.getProducto();
+			int cantNueva= p.getCantidad()-d.getCantidad();
+			p.setCantidad(cantNueva);
+			productoService.actualizarProducto(p);
+			
+			
 		}
 		ganancia.setTotalGanancia(gan);
-		System.out.println("-------------------------------------------------------");
-		System.out.println("IdVenta de Ganancia= "+ganancia.getVentaId()+" Total= "+ganancia.getTotalGanancia() +" Fecha= "+ganancia.getFecha());
-		System.out.println("-------------------------------------------------------");
 		gananciaService.altaGanancia(ganancia);
 		
 		//terminar
@@ -242,7 +262,12 @@ public class VentaBean implements Serializable {
 		return listaNombreClientes;
 	}
 	public void borrarTodo() {
+		System.out.println("************************Borrar Todo*********************");
+		venta=null;
+		listaDetalle=null;
 		carrito=null;
+		listaVenta=null;
+		totalVenta=0f;
 		init();
 	}
 	public List<Venta> getListaVentas() {
