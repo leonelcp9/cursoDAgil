@@ -51,7 +51,10 @@
 
               <p:columnGroup type="header">
                 <p:row>
-                  <p:column rowspan="1" colspan="1" headerText="Id" />
+                  <p:column rowspan="1" colspan="2" headerText="Id" style="text-align: center"
+                    filterBy="#{prod.idProducto}"
+                    filterStyle="width:150px; height:30px;"
+                    filterMatchMode="contains"/>
 
                   <p:column
                     rowspan="1"
@@ -111,6 +114,7 @@
 
               <p:column headerText="Id " colspan="2" style="text-align: center">
                 <h:outputText value="#{prod.idProducto}" />
+                
               </p:column>
 
               <p:column
