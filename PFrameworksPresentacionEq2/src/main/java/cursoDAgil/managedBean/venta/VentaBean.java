@@ -18,10 +18,12 @@ import javax.inject.Named;
 
 import cursoDAgil.bd.domain.Cliente;
 import cursoDAgil.bd.domain.DetalleVentas;
+import cursoDAgil.bd.domain.Ganancia;
 import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.bd.domain.Venta;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.detalleVentas.DetalleVentasService;
+import cursoDAgil.service.ganancia.GananciaService;
 import cursoDAgil.service.venta.VentaService;
 
 @Named
@@ -40,6 +42,9 @@ public class VentaBean implements Serializable {
 	
 	@Inject
 	DetalleVentasService detalleService;
+	
+	@Inject
+	GananciaService gananciaService;
 	
 	private List<Venta> listaVentas;
 	private List<String> listaIdCliente;
@@ -195,11 +200,26 @@ public class VentaBean implements Serializable {
 		idVenta=listaVenta.size();
 		venta=listaVenta.get(idVenta-1);
 		
+		
+		
+		
+		//crear ganancia
+		Ganancia ganancia = new Ganancia();
+		ganancia.setFecha(fecha1.toString());
+		ganancia.setVentaId(venta.getIdVenta());
+		Float gan=0f;
+		
+		//crear detalle ventas
 		for(DetalleVentas d : listaDetalle) {
 			d.setVenvtaId(venta.getIdVenta());
 			detalleService.altaDetalleVenta(d);
+			gan+=d.getProducto().getPrecioVta()-d.getProducto().getPrecio();
 		}
-		
+		ganancia.setTotalGanancia(gan);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("IdVenta de Ganancia= "+ganancia.getVentaId()+" Total= "+ganancia.getTotalGanancia() +" Fecha= "+ganancia.getFecha());
+		System.out.println("-------------------------------------------------------");
+		gananciaService.altaGanancia(ganancia);
 		
 		//terminar
 		venta=null;
