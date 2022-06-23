@@ -63,6 +63,9 @@ public class VentaBean implements Serializable {
 	private Float totalVenta=0f;
 	private DetalleVentas detalle;
 	private String idProducto;
+	private List<Venta> listaVenta;
+	
+	private Integer idVenta=0;
 	
 	@PostConstruct
 	public void init() {
@@ -183,8 +186,14 @@ public class VentaBean implements Serializable {
 		System.out.println(venta.getTotalVenta());
 		
 		ventaService.altaVenta(venta);
-		//
-		venta=null;
+		
+		//se invoca el metodo del servicio para obtener
+		//las ventas con su cliente
+		System.out.println("INICIO----------");
+		listaVenta=ventaService.listarTodasVentas();
+		System.out.println("Fin----------");
+		idVenta=listaVenta.size();
+		venta=listaVenta.get(idVenta-1);
 		listaDetalle=null;
 		init();
 	}
