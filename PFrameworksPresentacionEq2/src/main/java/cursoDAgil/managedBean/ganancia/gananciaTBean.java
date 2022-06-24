@@ -1,5 +1,6 @@
 package cursoDAgil.managedBean.ganancia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,15 @@ import cursoDAgil.service.ganancia.GananciaService;
 
 @Named
 @ViewScoped
-public class gananciaTBean {
+public class gananciaTBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5180087505132294899L;
+
 	@Inject
 	GananciaService gananciaService;
+	
 	private List<Ganancia> listaGanancia;
 	private Ganancia ganancia;
 	
@@ -42,6 +49,13 @@ public class gananciaTBean {
 		FacesContext.getCurrentInstance().addMessage("null", new FacesMessage("Registro exitoso!"));
 	}
 
+	public void refrescar() {
+		
+		listaGanancia=null;
+		ganancia=null;
+		init();
+		//System.out.println("Hola jejejejeejejejejejejejejejejejejejeejejejejejejejejejejejejejejejejejejejejejejejej");
+	}
 	// setter´s y getter´s
 
 	public Ganancia getGanancia() {

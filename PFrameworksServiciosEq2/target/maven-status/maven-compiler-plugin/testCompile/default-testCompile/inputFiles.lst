@@ -1,7 +1,7 @@
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\ganancia\GananciaServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\venta\VentaServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\detalleVentas\DetalleVentasServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\cliente\ClienteServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\Marca\MarcaServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\producto\ProductoServiceImplTest.java
-E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\src\test\java\cursoDAgil\service\direccion\DireccionServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/ganancia/GananciaServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/detalleVentas/DetalleVentasServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/Marca/MarcaServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/cliente/ClienteServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/producto/ProductoServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/venta/VentaServiceImplTest.java
+/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/src/test/java/cursoDAgil/service/direccion/DireccionServiceImplTest.java
