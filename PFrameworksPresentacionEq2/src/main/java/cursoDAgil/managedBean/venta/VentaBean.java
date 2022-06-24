@@ -23,7 +23,6 @@ import cursoDAgil.bd.domain.DetalleVentas;
 import cursoDAgil.bd.domain.Ganancia;
 import cursoDAgil.bd.domain.Producto;
 import cursoDAgil.bd.domain.Venta;
-import cursoDAgil.managedBean.ganancia.gananciaTBean;
 import cursoDAgil.service.cliente.ClienteService;
 import cursoDAgil.service.detalleVentas.DetalleVentasService;
 import cursoDAgil.service.ganancia.GananciaService;
@@ -252,8 +251,6 @@ public class VentaBean implements Serializable {
 		listaVenta=null;
 		totalVenta=0f;
 		init();
-		
-		
 	}
 	
 	public List<String> consultaIdTodosCliente(){

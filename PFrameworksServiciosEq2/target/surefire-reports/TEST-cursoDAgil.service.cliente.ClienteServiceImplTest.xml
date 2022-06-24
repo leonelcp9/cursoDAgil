@@ -1,65 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="cursoDAgil.service.cliente.ClienteServiceImplTest" time="0.064" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="cursoDAgil.service.cliente.ClienteServiceImplTest" time="0.999" errors="0" skipped="0">
   <properties>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="java.vm.version" value="17.0.1+12"/>
-    <property name="sun.boot.library.path" value="/opt/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.1.v20211116-1657/jre/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2"/>
-    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
-    <property name="java.vendor.url" value="https://adoptium.net/"/>
-    <property name="path.separator" value=":"/>
+    <property name="jansi.mode" value="strip"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="17.0.3+8-LTS-111"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.3\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="user.country" value="US"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2"/>
+    <property name="user.dir" value="E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="17.0.1+12"/>
+    <property name="java.runtime.version" value="17.0.3+8-LTS-111"/>
     <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.io.tmpdir" value="C:\Users\Leonel\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/home/leonel/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf2810844834327876576.tmp"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="E:\Leonel\Documents\Eclipse\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8319347585615121793.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17.0.3\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;E:/Leonel/Escritorio/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208/jre/bin/server;E:/Leonel/Escritorio/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Aldec\Active-HDL-Student-Edition\bin;C:\GnuWin32\bin;C:\Program Files (x86)\Dev-Cpp\MinGW64\bin;C:\Program Files\Git\cmd;C:\Aldec\Active-HDL-Student-Edition_2\bin;C:\Program Files\Calibre2\;C:\Users\Leonel\AppData\Local\Microsoft\WindowsApps;C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;C:\Users\Leonel\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\GitHub CLI\;C:\Users\Leonel\AppData\Local\GitHubDesktop\bin;E:\Leonel\Escritorio\eclipse;;."/>
     <property name="jdk.debug" value="release"/>
     <property name="java.class.version" value="61.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.13.0-51-generic"/>
-    <property name="user.home" value="/home/leonel"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Leonel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="file.encoding" value="Cp1252"/>
     <property name="java.specification.version" value="17"/>
-    <property name="user.name" value="leonel"/>
-    <property name="java.class.path" value="/opt/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.18.1.20211011-2139/jars/plexus-classworlds-2.6.0.jar"/>
+    <property name="user.name" value="Leonel"/>
+    <property name="java.class.path" value="E:\Leonel\Escritorio\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.18.3.20220227-1319\jars\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B install"/>
-    <property name="java.home" value="/opt/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.1.v20211116-1657/jre"/>
-    <property name="user.language" value="en"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17.0.3"/>
+    <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="17.0.1"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="securerandom.source" value="file:/dev/./urandom"/>
-    <property name="java.vendor" value="Eclipse Adoptium"/>
-    <property name="maven.home" value="/home/leonel/Documents/GitHub/cursoDAgil/PFrameworksServiciosEq2/EMBEDDED"/>
-    <property name="file.separator" value="/"/>
-    <property name="java.version.date" value="2021-10-19"/>
-    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="17.0.3"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\Leonel\Documents\GitHub\cursoDAgil\PFrameworksServiciosEq2\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2022-04-19"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="java.vendor.version" value="Temurin-17.0.1+12"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="eliminarcliente" time="0.004"/>
-  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="pruebaConsultarTodoSoloCliente" time="0.003"/>
+  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="eliminarcliente" time="0.966"/>
+  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="pruebaConsultarTodoSoloCliente" time="0.017"/>
   <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="actualizarCliente" time="0.001"/>
-  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="pruebaConsultarTodo" time="0.003"/>
-  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="consultarClientePorId" time="0.002"/>
+  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="pruebaConsultarTodo" time="0.006"/>
+  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="consultarClientePorId" time="0.001"/>
   <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="consultarSoloClientePorId" time="0.002"/>
-  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="nuevoRegistro" time="0.049"/>
+  <testcase classname="cursoDAgil.service.cliente.ClienteServiceImplTest" name="nuevoRegistro" time="0.006"/>
 </testsuite>
